@@ -1,0 +1,11 @@
+<template name="userBox">
+    <div class="pull-right">
+        {{#if currentUser}}
+            <a href="/profile/{{currentUser._id}}">{{currentUser.profile.name}}</a>&nbsp;&nbsp;&nbsp;
+            <a href="/logout">Logout</a>
+        {{else}}
+            <a href="/login">Login</a>
+        {{/if}}
+    </div>
+
+</template>
