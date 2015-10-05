@@ -1,31 +1,39 @@
 Template.yaksSubmit.events({
-	'submit .yaksSubmitForm': function(event,err) {
+  'submit .yaksSubmitForm': function(event,err) {
 
-		event.preventDefault();
+    event.preventDefault();
 
-		var yakItem = {};
-		yakItem["yak"] = event.target.yak.value; 		// get text
-		yakItem["creatorId"] = Meteor.userId();
-		yakItem["loc"] = null  //TO DO: Implement location
+    var yakItem = {};
+    yakItem["yak"] = event.target.yak.value; 		// get text
+    yakItem["creatorId"] = Meteor.userId();
+    yakItem["coords"] = {};
 
-		// check if the value is empty
-		if (yakItem["yak"] == "") {
-			alert("You can't insert empty yak. Try to write something funny instead! :)");
-		} else {
-			if(yakItem["yak"].length > 200) { alert("Please make your posting shorter"); }
-			else {
-				Meteor.call('yakInsert', yakItem);
-				/*post._id = Yaks.insert(post);*/
-				Router.go('yaksList');
-			}
-		}
+    console.log("Go");
+    if (yakItem["yak"] == "") {
+      alert("You can't insert empty yak. Try to write something funny instead! :)");
+      return;
+    }
 
-		/*var post= {
-			yak: $(event.target).find('[name=yak]').val(),
-			submitted : new Date(),
-			score : 0
-		}*/
+    if(yakItem["yak"].length > 500) {
+      alert("Please make your posting shorter");
+      return;
+    }
+
+    navigator.geolocation.getCurrentPosition(function(position) {
+      yakItem["coords"]["long"] = position.coords.longitude;
+      yakItem["coords"]["lat"] = position.coords.latitude;
+
+      Meteor.call('yakInsert', yakItem);
+      /*post._id = Yaks.insert(post);*/
+      $('#openYakBox').show("slow");
+    });
+
+    /*var post= {
+      yak: $(event.target).find('[name=yak]').val(),
+      submitted : new Date(),
+      score : 0
+    }*/
 
 
-	}
+  }
 });

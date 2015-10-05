@@ -1,18 +1,19 @@
 <template name="yakItem">
-	<div class="yak">
-		<li class="list-group-item">
-			<div id="voting">
-			</div>
-			<div id="content">
-				<a href="{{pathFor 'yakPage'}}" class="yakPost">
-					<p class="break-el">{{yak}}</p>
-					<a class="btn" href="{{pathFor 'profile' _id=creatorId}}">By: {{creatorName}}</a>
-					<a class="btn">{{commentsCount}} comments</a>
-					<a class="btn pull-right btn-small {{#if currentUser}}no{{/if}}" href="{{#if currentUser}}#{{else}}/login{{/if}}"><i class="fa fa-chevron-down"></i></a>
-					<a class="btn pull-right" href="#"> {{score}} </a>
-					<a class="btn pull-right btn-small {{#if currentUser}}yes{{/if}}" href="{{#if currentUser}}#{{else}}/login{{/if}}"><i class="fa fa-chevron-up"></i></a>
-			</a>
-		</div>
-		</li>
-	</div>
+  <div class="yak">
+    <li class="list-group-item">
+      <div id="voting">
+      </div>
+      <div id="content">
+        <a href="{{pathFor 'yakPage'}}" class="yakPost">
+          <p class="break-el">{{yak}}</p>
+          <a class="btn" href="{{pathFor 'profile' _id=creatorId}}">By: {{creatorName}}</a>
+          <a class="btn">{{commentsCount}} comments</a>
+          <a class="btn pull-right btn-small {{#if currentUser}}no{{/if}}" href="{{#if currentUser}}#{{else}}/login{{/if}}"><i class="fa fa-chevron-down"></i></a>
+          <a class="btn pull-right" href="#"> {{score}} </a>
+          <a class="btn pull-right btn-small {{#if currentUser}}yes{{/if}}" href="{{#if currentUser}}#{{else}}/login{{/if}}"><i class="fa fa-chevron-up"></i></a><br/>
+          <a class="btn">From {{location}}</a>
+      </a>
+    </div>
+    </li>
+  </div>
 </template>

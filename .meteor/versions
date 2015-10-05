@@ -1,4 +1,5 @@
 accounts-base@1.2.1
+accounts-facebook@1.0.6
 accounts-oauth@1.1.7
 accounts-twitter@1.0.6
 accounts-ui@1.1.6
@@ -26,6 +27,7 @@ diff-sequence@1.0.1
 ecmascript@0.1.5
 ecmascript-collections@0.1.6
 ejson@1.0.7
+facebook@1.2.2
 fastclick@1.0.7
 geojson-utils@1.0.4
 hot-code-push@1.0.0
@@ -60,6 +62,7 @@ natestrauser:font-awesome@4.4.0
 npm-mongo@1.4.39_1
 oauth@1.1.6
 oauth1@1.1.5
+oauth2@1.1.5
 observe-sequence@1.0.7
 ordered-dict@1.0.4
 promise@0.5.0

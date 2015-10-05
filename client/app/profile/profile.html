@@ -1,22 +1,22 @@
 <template name="profile">
-	{{#if currentUser}}
+  {{#if currentUser}}
         {{#if isOwnProfile}}
-					<div class="yaks">
-						<div class="form-style">
-							<div class="container">
-								<ul class="list-group">
-									<h3>These are your yaks</h3>
-									{{#each ownYaks}}
-										{{> yakItem}}
-									{{/each}}
-								</ul>
-							</div>
-						</div>
-					</div>
-  			{{else}}
-        		<p>not own profile</p>
-				{{/if}}
-	{{else}}
-		<p>How?</p>
-	{{/if}}
+          <div class="yaks">
+            <div class="form-style">
+              <div class="container">
+                <ul class="list-group">
+                  <h3>These are your yaks</h3>
+                  {{#each ownYaks}}
+                    {{> yakItem}}
+                  {{/each}}
+                </ul>
+              </div>
+            </div>
+          </div>
+        {{else}}
+            <p>not own profile</p>
+        {{/if}}
+  {{else}}
+    <p>How?</p>
+  {{/if}}
 </template>

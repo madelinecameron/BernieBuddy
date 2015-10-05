@@ -1,13 +1,14 @@
 <template name="yaksSubmit">
-	<div class="yaksSubmit">
-		<div class="form-style">
-			<div class="container">
-					<form class="yaksSubmitForm">
-						<h3>Send yak. It's anonymous</h3>
-						<input autofocus="autofocus" type="text" id="yak" class="yak-form form-control" name="yak" placeholder="Type your yak here"/>
-						<input type="submit" value="Send yak" class="btn btn-primary">
-					</form>
-			</div>
-		</div>
-	</div>
+  <div class="yaksSubmit">
+    <div class="form-style">
+      <div class="container">
+          <form class="yaksSubmitForm">
+            <input autofocus="autofocus" type="text" id="yak" class="yak-form form-control" name="yak" placeholder="Type your yak here"/>
+            <input type="submit" value="Send Yak" data-toggle="collapse"
+              data-target="#yakBox" aria-expanded="false"
+              aria-controls="yakBox" class="btn btn-primary">
+          </form>
+      </div>
+    </div>
+  </div>
 </template>

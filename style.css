@@ -10,9 +10,9 @@ body{background-color: #f3f3f3;}
 }
 p{margin: 0;}
 .yak p{
-	font-size: 18px;
-	color: #534540;
-	font-weight: 50;
+  font-size: 18px;
+  color: #534540;
+  font-weight: 50;
 }
 a.yakPost {
   color: #000;
@@ -23,19 +23,22 @@ a.yakPost:hover{
 }
 
 .yak{
-	margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .yak-form{
-	margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 #main {
   position: relative;
 }
 
+.center: {
+  margin: 0 auto;
+}
 .yak .yak-content {
-	padding: 5px;
+  padding: 5px;
 }
 
 .button-list {
@@ -92,7 +95,7 @@ a.yakPost:hover{
     width: 55%;
   }
   .form-style .container {
-  	width: 45%;
+    width: 45%;
   }
 }
 
@@ -101,7 +104,7 @@ a.yakPost:hover{
     width: 60%;
   }
   .form-style .container {
-  	width: 50%;
+    width: 50%;
   }
 }
 
@@ -110,7 +113,7 @@ a.yakPost:hover{
     width: 70%;
   }
   .form-style .container {
-  	width: 55%;
+    width: 55%;
   }
 
 }
@@ -120,6 +123,6 @@ a.yakPost:hover{
     width: 80%;
   }
   .form-style .container {
-  	width: 70%;
+    width: 70%;
   }
 }

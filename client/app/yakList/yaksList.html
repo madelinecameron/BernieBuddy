@@ -1,24 +1,31 @@
 <template name="yaksList">
-	<div class="yaks">
-		<div class="form-style">
-			<div class="container">
-				<ul class="list-group">
-					<div id="postYak">
-						{{#if currentUser}}
-							<a class="btn btn-primary" href="/submit" type="button">Send Yak</a>
-						{{/if}}
-					</div>
-					<h3>Live feed of what people are saying around you</h3>
-					{{#each yaks}}
-						{{> yakItem}}
-					{{/each}}
-					{{#if moreResults}}
-				    <div id="showMoreResults" style="margin-left: 25px;">
-				        <span class="loading">Loading...</span>
-				    </div>
-					{{/if}}
-				</ul>
-			</div>
-		</div>
-	</div>
+  <div class="yaks">
+    <div class="form-style">
+      <div class="container">
+        <div id="postYak" class="text-center">
+          {{#if currentUser}}
+            <a class="btn btn-primary" data-toggle="collapse"
+              data-target="#yakBox" type="button" aria-expanded="false"
+              aria-controls="yakBox" id="openYakBox">
+                Send Yak
+            </a>
+            <div class="collapse" id="yakBox">
+              {{> yaksSubmit}}
+            </div>
+          {{/if}}
+        </div><br/>
+        <ul class="list-group">
+          <h3>Live feed of what people are saying around you</h3>
+          {{#each yaks}}
+            {{> yakItem}}
+          {{/each}}
+          {{#if moreResults}}
+            <div id="showMoreResults" style="margin-left: 25px;">
+                <span class="loading">Loading...</span>
+            </div>
+          {{/if}}
+        </ul>
+      </div>
+    </div>
+  </div>
 </template>
