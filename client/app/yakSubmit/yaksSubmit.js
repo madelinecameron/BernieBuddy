@@ -45,11 +45,11 @@ Template.yaksSubmit.events({
   }
 });
 
-Template.yakSubmit.onCreated(function() {
+Template.yaksSubmit.onCreated(function() {
   Session.set("length", 0);
 });
 
-Template.yakSubmit.helpers({
+Template.yaksSubmit.helpers({
   length: function() {
     return Session.get("length");
   }

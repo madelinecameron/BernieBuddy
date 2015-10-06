@@ -15,6 +15,12 @@ Template.yaksList.events({
   }
 });
 
+Template.yaksList.onCreated(function() {
+  setTimeout(function() {
+    console.log("Loaded");
+  }, 2000);
+});
+
 // whenever #showMoreResults becomes visible, retrieve more results
 function showMoreVisible() {
     var threshold, target = $("#showMoreResults");
