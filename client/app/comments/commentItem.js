@@ -3,14 +3,21 @@ Template.commentItem.events({
     Session.set('selected_comment', this._id);
   },
 
-  'click a.yes':function() {
+  'click a.yes':function(event) {
     if(Meteor.user()) {
       var comment = Comments.findOne({ _id: this._id }),
           update = {},
           netUpdateScore = 0,
-          selectedId = Session.get('selected_comment');
+          selectedId = Session.get('selected_comment'),
+          element = $(event.currentTarget);
 
-      if ($.inArray(Meteor.userId(), comment.upVoted) !== -1) {
+      console.log(element);
+      element.toggleClass("vote");
+      if($(".no").hasClass("vote")) {
+        $(".no").removeClass("vote");
+      }
+
+      if ($.inArray(Meteor.userId(), comment.upVoted) !== -1) {  //Undo upvote
         Comments.update(selectedId, { $pull: {
             upVoted : Meteor.userId()
           },
@@ -31,12 +38,18 @@ Template.commentItem.events({
       Comments.update(selectedId, update);
     }
   },
-  'click a.no': function() {
+  'click a.no': function(event) {
     if (Meteor.user()) {
       var comment = Comments.findOne({ _id: this._id }),
           update = {},
           netUpdateScore = 0,
-          selectedId = Session.get('selected_comment');
+          selectedId = Session.get('selected_comment'),
+          element = $(event.currentTarget);
+
+      element.toggleClass("vote");
+      if($(".yes").hasClass("vote")) {
+        $(".yes").removeClass("vote");
+      }
 
       if ($.inArray(Meteor.userId(), comment.upVoted) !== -1) {
         $.extend(update, update, { $pull: { upVoted : Meteor.userId() } });

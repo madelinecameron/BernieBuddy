@@ -21,4 +21,5 @@ if(Meteor.isClient) {
     }
   });
 }
+
 // comments

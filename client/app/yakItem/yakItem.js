@@ -3,12 +3,18 @@ Template.yakItem.events({
     Session.set('selected_yak', this._id);
   },
 
-  'click a.yes': function() {
+  'click a.yes': function(event) {
     if(Meteor.user()) {
       var postId = Yaks.findOne({ _id: this._id }),
           update = {},
           netUpdateScore = 0,
-          yakId = Session.get('selected_yak');
+          yakId = Session.get('selected_yak'),
+          element = $(event.currentTarget);
+
+      element.toggleClass("vote");
+      if($(".no").hasClass("vote")) {
+        $(".no").removeClass("vote");
+      }
 
       //Undo upvote!
       if ($.inArray(Meteor.userId(), postId.upVoted) !== -1) {
@@ -33,12 +39,18 @@ Template.yakItem.events({
       Yaks.update(yakId, update);
     }
   },
-  'click a.no': function() {
+  'click a.no': function(event) {
     if (Meteor.user()) {
       var postId = Yaks.findOne({ _id: this._id }),
           update = {},
           netUpdateScore = 0,
-          yakId = Session.get('selected_yak');
+          yakId = Session.get('selected_yak'),
+          element = $(event.currentTarget);
+
+      element.toggleClass("vote");
+      if($(".yes").hasClass("vote")) {
+        $(".yes").removeClass("vote");
+      }
 
       if ($.inArray(Meteor.userId(), postId.upVoted) !== -1) {
         $.extend(update, update, { $pull: { upVoted : Meteor.userId() } });
@@ -83,6 +95,12 @@ Template.yakItem.onCreated(function() {
 });
 
 Template.yakItem.helpers({
+  madeDownvote: function() {
+    return _.contains(this.downVoted, Meteor.userId());
+  },
+  madeUpvote: function() {
+    return _.contains(this.upVoted, Meteor.userId());
+  },
   commentsCount: function() {
     return Comments.find({ postId: this._id }).count();
   },

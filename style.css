@@ -115,6 +115,10 @@ a.yakPost:hover{
   font-size: 14px;
 }
 
+.vote {
+  opacity: 0.60
+}
+
 @media (min-width: 1300px) {
   .container{
     width: 55%;

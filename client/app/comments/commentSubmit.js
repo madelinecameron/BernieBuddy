@@ -6,7 +6,8 @@ Template.commentSubmit.events({
     var comment = {
       text: $body.val(),
       postId: template.data._id,
-      creatorId: Meteor.userId()
+      creatorId: Meteor.userId(),
+      coords: {}
     };
 
     var commentBody = e.target.body.value;
@@ -16,7 +17,14 @@ Template.commentSubmit.events({
     } else {
       if(comment.text.length > 500) { alert("Please shorten your comment!"); }
       else {
-        Meteor.call('commentInsert', comment);
+        navigator.geolocation.getCurrentPosition(function(position) {
+          comment["coords"]["long"] = position.coords.longitude;
+          comment["coords"]["lat"] = position.coords.latitude;
+
+          Meteor.call('commentInsert', comment);
+
+          delete Session.keys["length"];
+        });
 
         delete Session.keys["length"];
       }

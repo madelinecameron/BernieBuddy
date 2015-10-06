@@ -8,15 +8,16 @@ Template.yaksSubmit.events({
     yakItem["creatorId"] = Meteor.userId();
     yakItem["coords"] = {};
 
-    console.log("Go");
     if (yakItem["yak"] == "") {
       alert("You can't insert empty post. Try to write something funny instead! :)");
-      return;
+
+      delete Session.keys["length"];
     }
 
     if(yakItem["yak"].length > 500) {
       alert("Please make your post shorter");
-      return;
+
+      delete Session.keys["length"];
     }
 
     navigator.geolocation.getCurrentPosition(function(position) {
@@ -27,20 +28,44 @@ Template.yaksSubmit.events({
 
       delete Session.keys["length"];
 
-      /*post._id = Yaks.insert(post);*/
       $('#openYakBox').show("slow");
     });
+
   },
   'keyup #yak': function(e) {
     var length = $('#yak').val().length;
+    if(length > 500) {
+      $('#submitButton').prop("disabled", true);
+    }
+    else {
+      if($('#submitButton').prop("disabled")) {  //Submitingly-challenged is the PC term.
+        $('#submitButton').prop("disabled", false);
+      }
+    }
     Session.set("length", length);
   },
   'mouseup #yak': function(e) {
     var length = $('#yak').val().length;
+    if(length > 500) {
+      $('#submitButton').prop("disabled", true);
+    }
+    else {
+      if($('#submitButton').prop("disabled")) {  //Submitingly-challenged is the PC term.
+        $('#submitButton').prop("disabled", false);
+      }
+    }
     Session.set("length", length);
   },
   'change #yak': function(e) {
     var length = $('#yak').val().length;
+    if(length > 500) {
+      $('#submitButton').prop("disabled", true);
+    }
+    else {
+      if($('#submitButton').prop("disabled")) {  //Submitingly-challenged is the PC term.
+        $('#submitButton').prop("disabled", false);
+      }
+    }
     Session.set("length", length);
   }
 });
