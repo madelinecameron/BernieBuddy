@@ -26,3 +26,5 @@ ejson
 spacebars
 check
 accounts-facebook
+utilities:avatar
+monbro:mongodb-mapreduce-aggregation

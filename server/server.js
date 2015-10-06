@@ -8,8 +8,7 @@ Meteor.methods({
           $geometry: {
             type: "Point",
             coordinates: [ parseFloat(yak.coords.long), parseFloat(yak.coords.lat) ]
-          },
-          $maxDistance: 1000
+          }
         }
       }
     });
@@ -41,5 +40,49 @@ Meteor.methods({
   },
   getCommentCount: function(id) {
     return Comments.find({ postId: id }).count();
+  },
+  karmaCount: function(id) {
+    var postKarma = Yaks.aggregate([
+      {
+        $match: {
+          creatorId: id
+        }
+      },
+      {
+        $group: {
+          _id: null,
+          karma: { $sum: "$score" }
+        }
+      }
+    ]);
+
+    var commentKarma = Comments.aggregate([
+      {
+        $match: {
+          creatorId: id
+        }
+      },
+      {
+        $group: {
+          _id: null,
+          karma: { $sum: "$score" }
+        }
+      }
+    ]);
+
+    var totalKarma = 0;
+    if(postKarma.length > 0 && commentKarma.length > 0) {
+      totalKarma = postKarma[0].karma + commentKarma[0].karma;
+    }
+    else {
+      if(postKarma.length > 0) {
+        totalKarma = postKarma[0].karma;
+      }
+      if(commentKarma.length > 0) {  //If we are down here, we know one of them is null and we know comment && post can't not be null
+        totalKarma = commentKarma[0].karma;
+      }
+    }
+
+    return totalKarma;
   }
 });

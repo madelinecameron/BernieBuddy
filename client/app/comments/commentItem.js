@@ -67,19 +67,39 @@ Template.commentItem.events({
   }
 });
 
+Template.userBox.onCreated(function() {
+  Meteor.call('karmaCount', function(err, result) {
+    Session.set('karma', result);
+  });
+});
+
+
+Template.userBox.helpers({
+  karma: function() {
+    return Session.get('karma');
+  }
+});
+
 Template.commentItem.onCreated(function() {
+  var id = this.data.creatorId;
   if(!Session.get(this.data.creatorId)) {
-    var id = this.data.creatorId;
     console.log("Called");
     Meteor.call('getUserName', id, function(err, result) {
       Session.set(id, result);
     });
   }
+
+  Meteor.call('karmaCount', id, function(err, result) {
+    Session.set(id + "karma", result);
+  });
+
 });
 
 Template.commentItem.helpers({
   creatorName: function() {
-    console.log(this.creatorId);
     return Session.get(this.creatorId);
+  },
+  karma: function() {
+    return Session.get(this.creatorId + "karma");
   }
 });
