@@ -1,23 +1,17 @@
 Template.yaksList.helpers({
   yaks: function() {
-    return Yaks.find().fetch().reverse();
+    //return Yaks.find().fetch().reverse();
   },
   moreResults: function() {
       // If, once the subscription is ready, we have less rows than we
       // asked for, we've got all the rows in the collection.
-      console.log(Session.get("yaksLimit"));
-      return !(Yaks.find().count() < Session.get("yaksLimit")) && Session.get("yaksLimit") < 250;
+      //return !(Yaks.find().count() < Session.get("yaksLimit")) && Session.get("yaksLimit") < 250;
   }
 });
 
 Template.yaksList.events({
   'click #openYakBox': function(event, err) {
     $('#openYakBox').hide();
-  },
-  'click #brand': function(e, err) {
-    console.log("Click brand");
-    $('#yakBox').collapse('hide');
-    $('#openYakBox').show();
   }
 });
 

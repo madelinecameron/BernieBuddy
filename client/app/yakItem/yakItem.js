@@ -1,9 +1,9 @@
 Template.yakItem.events({
-  'click':function() {
+  'click': function() {
     Session.set('selected_yak', this._id);
   },
 
-  'click a.yes':function() {
+  'click a.yes': function() {
     if(Meteor.user()) {
       var postId = Yaks.findOne({ _id: this._id }),
           update = {},
