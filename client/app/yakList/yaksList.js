@@ -1,11 +1,11 @@
 Template.yaksList.helpers({
   yaks: function() {
-    //return Yaks.find().fetch().reverse();
+    return Yaks.find().fetch().reverse();
   },
   moreResults: function() {
       // If, once the subscription is ready, we have less rows than we
       // asked for, we've got all the rows in the collection.
-      //return !(Yaks.find().count() < Session.get("yaksLimit")) && Session.get("yaksLimit") < 250;
+      return !(Yaks.find().count() < Session.get("yaksLimit")) && Session.get("yaksLimit") < 250;
   }
 });
 
