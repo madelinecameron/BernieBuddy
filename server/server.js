@@ -70,6 +70,9 @@ Meteor.methods({
       }
     ]);
 
+    console.log(postKarma);
+    console.log(commentKarma);
+    
     var totalKarma = 0;
     if(postKarma.length > 0 && commentKarma.length > 0) {
       totalKarma = postKarma[0].karma + commentKarma[0].karma;
