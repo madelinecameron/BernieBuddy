@@ -10,6 +10,7 @@ Template.yakItem.events({
           netUpdateScore = 0,
           yakId = Session.get('selected_yak');
 
+      //Undo upvote!
       if ($.inArray(Meteor.userId(), postId.upVoted) !== -1) {
         Yaks.update(yakId, { $pull: {
             upVoted : Meteor.userId()
@@ -19,6 +20,7 @@ Template.yakItem.events({
 
         return;
       }
+      //Downvote!
       if ($.inArray(Meteor.userId(), postId.downVoted) !== -1) {
         $.extend(update, update, { $pull: { downVoted : Meteor.userId() } });
         netUpdateScore += 1;
@@ -68,12 +70,16 @@ Template.yakItem.events({
 });
 
 Template.yakItem.onCreated(function() {
-  if(!Session.get(this.data.creatorId)) {
-    var id = this.data.creatorId;
+  var id = this.data.creatorId;
+  if(!Session.get(id)) {
     Meteor.call('getUserName', id, function(err, result) {
       Session.set(id, result);
     });
   }
+
+  Meteor.call('karmaCount', id, function(err, result) {
+    Session.set(id + "karma", result);
+  });
 });
 
 Template.yakItem.helpers({
@@ -82,5 +88,22 @@ Template.yakItem.helpers({
   },
   creatorName: function() {
     return Session.get(this.creatorId);
+  },
+  karma: function() {
+    return Session.get(this.creatorId + "karma");
+  },
+  time: function() {
+    var dateCreatedAt = Yaks.findOne({ _id: this._id }, {createdAt: 1 });
+
+    if(isNaN(dateCreatedAt.createdAt)) { return "Forever"; }
+    var diff = new Date().getTime() - new Date(dateCreatedAt.createdAt).getTime();
+    var diff = diff / (1000 * 3600);
+
+    if(diff < 1.0) {
+      return Math.round((diff * 60)) + "m"
+    }
+    else {
+      return Math.round(diff) + "h";
+    }
   }
 });

@@ -9,7 +9,7 @@
             <div class="form-style">
               <div class="container">
                 <ul class="list-group">
-                  <h3>These are your yaks</h3>
+                  <h3>These are your posts!</h3>
                   {{#each ownYaks}}
                     {{> yakItem}}
                   {{/each}}
@@ -18,7 +18,20 @@
             </div>
           </div>
         {{else}}
-            <p>not own profile</p>
+        <center>
+          {{> avatar userId=this._id shape="circle" size="large" }}
+        </center><br/>
+        <div class="yaks">
+          <div class="form-style">
+            <div class="container">
+              <ul class="list-group">
+                {{#each ownYaks}}
+                  {{> yakItem}}
+                {{/each}}
+              </ul>
+            </div>
+          </div>
+        </div>
         {{/if}}
   {{else}}
     <p>How?</p>

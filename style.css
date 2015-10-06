@@ -9,6 +9,15 @@ body{background-color: #f3f3f3;}
 *{
   font-family: 'proxima-nova', 'Proxima Nova', sans-serif;
 }
+
+.simplebox {
+  outline: none;
+  border: none !important;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  box-shadow: none !important;
+}
+
 p{margin: 0;}
 .yak p{
   font-size: 18px;
@@ -26,7 +35,6 @@ a.yakPost:hover{
 .yak{
   margin-bottom: 10px;
 }
-
 
 .yak-form{
   margin-bottom: 10px;
@@ -97,6 +105,14 @@ a.yakPost:hover{
 
 .poster div {
   margin: -5px 0px 0px 10px;
+}
+
+.fakeBtn {
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  line-height: 1.42857143;
+  font-size: 14px;
 }
 
 @media (min-width: 1300px) {

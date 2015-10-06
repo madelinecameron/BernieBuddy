@@ -17,10 +17,35 @@ Template.commentSubmit.events({
       if(comment.text.length > 500) { alert("Please shorten your comment!"); }
       else {
         Meteor.call('commentInsert', comment);
+
+        delete Session.keys["length"];
       }
     }
 
     // clear field
     e.target.body.value = "";
+  },
+  'keyup #body': function(e) {
+    var length = $('#body').val().length;
+    Session.set("length", length);
+
+  },
+  'mouseup #body': function(e) {
+    var length = $('#body').val().length;
+    Session.set("length", length);
+  },
+  'change #body': function(e) {
+    var length = $('#body').val().length;
+    Session.set("length", length);
   }
 });
+
+Template.commentSubmit.onCreated(function() {
+  Session.set("length", 0);
+});
+
+Template.commentSubmit.helpers({
+  length: function() {
+    return Session.get("length");
+  }
+})

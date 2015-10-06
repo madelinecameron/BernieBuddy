@@ -67,19 +67,6 @@ Template.commentItem.events({
   }
 });
 
-Template.userBox.onCreated(function() {
-  Meteor.call('karmaCount', function(err, result) {
-    Session.set('karma', result);
-  });
-});
-
-
-Template.userBox.helpers({
-  karma: function() {
-    return Session.get('karma');
-  }
-});
-
 Template.commentItem.onCreated(function() {
   var id = this.data.creatorId;
   if(!Session.get(this.data.creatorId)) {
@@ -101,5 +88,19 @@ Template.commentItem.helpers({
   },
   karma: function() {
     return Session.get(this.creatorId + "karma");
+  },
+  time: function() {
+    var dateCreatedAt = Comments.findOne({ _id: this._id }, {createdAt: 1 });
+
+    if(isNaN(dateCreatedAt.createdAt)) { return "Forever"; }
+    var diff = new Date().getTime() - new Date(dateCreatedAt.createdAt).getTime();
+    var diff = diff / (1000 * 3600);
+
+    if(diff < 1.0) {
+      return Math.round((diff * 60)) + "m"
+    }
+    else {
+      return Math.round(diff) + "h";
+    }
   }
 });

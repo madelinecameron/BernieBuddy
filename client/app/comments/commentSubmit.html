@@ -1,8 +1,11 @@
 <template name="commentSubmit">
   <form name="comment" class="comment-form form">
     <div class="form-group">
-      <input autofocus="autofocus" name="body" id="body" class="comment-input form-control" placeholder="Comment here">
-      <input type="submit" value="Add comment" class="btn btn-primary">
+      <textarea autofocus="autofocus" rows="3" name="body" id="body"
+        class="comment-input form-control"
+        placeholder="Write your comment here..." style="resize: none"></textarea>
+      <span id="lengthMonitor">{{length}}/500</span><br/>
+      <input type="submit" value="Tap to add comment" class="btn btn-primary">
     </div>
   </form>
 </template>

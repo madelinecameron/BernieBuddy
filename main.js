@@ -12,5 +12,13 @@ if(Meteor.isServer) {
 
 if(Meteor.isClient) {
   Meteor.subscribe('profilePics');
+
+  Deps.autorun(function() {
+    if(!Meteor.userId()) {
+      if(Session.get("karma")) {
+        delete Session.keys["karma"];
+      }
+    }
+  });
 }
 // comments

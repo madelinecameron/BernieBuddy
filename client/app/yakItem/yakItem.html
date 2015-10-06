@@ -3,16 +3,24 @@
     <li class="list-group-item">
       <div id="voting">
       </div>
-      <div id="content">
+      <div class="row" id="content">
         <a href="{{pathFor 'yakPage'}}" class="yakPost">
-          <p class="break-el">{{yak}}</p>
-          <a class="btn" href="{{pathFor 'profile' _id=creatorId}}">By: {{creatorName}} from {{location}}</a>
-          <a class="btn">{{commentsCount}} comments</a>
-          <a class="btn pull-right btn-small {{#if currentUser}}no{{/if}}" href="{{#if currentUser}}#{{else}}/login{{/if}}"><i class="fa fa-chevron-down"></i></a>
-          <a class="btn pull-right" href="#"> {{score}} </a>
-          <a class="btn pull-right btn-small {{#if currentUser}}yes{{/if}}" href="{{#if currentUser}}#{{else}}/login{{/if}}"><i class="fa fa-chevron-up"></i></a><br/>
+          <div class="col-xs-10 col-md-11">
+            <p class="break-el">{{yak}}</p>
+    <span class="fakeBtn" style="margin-right:-20px">By: </span><a class="btn" href="{{pathFor 'profile' _id=creatorId}}" >{{creatorName}} ({{karma}})</a><span class="fakeBtn" style="margin-left:-20px"> from {{location}}</span>
+            <a class="btn">{{commentsCount}} comments</a>
+            <span class="fakeBtn">{{time}} ago</span>
+          </div>
+          <div id="voteButtons" class="col-xs-2 col-md-1">
+            <div class="">
+            <a class="btn pull-right btn-small {{#if currentUser}}yes{{/if}} fa fa-chevron-up" href="{{#if currentUser}}#{{else}}/login{{/if}}"></a><br/>
+            <a class="btn pull-right" href="#">{{score}}</a><br/>
+            <a class="btn pull-right btn-small {{#if currentUser}}no{{/if}} fa fa-chevron-down" href="{{#if currentUser}}#{{else}}/login{{/if}}"></a>
+            </div>
+          </div>
         </a>
     </div>
+
     </li>
   </div>
 </template>

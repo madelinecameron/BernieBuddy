@@ -10,12 +10,12 @@ Template.yaksSubmit.events({
 
     console.log("Go");
     if (yakItem["yak"] == "") {
-      alert("You can't insert empty yak. Try to write something funny instead! :)");
+      alert("You can't insert empty post. Try to write something funny instead! :)");
       return;
     }
 
     if(yakItem["yak"].length > 500) {
-      alert("Please make your posting shorter");
+      alert("Please make your post shorter");
       return;
     }
 
@@ -24,16 +24,33 @@ Template.yaksSubmit.events({
       yakItem["coords"]["lat"] = position.coords.latitude;
 
       Meteor.call('yakInsert', yakItem);
+
+      delete Session.keys["length"];
+
       /*post._id = Yaks.insert(post);*/
       $('#openYakBox').show("slow");
     });
-
-    /*var post= {
-      yak: $(event.target).find('[name=yak]').val(),
-      submitted : new Date(),
-      score : 0
-    }*/
-
-
+  },
+  'keyup #yak': function(e) {
+    var length = $('#yak').val().length;
+    Session.set("length", length);
+  },
+  'mouseup #yak': function(e) {
+    var length = $('#yak').val().length;
+    Session.set("length", length);
+  },
+  'change #yak': function(e) {
+    var length = $('#yak').val().length;
+    Session.set("length", length);
   }
 });
+
+Template.yakSubmit.onCreated(function() {
+  Session.set("length", 0);
+});
+
+Template.yakSubmit.helpers({
+  length: function() {
+    return Session.get("length");
+  }
+})

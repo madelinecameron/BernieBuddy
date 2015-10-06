@@ -18,14 +18,28 @@ Meteor.methods({
       creatorId: yak.creatorId,
       score : 0,
       location: area.name + ", " + area.state_abbr,
-      active: true
+      active: true,
+      createdAt: new Date()
     });
   },
   commentInsert: function(comment) {
+    var area = Towns.findOne({
+      location: {
+        $near: {
+          $geometry: {
+            type: "Point",
+            coordinates: [ parseFloat(comment.coords.long), parseFloat(comment.coords.lat) ]
+          }
+        }
+      }
+    });
+
     Comments.insert({
       comment: comment.text,
       postId: comment.postId,
       creatorId: comment.creatorId,
+      location: area.name + ", " + area.state_abbr,
+      createdAt: new Date(),
       score: 0
     });
   },
@@ -70,9 +84,6 @@ Meteor.methods({
       }
     ]);
 
-    console.log(postKarma);
-    console.log(commentKarma);
-    
     var totalKarma = 0;
     if(postKarma.length > 0 && commentKarma.length > 0) {
       totalKarma = postKarma[0].karma + commentKarma[0].karma;
