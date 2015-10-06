@@ -3,7 +3,10 @@
     <div class="row">
       <div class="col-xs-10 col-md-11">
           <p class="break-el well well-sm">{{comment}}</p>
-          <a class="btn" href="{{pathFor 'profile' _id=creatorId}}">By: {{creatorName}} ( {{karma}} )</a>
+          <div>
+            <span class="fakeBtn" style="margin-right:-20px">By: </span><a class="btn" href="{{pathFor 'profile' _id=creatorId}}" >{{creatorName}} ({{karma}})</a><span></span>
+            <span class="fakeBtn">{{time}} ago</span>
+          </div>
       </div>
       <div id="voteButtons" class="col-xs-2 col-md-1">
         <a class="btn pull-right btn-small {{#if currentUser}}yes{{/if}} fa fa-chevron-up" href="{{#if currentUser}}#{{else}}/login{{/if}}"></a><br/>
