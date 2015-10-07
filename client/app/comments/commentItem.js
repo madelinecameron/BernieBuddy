@@ -115,5 +115,8 @@ Template.commentItem.helpers({
     else {
       return Math.round(diff) + "h";
     }
+  },
+  isMobile: function() {
+    return Darwin.device.match("phone");
   }
 });

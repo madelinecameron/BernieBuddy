@@ -113,11 +113,21 @@ a.yakPost:hover{
 }
 
 .fakeBtn {
-  display: inline-block;
-  padding: 6px 12px;
+  color: #545454;
+  padding: 0.35rem 1.4rem;
   margin-bottom: 0;
-  line-height: 1.42857143;
-  font-size: 14px;
+  line-height: -2rem;
+  font-size: 12px;
+}
+
+.btn {
+  font-size: 12px
+}
+
+.sm-fakeBtn {
+  color: #bdbdbd;
+  margin-bottom: 0;
+  font-size: 10px;
 }
 
 .vote {

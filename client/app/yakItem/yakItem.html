@@ -6,18 +6,21 @@
             <div id="textContainer" class="col-xs-10 col-md-11">
               <p class="break-el">{{yak}}</p>
               <div style="bottom:0">
-                <span class="fakeBtn" style="margin-right:-20px">By: </span><a class="btn" href="{{pathFor 'profile' _id=creatorId}}" >{{creatorName}} ({{karma}})</a>{{#if isMobile}}<span class="fakeBtn">{{commentsCount}} comments</span>{{/if}}
-                {{#if isMobile}}<br/><span class="fakeBtn">{{location}}</span>{{else}}<span class="fakeBtn" style="margin-left:-20px"> from {{location}}</span>{{/if}}
-                {{#if isMobile}}<br/><span class="fakeBtn">{{time}} ago</span>
-                {{else}}
+                <span class="fakeBtn" style="margin-right:-4rem">By: </span><a class="btn" href="{{pathFor 'profile' _id=creatorId}}" style="margin-left: 1.5rem">{{creatorName}} ({{karma}})</a>
+                {{#if isMobile}}
                   <span class="fakeBtn">{{commentsCount}} comments</span>
+                  <br/><span class="fakeBtn">{{location}}</span>
                   <span class="fakeBtn">{{time}} ago</span>
+                {{else}}
+                  <span class="fakeBtn" style="margin-left:-2.5rem"> from {{location}}</span>
+                  <br/><span class="fakeBtn">{{commentsCount}} comments</span>
+                  <br/><span class="sm-fakeBtn">{{time}}</span>
                 {{/if}}
               </div>
             </div>
             <div id="voteButtons" class="col-xs-2 col-md-1">
               <a class="btn pull-right btn-small {{#if currentUser}}yes{{#if madeUpvote}} vote {{/if}}{{/if}} fa fa-chevron-up" href="{{#if currentUser}}#{{else}}/login{{/if}}"></a><br/>
-              <a class="fakeBtn pull-right" href="#" style="margin-right:4px">{{score}}</a><br/>
+              <a class="fakeBtn pull-right" href="#" style="margin-right:0.3rem;line-height:1.5rem">{{score}}</a><br/>
               <a class="btn pull-right btn-small {{#if currentUser}}no{{#if madeDownvote}} vote {{/if}} {{/if}} fa fa-chevron-down" href="{{#if currentUser}}#{{else}}/login{{/if}}"></a>
             </div>
           </div>
