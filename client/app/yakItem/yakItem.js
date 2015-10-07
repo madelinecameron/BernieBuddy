@@ -123,5 +123,9 @@ Template.yakItem.helpers({
     else {
       return Math.round(diff) + "h";
     }
+  },
+  isMobile: function() {
+    console.log(Darwin.device.match("phone"));
+    return Darwin.device.match("phone");
   }
 });

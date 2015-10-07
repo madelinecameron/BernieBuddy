@@ -1,6 +1,7 @@
 /* CSS declarations go here */
 .navbar { background-color: white; }
 .brand { font-size: 3em; font-family: 'jubilat'; font-weight: 500;  color: #147FD7 }
+.brandMobile { font-size: 2em; font-family: 'jubilat'; font-weight: 500;  color: #147FD7 }
 a:link { text-decoration: none;}
 a:hover { text-decoration: none;}
 .navbar-inner{ padding: 1em 0em 0.8em;}

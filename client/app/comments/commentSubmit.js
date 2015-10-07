@@ -19,14 +19,24 @@ Template.commentSubmit.events({
         alert("Please shorten your comment!");
       }
       else {
-        navigator.geolocation.getCurrentPosition(function(position) {
-          comment["coords"]["long"] = position.coords.longitude;
-          comment["coords"]["lat"] = position.coords.latitude;
+        if(navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            comment["coords"]["long"] = position.coords.longitude;
+            comment["coords"]["lat"] = position.coords.latitude;
+
+            Meteor.call('commentInsert', comment);
+
+            delete Session.keys["length"];
+          });
+        }
+        else {
+          comment["coords"]["long"] = 0;
+          comment["coords"]["lat"] = 0;
 
           Meteor.call('commentInsert', comment);
 
           delete Session.keys["length"];
-        });
+        }
       }
     }
 

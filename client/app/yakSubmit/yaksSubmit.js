@@ -22,17 +22,43 @@ Template.yaksSubmit.events({
       delete Session.keys["length"];
     }
 
-    navigator.geolocation.getCurrentPosition(function(position) {
-      yakItem["coords"]["long"] = position.coords.longitude;
-      yakItem["coords"]["lat"] = position.coords.latitude;
+    if(navigator.geolocation) {
+      console.log("Yes geo");
+      navigator.geolocation.getCurrentPosition(function(position) {
+        yakItem["coords"]["long"] = position.coords.longitude;
+        yakItem["coords"]["lat"] = position.coords.latitude;
+
+        Meteor.call('yakInsert', yakItem);
+
+        delete Session.keys["length"];
+        $(event.target.yak).val('');
+
+        $('#openYakBox').show("slow");
+      }, function() {
+        console.log("no geo");
+        yakItem["coords"]["long"] = 0;
+        yakItem["coords"]["lat"] = 0;
+
+        Meteor.call('yakInsert', yakItem);
+
+        delete Session.keys["length"];
+        $(event.target.yak).val('');  //Clear text box
+
+        $('#openYakBox').show("slow");
+      });
+    }
+    else {
+      console.log("no geo");
+      yakItem["coords"]["long"] = 0;
+      yakItem["coords"]["lat"] = 0;
 
       Meteor.call('yakInsert', yakItem);
 
       delete Session.keys["length"];
-      $(event.target.yak).val('');
+      $(event.target.yak).val('');  //Clear text box
 
       $('#openYakBox').show("slow");
-    });
+    }
 
   },
   'keyup #yak': function(e) {

@@ -1,10 +1,11 @@
-<body>
+<template name="header">
   <div class="navbar navbar-static-top">
     <div class="navbar-inner">
       <div class="container">
-          <a class="brand" id="brand" href="/">Bernie Buddy</a>
-          {{ >userBox }}
+          {{#if isMobile}}<a class="brandMobile" id="brand" href="/">Bernie</a><br/><a class="brand" id="brand" href="/">Buddy</a>
+          {{else}}<a class="brand" id="brand" href="/">Bernie Buddy</a>{{/if}}
+          {{> userBox }}
       </div>
     </div>
   </div>
-</body>
+</template>

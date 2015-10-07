@@ -2,16 +2,21 @@ Meteor.methods({
   yakInsert: function(yak) {
 
     //Find town and state
-    var area = Towns.findOne({
-      location: {
-        $near: {
-          $geometry: {
-            type: "Point",
-            coordinates: [ parseFloat(yak.coords.long), parseFloat(yak.coords.lat) ]
+    var area;
+    //Only possible with no geolocation on... or extreme luck.
+    if(yak.coords.long == 0 && yak.coords.lat == 0) { area = { name: "Anonymous", state_abbr: "Location" } }
+    else {
+      area = Towns.findOne({
+        location: {
+          $near: {
+            $geometry: {
+              type: "Point",
+              coordinates: [ parseFloat(yak.coords.long), parseFloat(yak.coords.lat) ]
+            }
           }
         }
-      }
-    });
+      });
+    }
 
     var post_id = Yaks.insert({
       yak : yak.yak,  //wow. such many yaks.

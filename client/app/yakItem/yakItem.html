@@ -6,9 +6,13 @@
             <div id="textContainer" class="col-xs-10 col-md-11">
               <p class="break-el">{{yak}}</p>
               <div style="bottom:0">
-                <span class="fakeBtn" style="margin-right:-20px">By: </span><a class="btn" href="{{pathFor 'profile' _id=creatorId}}" >{{creatorName}} ({{karma}})</a><span class="fakeBtn" style="margin-left:-20px"> from {{location}}</span>
-                <span class="fakeBtn">{{commentsCount}} comments</span>
-                <span class="fakeBtn">{{time}} ago</span>
+                <span class="fakeBtn" style="margin-right:-20px">By: </span><a class="btn" href="{{pathFor 'profile' _id=creatorId}}" >{{creatorName}} ({{karma}})</a>{{#if isMobile}}<span class="fakeBtn" style="margin:15vw">{{commentsCount}} comments</span>{{/if}}
+                {{#if isMobile}}<br/><span class="fakeBtn" style="margin-left:-20px">{{location}}</span>{{else}}<span class="fakeBtn" style="margin-left:-20px"> from {{location}}</span>{{/if}}
+                {{#if isMobile}}<br/><span class="fakeBtn">{{time}} ago</span>
+                {{else}}
+                  <span class="fakeBtn">{{commentsCount}} comments</span>
+                  <span class="fakeBtn">{{time}} ago</span>
+                {{/if}}
               </div>
             </div>
             <div id="voteButtons" class="col-xs-2 col-md-1">
