@@ -18,6 +18,10 @@ body{background-color: #f3f3f3;}
   box-shadow: none !important;
 }
 
+span {
+  color: #000
+}
+
 p{margin: 0;}
 .yak p{
   font-size: 18px;

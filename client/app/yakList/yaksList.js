@@ -24,6 +24,7 @@ Template.yaksList.onCreated(function() {
 // whenever #showMoreResults becomes visible, retrieve more results
 function showMoreVisible() {
     var threshold, target = $("#showMoreResults");
+    var YAKS_INCREMENT = 20;
     if (!target.length) return;
 
     threshold = $(window).scrollTop() + $(window).height() - target.height();
@@ -32,7 +33,7 @@ function showMoreVisible() {
         if (!target.data("visible")) {
             // console.log("target became visible (inside viewable area)");
             target.data("visible", true);
-            Session.set("yaksList",
+            Session.set("yaksLimit",
                 Session.get("yaksLimit") + YAKS_INCREMENT);
         }
     } else {
@@ -58,7 +59,7 @@ function loadMore(opts) {
     console.log("OFF:"+ target.offset().top +" TR:"+  threshold +" ST:"+$(window).scrollTop() +" WH:"+ $(window).height());
     var query = Session.get('query');
     console.log(query);
-    Session.set('query', { filterTitle:query.filterTitle ,page:query.page+1})
+    Session.set('query', { filterTitle:query.filterTitle, page:query.page + 1})
   }
 }
 
@@ -66,4 +67,4 @@ function loadMore(opts) {
 Meteor.startup(function (argument) {
   Session.setDefault('query', {filterTitle:undefined, page:1})
   $(window).scroll(loadMore);
-})
+});

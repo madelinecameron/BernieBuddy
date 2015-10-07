@@ -13,9 +13,11 @@ Template.commentSubmit.events({
     var commentBody = e.target.body.value;
     // Check if the comment is not empty
     if (comment.text == "") {
-      alert("You can't insert empty comment. Try to comment something nice instead! :)")
+      alert("You can’t create an empty comment! Write something here instead. :)")
     } else {
-      if(comment.text.length > 500) { alert("Please shorten your comment!"); }
+      if(comment.text.length > 500) {
+        alert("Please shorten your comment!");
+      }
       else {
         navigator.geolocation.getCurrentPosition(function(position) {
           comment["coords"]["long"] = position.coords.longitude;
@@ -25,8 +27,6 @@ Template.commentSubmit.events({
 
           delete Session.keys["length"];
         });
-
-        delete Session.keys["length"];
       }
     }
 
@@ -35,15 +35,39 @@ Template.commentSubmit.events({
   },
   'keyup #body': function(e) {
     var length = $('#body').val().length;
+    if(length > 500) {
+      $('#submitButton').prop("disabled", true);
+    }
+    else {
+      if($('#submitButton').prop("disabled")) {  //Submitingly-challenged is the PC term.
+        $('#submitButton').prop("disabled", false);
+      }
+    }
     Session.set("length", length);
 
   },
   'mouseup #body': function(e) {
     var length = $('#body').val().length;
+    if(length > 500) {
+      $('#submitButton').prop("disabled", true);
+    }
+    else {
+      if($('#submitButton').prop("disabled")) {  //Submitingly-challenged is the PC term.
+        $('#submitButton').prop("disabled", false);
+      }
+    }
     Session.set("length", length);
   },
   'change #body': function(e) {
     var length = $('#body').val().length;
+    if(length > 500) {
+      $('#submitButton').prop("disabled", true);
+    }
+    else {
+      if($('#submitButton').prop("disabled")) {  //Submitingly-challenged is the PC term.
+        $('#submitButton').prop("disabled", false);
+      }
+    }
     Session.set("length", length);
   }
 });

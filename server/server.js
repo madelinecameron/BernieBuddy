@@ -44,13 +44,7 @@ Meteor.methods({
     });
   },
   getUserName: function(id) {
-    var name = Meteor.users.findOne({ _id: id }).profile.name;
-    if(name.indexOf(' ') != -1) {  //Only show first names!
-      return name.substring(0, name.indexOf(' '));
-    }
-    else {
-      return name;
-    }
+    return Meteor.users.findOne({ _id: id }).profile.name;
   },
   getCommentCount: function(id) {
     return Comments.find({ postId: id }).count();

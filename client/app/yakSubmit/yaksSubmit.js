@@ -9,7 +9,7 @@ Template.yaksSubmit.events({
     yakItem["coords"] = {};
 
     if (yakItem["yak"] == "") {
-      alert("You can't insert empty post. Try to write something funny instead! :)");
+      alert("You can’t create an empty post! Write something here instead. :)");
 
       delete Session.keys["length"];
     }
@@ -27,6 +27,7 @@ Template.yaksSubmit.events({
       Meteor.call('yakInsert', yakItem);
 
       delete Session.keys["length"];
+      $(event.target.yak).val('');
 
       $('#openYakBox').show("slow");
     });

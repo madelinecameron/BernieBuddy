@@ -5,11 +5,14 @@
           <div class="form-group">
           </div>
         </form>
+          <center>
+            <span class="badge">{{> avatar userId=this._id shape="circle" size="large" }} {{karma}} karma</span>
+            <h3>These are your posts!</h3>
+          </center><br/>
           <div class="yaks">
             <div class="form-style">
               <div class="container">
                 <ul class="list-group">
-                  <h3>These are your posts!</h3>
                   {{#each ownYaks}}
                     {{> yakItem}}
                   {{/each}}
@@ -19,7 +22,8 @@
           </div>
         {{else}}
         <center>
-          {{> avatar userId=this._id shape="circle" size="large" }}
+          <span class="badge">{{> avatar userId=this._id shape="circle" size="large" }} {{karma}} karma</span>
+          <h3>Check out their posts!</h3>
         </center><br/>
         <div class="yaks">
           <div class="form-style">
