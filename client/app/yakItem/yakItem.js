@@ -125,7 +125,6 @@ Template.yakItem.helpers({
     }
   },
   isMobile: function() {
-    console.log(Darwin.device.match("phone"));
     return Darwin.device.match("phone");
   }
 });
