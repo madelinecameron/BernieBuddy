@@ -35,7 +35,7 @@ Template.commentSubmit.events({
   },
   'keyup #body': function(e) {
     var length = $('#body').val().length;
-    if(length > 500) {
+    if(length > 500 || length == 0) {
       $('#submitButton').prop("disabled", true);
     }
     else {
@@ -48,7 +48,7 @@ Template.commentSubmit.events({
   },
   'mouseup #body': function(e) {
     var length = $('#body').val().length;
-    if(length > 500) {
+    if(length > 500 || length == 0) {
       $('#submitButton').prop("disabled", true);
     }
     else {
@@ -60,7 +60,7 @@ Template.commentSubmit.events({
   },
   'change #body': function(e) {
     var length = $('#body').val().length;
-    if(length > 500) {
+    if(length > 500 || length == 0) {
       $('#submitButton').prop("disabled", true);
     }
     else {

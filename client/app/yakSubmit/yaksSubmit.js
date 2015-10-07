@@ -37,7 +37,7 @@ Template.yaksSubmit.events({
   },
   'keyup #yak': function(e) {
     var length = $('#yak').val().length;
-    if(length > 500) {
+    if(length > 500 || length == 0) {
       $('#submitButton').prop("disabled", true);
     }
     else {
@@ -49,7 +49,7 @@ Template.yaksSubmit.events({
   },
   'mouseup #yak': function(e) {
     var length = $('#yak').val().length;
-    if(length > 500) {
+    if(length > 500 || length == 0) {
       $('#submitButton').prop("disabled", true);
     }
     else {
@@ -61,7 +61,7 @@ Template.yaksSubmit.events({
   },
   'change #yak': function(e) {
     var length = $('#yak').val().length;
-    if(length > 500) {
+    if(length > 500 || length == 0) {
       $('#submitButton').prop("disabled", true);
     }
     else {
