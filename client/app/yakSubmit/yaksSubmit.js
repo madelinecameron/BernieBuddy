@@ -12,6 +12,8 @@ Template.yaksSubmit.events({
       alert("You can’t create an empty post! Write something here instead. :)");
 
       delete Session.keys["length"];
+
+      return;
     }
 
     if(yakItem["yak"].length > 500) {
