@@ -1,13 +1,16 @@
 Template.userBox.onCreated(function() {
   console.log(Meteor.userId());
-  Meteor.call('karmaCount', Meteor.userId(), function(err, result) {
-    Session.set('karma', result);
+  Meteor.call('kudosCount', Meteor.userId(), function(err, result) {
+    Session.set('kudos', result);
   });
 });
 
 
 Template.userBox.helpers({
-  karma: function() {
-    return Session.get('karma');
+  kudos: function() {
+    return Session.get('kudos');
+  },
+  isMobile: function() {
+    return Darwin.device.match("phone");
   }
 });

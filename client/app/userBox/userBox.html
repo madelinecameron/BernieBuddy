@@ -1,12 +1,18 @@
 <template name="userBox">
     <div class="pull-right">
         {{#if currentUser}}
-          <a href="/profile/{{currentUser._id}}">
-            <div style="float:left;  margin-right: 15px">{{> avatar user=currentUser shape="rounded"}}</div>
-          </a>
+          {{#unless isMobile}}
+            <a href="/profile/{{currentUser._id}}">
+              <div style="float:left; margin-right: 15px">{{> avatar user=currentUser shape="rounded"}}</div>
+            </a>
+          {{/unless}}
           <div style="white-space:nowrap; margin-top:15px">
             <div class="center-block">
-              <a href="/profile/{{currentUser._id}}" class="btn btn-default">{{currentUser.profile.name}} ( {{karma}} )</a>&nbsp;&nbsp;&nbsp;
+              {{#if isMobile}}
+                <span class="badge" style="background-color:#FFF; color:#000">{{> avatar userId=currentUser shape="circle" }} {{kudos}} kudos </span>
+              {{else}}
+                <a href="/profile/{{currentUser._id}}" class="btn btn-default">{{currentUser.profile.name}} ( {{kudos}} )</a>&nbsp;&nbsp;&nbsp;
+              {{/if}}
               <a href="/logout" class="btn btn-primary">Logout</a>
             </div>
           </div>

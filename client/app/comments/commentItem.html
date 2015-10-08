@@ -4,7 +4,7 @@
       <div class="col-xs-10 col-md-11">
         <p class="break-el well well-sm">{{comment}}</p>
         <div>
-          <span class="fakeBtn" style="margin-right:-4rem">By: </span><a class="btn" href="{{pathFor 'profile' _id=creatorId}}" style="margin-left: 1.5rem">{{creatorName}} ({{karma}})</a>
+          <span class="fakeBtn" style="margin-right:-4rem">By: </span><a class="btn" href="{{pathFor 'profile' _id=creatorId}}" style="margin-left: 1.5rem">{{creatorName}} ({{kudos}})</a>
           {{#if isMobile}}
             <br/><span class="fakeBtn">{{location}}</span>
             <br/><span class="sm-fakeBtn">{{time}}</span>

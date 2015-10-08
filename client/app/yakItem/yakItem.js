@@ -89,8 +89,8 @@ Template.yakItem.onCreated(function() {
     });
   }
 
-  Meteor.call('karmaCount', id, function(err, result) {
-    Session.set(id + "karma", result);
+  Meteor.call('kudosCount', id, function(err, result) {
+    Session.set(id + "kudos", result);
   });
 });
 
@@ -107,8 +107,8 @@ Template.yakItem.helpers({
   creatorName: function() {
     return Session.get(this.creatorId);
   },
-  karma: function() {
-    return Session.get(this.creatorId + "karma");
+  kudos: function() {
+    return Session.get(this.creatorId + "kudos");
   },
   time: function() {
     var dateCreatedAt = Yaks.findOne({ _id: this._id }, {createdAt: 1 });

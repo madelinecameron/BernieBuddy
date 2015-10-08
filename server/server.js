@@ -61,8 +61,8 @@ Meteor.methods({
   getCommentCount: function(id) {
     return Comments.find({ postId: id }).count();
   },
-  karmaCount: function(id) {
-    var postKarma = Yaks.aggregate([
+  kudosCount: function(id) {
+    var postKudos = Yaks.aggregate([
       {
         $match: {
           creatorId: id
@@ -71,12 +71,12 @@ Meteor.methods({
       {
         $group: {
           _id: null,
-          karma: { $sum: "$score" }
+          kudos: { $sum: "$score" }
         }
       }
     ]);
 
-    var commentKarma = Comments.aggregate([
+    var commentKudos = Comments.aggregate([
       {
         $match: {
           creatorId: id
@@ -85,24 +85,24 @@ Meteor.methods({
       {
         $group: {
           _id: null,
-          karma: { $sum: "$score" }
+          kudos: { $sum: "$score" }
         }
       }
     ]);
 
-    var totalKarma = 0;
-    if(postKarma.length > 0 && commentKarma.length > 0) {
-      totalKarma = postKarma[0].karma + commentKarma[0].karma;
+    var totalKudos = 0;
+    if(postKudos.length > 0 && commentKudos.length > 0) {
+      totalKudos = postKudos[0].kudos + commentKudos[0].kudos;
     }
     else {
-      if(postKarma.length > 0) {
-        totalKarma = postKarma[0].karma;
+      if(postKudos.length > 0) {
+        totalKudos = postKudos[0].kudos;
       }
-      if(commentKarma.length > 0) {  //If we are down here, we know one of them is null and we know comment && post can't not be null
-        totalKarma = commentKarma[0].karma;
+      if(commentKudos.length > 0) {  //If we are down here, we know one of them is null and we know comment && post can't not be null
+        totalKudos = commentKudos[0].kudos;
       }
     }
 
-    return totalKarma;
+    return totalKudos;
   }
 });

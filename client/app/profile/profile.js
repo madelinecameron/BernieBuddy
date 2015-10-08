@@ -2,8 +2,8 @@ Template.profile.onCreated(function() {
   console.log(this);
   console.log(this.data);
   var id = this.data._id;
-  Meteor.call('karmaCount', id, function(err, result) {
-    Session.set('profileKarma', result);
+  Meteor.call('kudosCount', id, function(err, result) {
+    Session.set('profileKudos', result);
   });
 });
 
@@ -14,7 +14,7 @@ Template.profile.helpers({
   ownYaks: function() {
     return Yaks.find({ creatorId: this._id }).fetch().reverse();
   },
-  karma: function() {
-    return Session.get('profileKarma');
+  kudos: function() {
+    return Session.get('profileKudos');
   }
 });

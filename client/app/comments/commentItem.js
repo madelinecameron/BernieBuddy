@@ -83,14 +83,13 @@ Template.commentItem.events({
 Template.commentItem.onCreated(function() {
   var id = this.data.creatorId;
   if(!Session.get(this.data.creatorId)) {
-    console.log("Called");
     Meteor.call('getUserName', id, function(err, result) {
       Session.set(id, result);
     });
   }
 
-  Meteor.call('karmaCount', id, function(err, result) {
-    Session.set(id + "karma", result);
+  Meteor.call('kudosCount', id, function(err, result) {
+    Session.set(id + "kudos", result);
   });
 
 });
@@ -99,12 +98,12 @@ Template.commentItem.helpers({
   creatorName: function() {
     return Session.get(this.creatorId);
   },
-  karma: function() {
-    return Session.get(this.creatorId + "karma");
+  kudos: function() {
+    return Session.get(this.creatorId + "kudos");
   },
   time: function() {
     var dateCreatedAt = Comments.findOne({ _id: this._id }, {createdAt: 1 });
-    
+
     if(isNaN(dateCreatedAt.createdAt)) { return "Forever"; }
     var diff = new Date().getTime() - new Date(dateCreatedAt.createdAt).getTime();
     var diff = diff / (1000 * 3600);

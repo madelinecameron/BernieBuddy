@@ -15,8 +15,8 @@ if(Meteor.isClient) {
 
   Deps.autorun(function() {
     if(!Meteor.userId()) {
-      if(Session.get("karma")) {
-        delete Session.keys["karma"];
+      if(Session.get("kudos")) {
+        delete Session.keys["kudos"];
       }
     }
   });
