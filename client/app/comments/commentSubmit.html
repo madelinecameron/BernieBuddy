@@ -5,7 +5,13 @@
         class="comment-input form-control"
         placeholder="Write your comment here..." style="resize: none"></textarea>
       <span id="lengthMonitor">{{length}}/500</span><br/>
-      <input type="submit" id="submitButton" value="Tap Here To Add Comment" class="btn btn-primary">
+      {{#if isMobile}}
+        <input type="submit" id="submitButton" value="Tap Here To Add Comment" class="btn btn-primary" data-toggle="collapse"
+          data-target="#commentBox" aria-expanded="false"
+          aria-controls="commentBox">
+      {{else}}
+        <input type="submit" id="submitButton" value="Tap Here To Add Comment" class="btn btn-primary">
+      {{/if}}
     </div>
   </form>
 </template>

@@ -26,12 +26,22 @@ Template.commentSubmit.events({
 
             Meteor.call('commentInsert', comment);
 
+            $body.val('');
+            if(Darwin.device.match("phone")) {
+              $('#openCommentBox').show("slow");
+            }
+
             delete Session.keys["length"];
           }, function() {
             comment["coords"]["long"] = 0;
             comment["coords"]["lat"] = 0;
 
             Meteor.call('commentInsert', comment);
+
+            $body.val('');
+            if(Darwin.device.match("phone")) {
+              $('#openCommentBox').show("slow");
+            }
 
             delete Session.keys["length"];
           });
@@ -43,6 +53,11 @@ Template.commentSubmit.events({
           console.log("Sending!");
 
           Meteor.call('commentInsert', comment);
+
+          $body.val('');
+          if(Darwin.device.match("phone")) {
+            $('#openCommentBox').show("slow");
+          }
 
           delete Session.keys["length"];
         }
@@ -98,5 +113,8 @@ Template.commentSubmit.onCreated(function() {
 Template.commentSubmit.helpers({
   length: function() {
     return Session.get("length");
+  },
+  isMobile: function() {
+    return Darwin.device.match("phone");
   }
 })
