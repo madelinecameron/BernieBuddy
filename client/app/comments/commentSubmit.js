@@ -27,11 +27,20 @@ Template.commentSubmit.events({
             Meteor.call('commentInsert', comment);
 
             delete Session.keys["length"];
+          }, function() {
+            comment["coords"]["long"] = 0;
+            comment["coords"]["lat"] = 0;
+
+            Meteor.call('commentInsert', comment);
+
+            delete Session.keys["length"];
           });
         }
         else {
           comment["coords"]["long"] = 0;
           comment["coords"]["lat"] = 0;
+
+          console.log("Sending!");
 
           Meteor.call('commentInsert', comment);
 

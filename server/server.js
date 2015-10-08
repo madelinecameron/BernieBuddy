@@ -2,9 +2,10 @@ Meteor.methods({
   yakInsert: function(yak) {
 
     //Find town and state
-    var area;
+    var area, location;
+
     //Only possible with no geolocation on... or extreme luck.
-    if(yak.coords.long == 0 && yak.coords.lat == 0) { area = { name: "Anonymous", state_abbr: "Location" } }
+    if(yak.coords.long == 0 && yak.coords.lat == 0) { location = "Anonymous Location" }
     else {
       area = Towns.findOne({
         location: {
@@ -16,34 +17,40 @@ Meteor.methods({
           }
         }
       });
+      location = area.name + ", " + area.state_abbr
     }
 
     var post_id = Yaks.insert({
       yak : yak.yak,  //wow. such many yaks.
       creatorId: yak.creatorId,
       score : 0,
-      location: area.name + ", " + area.state_abbr,
+      location: location,
       active: true,
       createdAt: new Date()
     });
   },
   commentInsert: function(comment) {
-    var area = Towns.findOne({
-      location: {
-        $near: {
-          $geometry: {
-            type: "Point",
-            coordinates: [ parseFloat(comment.coords.long), parseFloat(comment.coords.lat) ]
+    var location, area;
+    if(comment.coords.long == 0 && comment.coords.lat == 0) { location = "Anonymous Location"; }
+    else {
+      var area = Towns.findOne({
+        location: {
+          $near: {
+            $geometry: {
+              type: "Point",
+              coordinates: [ parseFloat(comment.coords.long), parseFloat(comment.coords.lat) ]
+            }
           }
         }
-      }
-    });
+      });
+      location = area.name + ", " + area.state_abbr;
+    }
 
     Comments.insert({
       comment: comment.text,
       postId: comment.postId,
       creatorId: comment.creatorId,
-      location: area.name + ", " + area.state_abbr,
+      location: location,
       createdAt: new Date(),
       score: 0
     });

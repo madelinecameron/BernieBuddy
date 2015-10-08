@@ -104,7 +104,7 @@ Template.commentItem.helpers({
   },
   time: function() {
     var dateCreatedAt = Comments.findOne({ _id: this._id }, {createdAt: 1 });
-
+    
     if(isNaN(dateCreatedAt.createdAt)) { return "Forever"; }
     var diff = new Date().getTime() - new Date(dateCreatedAt.createdAt).getTime();
     var diff = diff / (1000 * 3600);
