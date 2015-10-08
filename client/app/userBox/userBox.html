@@ -1,21 +1,24 @@
 <template name="userBox">
     <div class="pull-right">
         {{#if currentUser}}
-          {{#unless isMobile}}
-            <a href="/profile/{{currentUser._id}}">
-              <div style="float:left; margin-right: 15px">{{> avatar user=currentUser shape="rounded"}}</div>
-            </a>
-          {{/unless}}
-          <div style="white-space:nowrap; margin-top:15px">
-            <div class="center-block">
-              {{#if isMobile}}
+          {{#if isMobile}}
+            <div class="pull-right" style="white-space:nowrap; margin-top:-2em; margin-left:5em">
+              <div class="center-block">
                 <span class="badge" style="background-color:#FFF; color:#000">{{> avatar userId=currentUser shape="circle" }} {{kudos}} kudos </span>
-              {{else}}
-                <a href="/profile/{{currentUser._id}}" class="btn btn-default">{{currentUser.profile.name}} ( {{kudos}} )</a>&nbsp;&nbsp;&nbsp;
-              {{/if}}
-              <a href="/logout" class="btn btn-primary">Logout</a>
+                <a href="/logout" class="btn btn-primary">Logout</a>
+              </div>
             </div>
-          </div>
+          {{else}}
+            <div style="white-space:nowrap; margin-top:15px">
+              <div class="center-block">
+                <a href="/profile/{{currentUser._id}}">
+                  <div style="float:left; margin-right: 15px">{{> avatar user=currentUser shape="rounded"}}</div>
+                </a>
+                <a href="/profile/{{currentUser._id}}" class="btn btn-default">{{currentUser.profile.name}} ( {{kudos}} )</a>&nbsp;&nbsp;&nbsp;
+                <a href="/logout" class="btn btn-primary">Logout</a>
+              </div>
+            </div>
+          {{/if}}
         {{else}}
             <a href="/login" type="button" class="btn btn-primary">Login</a>
         {{/if}}
