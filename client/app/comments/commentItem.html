@@ -7,7 +7,7 @@
           <span class="fakeBtn" style="margin-right:-4rem">By: </span><a class="btn" href="{{pathFor 'profile' _id=creatorId}}" style="margin-left: 1.5rem">{{creatorName}} ({{karma}})</a>
           {{#if isMobile}}
             <br/><span class="fakeBtn">{{location}}</span>
-            <span class="fakeBtn">{{time}} ago</span>
+            <br/><span class="sm-fakeBtn">{{time}}</span>
           {{else}}
             <span class="fakeBtn" style="margin-left:-2.5rem"> from {{location}}</span>
             <br/><span class="sm-fakeBtn">{{time}}</span>
