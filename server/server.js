@@ -1,3 +1,7 @@
+BrowserPolicy.content.allowOriginForAll("https://graph.facebook.com");
+BrowserPolicy.content.allowOriginForAll("https://pbs.twimg.com");
+BrowserPolicy.content.allowOriginForAll("*.bootstrapcdn.com");
+
 Meteor.methods({
   yakInsert: function(yak) {
 
