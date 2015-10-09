@@ -9,12 +9,6 @@ App.info({
   website: 'http://berniebuddy.com'
 });
 
-App.accessRule("https://graph.facebook.com/*");
+//App.accessRule("https://graph.facebook.com/*");
 App.accessRule("https://pbs.twimg.com/*");
 App.accessRule("*.bootstrapcdn.com/*");
-
-// Pass preferences for a particular PhoneGap/Cordova plugin
-App.configurePlugin('com.phonegap.plugins.facebookconnect', {
-  APP_ID: '1234567890',
-  API_KEY: 'supersecretapikey'
-});
