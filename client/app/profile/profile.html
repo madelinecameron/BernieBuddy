@@ -38,6 +38,20 @@
         </div>
         {{/if}}
   {{else}}
-    <p>How?</p>
+    <center>
+      <span class="badge">{{> avatar userId=this._id shape="circle" size="large" }} {{kudos}} kudos</span>
+      <h3>Check out their posts!</h3>
+    </center><br/>
+    <div class="yaks">
+      <div class="form-style">
+        <div class="container">
+          <ul class="list-group">
+            {{#each ownYaks}}
+              {{> yakItem}}
+            {{/each}}
+          </ul>
+        </div>
+      </div>
+    </div>
   {{/if}}
 </template>
