@@ -2,9 +2,11 @@
   <div class="navbar navbar-static-top">
     <div class="navbar-inner">
       {{#if isMobile}}
-        <div class="container" style="display: inline-block;">
+        <div class="container col-xs-4" style="display: inline-block; background-color: blue">
           <a class="brandMobile" href="/">Bernie</a><br/>
           <a class="brandMobile" href="/">Buddy</a>
+        </div>
+        <div class="col-xs-8">
           {{> userBox}}
         </div>
       {{else}}
