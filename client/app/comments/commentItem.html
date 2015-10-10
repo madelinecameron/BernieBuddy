@@ -2,7 +2,7 @@
   <li class="list-group-item">
     <div class="row">
       <div class="col-xs-10 col-md-11">
-        <p class="break-el well well-sm">{{comment}}</p>
+        <p class="break-el well well-sm" style="white-space:pre-line">{{comment}}</p>
         <div>
           <span class="fakeBtn" style="margin-right:-4rem">By: </span><a class="btn" href="{{pathFor 'profile' _id=creatorId}}" style="margin-left: 1.5rem">{{creatorName}} ({{kudos}})</a>
           {{#if isMobile}}
