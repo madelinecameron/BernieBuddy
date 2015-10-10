@@ -8,6 +8,14 @@ Template.yaksSubmit.events({
     yakItem["creatorId"] = Meteor.userId();
     yakItem["coords"] = {};
 
+    if(yakItem["creatorId"] === "u34a5FBrFJfMAHrio")  //Bernie Buddy Official Account
+    {
+      yakItem["sticky"] = true;
+    }
+    else {
+      yakItem["sticky"] = false;
+    }
+
     if (yakItem["yak"] == "") {
       alert("You can’t create an empty post! Write something here instead. :)");
 
@@ -23,7 +31,6 @@ Template.yaksSubmit.events({
     }
 
     if(navigator.geolocation) {
-      console.log("Yes geo");
       navigator.geolocation.getCurrentPosition(function(position) {
         yakItem["coords"]["long"] = position.coords.longitude;
         yakItem["coords"]["lat"] = position.coords.latitude;
@@ -35,7 +42,6 @@ Template.yaksSubmit.events({
 
         $('#openYakBox').show("slow");
       }, function() {
-        console.log("no geo");
         yakItem["coords"]["long"] = 0;
         yakItem["coords"]["lat"] = 0;
 
@@ -48,7 +54,6 @@ Template.yaksSubmit.events({
       });
     }
     else {
-      console.log("no geo");
       yakItem["coords"]["long"] = 0;
       yakItem["coords"]["lat"] = 0;
 

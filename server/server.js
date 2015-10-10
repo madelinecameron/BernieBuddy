@@ -27,7 +27,7 @@ Meteor.methods({
       location: location,
       active: true,
       createdAt: new Date(),
-      sticky: false
+      sticky: yak.sticky
     });
   },
   commentInsert: function(comment) {
