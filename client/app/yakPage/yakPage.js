@@ -7,6 +7,12 @@ Template.yakPage.helpers({
   }
 });
 
+Template.yakPage.onRendered(function() {
+  Meteor.call('kudosCount', Meteor.userId(), function(err, result) {
+    Session.set('kudos', result);
+  });
+})
+
 Template.yakPage.events({
   'click #openCommentBox': function(event, err) {
     $('#openCommentBox').hide();

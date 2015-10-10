@@ -21,6 +21,12 @@ Template.yaksList.onCreated(function() {
   }, 250);
 });
 
+Template.yaksList.onRendered(function() {
+  Meteor.call('kudosCount', Meteor.userId(), function(err, result) {
+    Session.set('kudos', result);
+  });
+})
+
 // whenever #showMoreResults becomes visible, retrieve more results
 function showMoreVisible() {
     var threshold, target = $("#showMoreResults");
