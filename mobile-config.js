@@ -2,9 +2,9 @@
 // the entire section is optional.
 App.info({
   id: 'com.berniebuddy',
-  name: 'BernieBuddy',
+  name: 'Bernie Buddy',
   description: 'Feel the Bern',
-  author: 'Madeline Cameron @ BernieBuddy',
+  author: 'Madeline Cameron @ Bernie Buddy',
   email: 'admin@berniebuddy.com',
   website: 'http://berniebuddy.com'
 });
@@ -38,6 +38,6 @@ App.launchScreens({
   'android_xhdpi_landscape': 'public/Android/drawable-land-xhdpi/screen.png'
 });
 
-//App.accessRule("https://graph.facebook.com/*");
+App.accessRule("https://graph.facebook.com/*");
 App.accessRule("https://pbs.twimg.com/*");
 App.accessRule("*.bootstrapcdn.com/*");
