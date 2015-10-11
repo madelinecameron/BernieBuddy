@@ -16,5 +16,6 @@ Template.yakPage.onRendered(function() {
 Template.yakPage.events({
   'click #openCommentBox': function(event, err) {
     $('#openCommentBox').hide();
+		$('#body').focus();
   }
 });

@@ -3,15 +3,18 @@ Template.profile.onCreated(function() {
   console.log(this.data);
   var id = this.data._id;
   Meteor.call('kudosCount', id, function(err, result) {
-    if(Meteor.userId() === this._id) {
-      Session.set('kudos', result);
-    }
-    else {
+    if(Meteor.userId() !== this._id) {
       Session.set(this._id + 'kudos', result);
     }
   });
 });
 
+Template.profile.onRendered(function() {
+  Meteor.call('kudosCount', Meteor.userId(), function(err, result) {
+    console.log("KudosRefresh");
+    Session.set('kudos', result);
+  });
+})
 
 Template.profile.helpers({
   isOwnProfile: function() {

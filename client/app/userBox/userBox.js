@@ -1,5 +1,4 @@
 Template.userBox.onCreated(function() {
-  console.log(Meteor.userId());
   Meteor.call('kudosCount', Meteor.userId(), function(err, result) {
     Session.set('kudos', result);
   });
