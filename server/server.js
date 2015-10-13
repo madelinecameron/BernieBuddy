@@ -17,7 +17,7 @@ Meteor.methods({
           }
         }
       });
-      location = area.name + ", " + area.state_abbr
+      location = area.state
     }
 
     var post_id = Yaks.insert({
@@ -27,7 +27,9 @@ Meteor.methods({
       location: location,
       active: true,
       createdAt: new Date(),
-      sticky: yak.sticky
+      sticky: yak.sticky,
+      anon: yak.anonymous,
+      adminPost: yak.adminPost
     });
   },
   commentInsert: function(comment) {
@@ -44,7 +46,7 @@ Meteor.methods({
           }
         }
       });
-      location = area.name + ", " + area.state_abbr;
+      location = area.state;
     }
 
     Comments.insert({
@@ -53,7 +55,9 @@ Meteor.methods({
       creatorId: comment.creatorId,
       location: location,
       createdAt: new Date(),
-      score: 0
+      score: 0,
+      anon: comment.anonymous,
+      adminPost: comment.adminPost
     });
   },
   getUserName: function(id) {
