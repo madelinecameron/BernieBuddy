@@ -1,0 +1,21 @@
+<template name="state">
+  <div class="yaks">
+    <div class="form-style">
+      <div class="container">
+        <ul class="list-group">
+          <h3>What other {{fullStateName}} Bernie Buddies are saying</h3>
+          <center>{{ > filters}}</center>
+          <br/>
+          {{#each yaks}}
+            {{> yakItem}}
+          {{/each}}
+          {{#if moreResults}}
+            <div id="showMoreResults" style="margin-left: 25px;">
+                <span class="loading">Loading...</span>
+            </div>
+          {{/if}}
+        </ul>
+      </div>
+    </div>
+  </div>
+</template>
