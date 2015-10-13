@@ -7,13 +7,16 @@ Template.yaksSubmit.events({
     yakItem["yak"] = event.target.yak.value; 		// get text
     yakItem["creatorId"] = Meteor.userId();
     yakItem["coords"] = {};
+    yakItem["anonymous"] = false;
+    yakItem["sticky"] = false;
+    yakItem["adminPost"] = false;
 
-    if(yakItem["creatorId"] === "u34a5FBrFJfMAHrio")  //Bernie Buddy Official Account
-    {
-      yakItem["sticky"] = true;
+    if($("#postAnon").prop("checked")) {
+      yakItem["anonymous"] = true;
     }
-    else {
-      yakItem["sticky"] = false;
+    if($("#postAsAdmin").prop("checked")) {
+      yakItem["sticky"] = true;
+      yakItem["adminPost"] = true;
     }
 
     if (yakItem["yak"] == "") {

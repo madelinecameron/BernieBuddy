@@ -1,17 +1,45 @@
 Template.yaksList.helpers({
   yaks: function() {
-    return Yaks.find().fetch().reverse();
+    if(Session.get("filterMethod") === "Recent" || !Session.get("filterMethod")) {
+      return Yaks.find().fetch().reverse();
+    }
+    else {
+      console.log("MostPopular")
+      return Yaks.find({}, { sort: { score: -1 }}).fetch();
+    }
   },
   moreResults: function() {
       // If, once the subscription is ready, we have less rows than we
-      // asked for, we've got all the rows in the collection.
+      // asked for, we"ve got all the rows in the collection.
       return !(Yaks.find().count() < Session.get("yaksLimit")) && Session.get("yaksLimit") < 250;
   }
 });
 
 Template.yaksList.events({
-  'click #openYakBox': function(event, err) {
-    $('#openYakBox').hide();
+  "click #openYakBox": function(event, err) {
+    $("#openYakBox").hide();
+  },
+  "click .pagination li": function(event, err) {
+    var targetId = event.target.id;
+    var parent = $("#" + targetId).parent();
+
+    if(!parent.hasClass("activeFilter")) {  //Filter not selected
+      for(var index in parent.siblings()) {
+        var siblingId = parent.siblings()[index].id;
+        $("#" + siblingId).removeClass("activeFilter");
+      }
+
+      parent.addClass("activeFilter");
+      parent.removeAttr("selected");
+
+      switch(targetId) {
+        case "mostRecent":
+          Session.set("filterMethod", "Recent");
+          break;
+        case "mostPopular":
+          Session.set("filterMethod", "Popular");
+      }
+    }
   }
 });
 
@@ -22,9 +50,11 @@ Template.yaksList.onCreated(function() {
 });
 
 Template.yaksList.onRendered(function() {
-  Meteor.call('kudosCount', Meteor.userId(), function(err, result) {
-    Session.set('kudos', result);
+  Meteor.call("kudosCount", Meteor.userId(), function(err, result) {
+    Session.set("kudos", result);
   });
+
+  console.log($("#mostRecentFilter").hasClass("active"));
 })
 
 // whenever #showMoreResults becomes visible, retrieve more results
@@ -55,7 +85,7 @@ $(window).scroll(showMoreVisible);
 
 function loadMore(opts) {
   var force = opts.force || false;
-  var threshold, target = $('body');
+  var threshold, target = $("body");
   if (!target.length) return;
 
   threshold = $(window).scrollTop() + $(window).height() - target.height();
@@ -63,14 +93,14 @@ function loadMore(opts) {
   // HACK: see http://www.meteorpedia.com/read/Infinite_Scrolling
   if (force || target.offset().top < threshold+1 && threshold < 2) {
     console.log("OFF:"+ target.offset().top +" TR:"+  threshold +" ST:"+$(window).scrollTop() +" WH:"+ $(window).height());
-    var query = Session.get('query');
+    var query = Session.get("query");
     console.log(query);
-    Session.set('query', { filterTitle:query.filterTitle, page:query.page + 1})
+    Session.set("query", { filterTitle:query.filterTitle, page:query.page + 1})
   }
 }
 
 // init
 Meteor.startup(function (argument) {
-  Session.setDefault('query', {filterTitle:undefined, page:1})
+  Session.setDefault("query", {filterTitle:undefined, page:1})
   $(window).scroll(loadMore);
 });

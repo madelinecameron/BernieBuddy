@@ -10,6 +10,16 @@ Template.commentSubmit.events({
       coords: {}
     };
 
+    comment["anonymous"] = false;
+    comment["adminPost"] = false;
+
+    if($("#postAnon").prop("checked")) {
+      comment["anonymous"] = true;
+    }
+    if($("#postAsAdmin").prop("checked")) {
+      comment["adminPost"] = true;
+    }
+
     var commentBody = e.target.body.value;
     // Check if the comment is not empty
     if (comment.text == "") {
@@ -49,8 +59,6 @@ Template.commentSubmit.events({
         else {
           comment["coords"]["long"] = 0;
           comment["coords"]["lat"] = 0;
-
-          console.log("Sending!");
 
           Meteor.call('commentInsert', comment);
 

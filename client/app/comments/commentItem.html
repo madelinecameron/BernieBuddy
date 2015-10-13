@@ -1,15 +1,17 @@
 <template name="commentItem">
-  <li class="list-group-item">
+  <li class="list-group-item {{#if adminPost}}adminPost{{/if}}">
     <div class="row">
       <div class="col-xs-10 col-md-11">
         <p class="break-el well well-sm" style="white-space:pre-line">{{comment}}</p>
         <div>
-          <span class="fakeBtn" style="margin-right:-4rem">By: </span><a class="btn" href="{{pathFor 'profile' _id=creatorId}}" style="margin-left: 1.5rem">{{creatorName}} ({{kudos}})</a>
+          <span class="fakeBtn" style="margin-right:-4rem">By: </span>
+            {{#unless anon}}<a class="btn" href="{{pathFor 'profile' _id=creatorId}}" style="margin-left: 1.5rem">{{creatorName}} ({{kudos}})</a>{{/unless}}
+            {{#if anon}}<a class="fakeBtn" style="margin-left: 1.5rem">Anonymous</a>{{/if}}
           {{#if isMobile}}
             <br/><span class="fakeBtn">{{location}}</span>
             <br/><span class="sm-fakeBtn">{{time}}</span>
           {{else}}
-            <span class="fakeBtn" style="margin-left:-2.5rem"> from {{location}}</span>
+            {{#unless anon}}<span class="fakeBtn" style="margin-left:-2.5rem"> from {{location}}</span>{{/unless}}
             <br/><span class="sm-fakeBtn">{{time}}</span>
           {{/if}}
         </div>

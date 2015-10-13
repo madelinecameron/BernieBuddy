@@ -11,7 +11,6 @@ Template.commentItem.events({
           selectedId = Session.get('selected_comment'),
           element = $(event.currentTarget);
 
-      console.log(element);
       element.toggleClass("vote");
       if($(".no").hasClass("vote")) {
         $(".no").removeClass("vote");
@@ -30,7 +29,6 @@ Template.commentItem.events({
         $.extend(update, update, { $pull: { downVoted : Meteor.userId() } });
         netUpdateScore += 1;
       }
-      console.log('Voting');
       netUpdateScore += 1
       $.extend(update, update, { $inc: { 'score': netUpdateScore } });
       $.extend(update, update, { $addToSet: { upVoted : Meteor.userId() } });
@@ -65,14 +63,13 @@ Template.commentItem.events({
         return;
       }
 
-      console.log('Voting');
       netUpdateScore += -1
       $.extend(update, update, { $inc: { 'score': netUpdateScore } });
       $.extend(update, update, { $addToSet: { downVoted : Meteor.userId() } });
 
       Comments.update(selectedId, update);
 
-      if (comment.score <= -5) {
+      if (comment.score <= -5 && !comment.adminPost) {
         console.log('delete');
         Comments.remove({ _id: this._id })
       }

@@ -41,7 +41,7 @@ Template.yakItem.events({
   },
   'click a.no': function(event) {
     if (Meteor.user()) {
-      var postId = Yaks.findOne({ _id: this._id }),
+      var post = Yaks.findOne({ _id: this._id }),
           update = {},
           netUpdateScore = 0,
           yakId = Session.get('selected_yak'),
@@ -52,11 +52,11 @@ Template.yakItem.events({
         $(".yes").removeClass("vote");
       }
 
-      if ($.inArray(Meteor.userId(), postId.upVoted) !== -1) {
+      if ($.inArray(Meteor.userId(), post.upVoted) !== -1) {
         $.extend(update, update, { $pull: { upVoted : Meteor.userId() } });
         netUpdateScore += -1;
       }
-      if ($.inArray(Meteor.userId(), postId.downVoted) !== -1) {
+      if ($.inArray(Meteor.userId(), post.downVoted) !== -1) {
         Yaks.update(yakId, { $pull: {
             downVoted : Meteor.userId()
           },
@@ -73,9 +73,9 @@ Template.yakItem.events({
 
       Yaks.update(yakId, update);
 
-      if (postId.score <= -5) {
+      if (post.score <= -5 && !post.adminPost) {
         console.log('delete');
-        Yaks.remove({ _id:this._id })
+        Yaks.remove({ _id: this._id })
       }
     }
   }
@@ -121,7 +121,17 @@ Template.yakItem.helpers({
       return Math.round((diff * 60)) + "m"
     }
     else {
-      return Math.round(diff) + "h";
+      if(diff < 24.0) {
+        return Math.round(diff) + "h";
+      }
+      else {
+        if(Math.round(diff / 24.0) > 7.0) {
+          return Math.round(diff / (24.0 * 7.0)) + "w";
+        }
+        else {
+          return Math.round(diff / 24.0) + "d";
+        }
+      }
     }
   },
   isMobile: function() {

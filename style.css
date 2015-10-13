@@ -12,16 +12,22 @@ body{background-color: #f3f3f3;}
   font-family: 'proxima-nova', 'Proxima Nova', sans-serif;
 }
 
-.simplebox {
-  outline: none;
-  border: none !important;
-  -webkit-box-shadow: none !important;
-  -moz-box-shadow: none !important;
-  box-shadow: none !important;
-}
-
 span {
   color: #000
+}
+
+li.activeFilter a {
+  background-color: #147FD7;
+  color: #FFF;
+}
+
+.pagination a {
+  color: #147FD7;
+}
+
+.adminPost {
+  border-color: #147FD7;
+  box-shadow: inset 0 1px 1px rgba(20, 127, 215, 0.05), 0 0 8px rgba(20, 127, 215, 1);
 }
 
 p{margin: 0;}
