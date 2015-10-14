@@ -4,7 +4,6 @@ Template.state.helpers({
       return Yaks.find().fetch().reverse();
     }
     else {
-      console.log("MostPopular")
       return Yaks.find({}, { sort: { score: -1 }}).fetch();
     }
   },
@@ -32,25 +31,27 @@ Template.state.events({
       parent.addClass("activeFilter");
       parent.removeAttr("selected");
 
+      //Setting the filters in Session allows reactive update
       switch(targetId) {
         case "mostRecent":
           Session.set("filterMethod", "Recent");
           break;
         case "mostPopular":
           Session.set("filterMethod", "Popular");
+          break;
       }
     }
   }
 })
 
 Template.state.onCreated(function() {
-  setTimeout(function() {
+  setTimeout(function() {  //Silly 250ms delay to allow subscriptions to come in
     console.log("Loaded");
   }, 250);
 });
 
 Template.state.onRendered(function() {
-  Meteor.call('kudosCount', Meteor.userId(), function(err, result) {
+  Meteor.call('kudosCount', Meteor.userId(), function(err, result) {  //On render, re-request self kudo count
     Session.set('kudos', result);
   });
 })

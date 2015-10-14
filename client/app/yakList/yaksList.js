@@ -1,11 +1,12 @@
 Template.yaksList.helpers({
   yaks: function() {
     if(Session.get("filterMethod") === "Recent" || !Session.get("filterMethod")) {
-      return Yaks.find().fetch().reverse();
+      return Yaks.find().fetch().sort(function(a, b) {
+        return a.createdAt < b.createdAt && !a.sticky;
+      });
     }
     else {
-      console.log("MostPopular")
-      return Yaks.find({}, { sort: { score: -1 }}).fetch();
+      return Yaks.find({}, { sort: { sticky: -1, score: -1 }}).fetch();
     }
   },
   moreResults: function() {
