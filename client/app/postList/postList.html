@@ -2,7 +2,7 @@
   <div class="posts">
     <div class="form-style">
       <div class="container">
-        <div id="post" class="text-center">
+        <div id="post" class="text-center" style="margin-bottom:-1.5rem">
           <a class="btn btn-primary" data-toggle="collapse"
             data-target="#postBox" type="button" aria-expanded="false"
             aria-controls="postBox" id="openPostBox">
@@ -13,9 +13,6 @@
           </div>
         </div><br/>
         <ul class="list-group">
-          <center><div>
-            <a href="/donate" class="btn donateBtn">Support the Developers</a>
-          </div></center>
           <h3>What other Bernie Buddies are saying</h3>
           <div style="margin-top:-3rem">
             <center>{{> filters}}</center>
@@ -23,11 +20,6 @@
           {{#each posts}}
             {{> postItem}}
           {{/each}}
-          {{#if moreResults}}
-            <div id="showMoreResults" style="margin-left: 25px;">
-                <span class="loading">Loading...</span>
-            </div>
-          {{/if}}
         </ul>
       </div>
     </div>

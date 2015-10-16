@@ -1,16 +1,10 @@
 Template.state.helpers({
   posts: function() {
     if(Session.get("query") === "mostRecent" || !Session.get("query")) {
-      return Posts.find({ sticky: false }).fetch().sort(function(a, b) {
-        if(a.createdAt < b.createdAt) { return 1; }
-        else { return -1; }
-      });
+      return Posts.find({}, { sort: { sticky: -1, createdAt: -1 }}).fetch();
     }
     else {
-      return Posts.find({ sticky: false}, { sort: { sticky: -1, score: -1 }}).fetch().sort(function(a, b) {
-        if(a.score < b.score) { return 1; }
-        else { return -1; }
-      });
+      return Posts.find({}, { sort: { sticky: -1, score: -1 }}).fetch();
     }
   }
 });
