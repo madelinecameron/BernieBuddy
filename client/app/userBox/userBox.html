@@ -5,7 +5,7 @@
             <div>
               <div class="center-block">
                 <a href="/profile/{{currentUser._id}}">
-                  <span class="badge" style="background-color:#FFF; color:#000">{{> avatar userId=currentUser shape="circle" }} {{kudos}} kudos </span>
+                  <span class="badge" style="background-color:#147FD7; color:#FFF">{{> avatar userId=currentUser shape="circle" }} {{kudos}} kudos </span>
                 </a>
                 <a href="/logout" class="btn btn-primary">Logout</a>
               </div>
@@ -16,8 +16,8 @@
                 <a href="/profile/{{currentUser._id}}">
                   <div style="float:left; margin-right: 15px; margin-top:-15px">{{> avatar user=currentUser shape="rounded"}}</div>
                 </a>
-                <a href="/profile/{{currentUser._id}}" class="btn btn-default">{{currentUser.profile.name}} ( {{kudos}} )</a>&nbsp;&nbsp;&nbsp;
-                <a href="/logout" class="btn btn-primary">Logout</a>
+                <a href="/profile/{{currentUser._id}}" class="btn btn-default" style="background-color:#147FD7; color:#FFF">{{currentUser.profile.name}} ( {{kudos}} )</a>&nbsp;&nbsp;&nbsp;
+                <a href="/logout" class="btn btn-default" style="background-color:#147FD7; color:#FFF">Logout</a>
               </div>
             </div>
           {{/if}}

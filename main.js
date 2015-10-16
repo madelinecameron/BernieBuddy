@@ -9,6 +9,15 @@ if(Meteor.isServer) {
     }
   });
 
+  Posts.allow({
+    update: function(id, doc, fields, modifier) {
+      return (_.difference(fields, [ 'score', 'upVoted' ]).length === 0 || _.difference(fields, [ 'score', 'downVoted' ]).length === 0);
+    },
+    remove: function(id, doc, fields, modifier) {
+      return doc.creatorId === Meteor.userId();
+    }
+  });
+
   Towns._ensureIndex({ 'location': '2dsphere' });
 
   Meteor.publish('profilePics', function() {

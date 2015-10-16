@@ -1,7 +1,7 @@
 /* CSS declarations go here */
-.navbar { background-color: white; }
-.brand { font-size: 3em; font-family: 'jubilat'; font-weight: 500;  color: #147FD7 }
-.brandMobile { font-size: 2em; font-family: 'jubilat'; font-weight: 500;  color: #147FD7 }
+.navbar { background-color: #147FD7; }
+.brand { font-size: 3em; font-family: 'jubilat'; font-weight: 500;  color: #FFF }
+.brandMobile { font-size: 2em; font-family: 'jubilat'; font-weight: 500;  color: #FFF }
 .brandMobile:visited { color: #147FD7 }
 a:link { text-decoration: none;}
 a:hover { text-decoration: none;}
@@ -221,6 +221,7 @@ a.post:hover{
 .corner-ribbon.purple{background: #95b;}
 .corner-ribbon.red{background: #e43;}
 .corner-ribbon.orange{background: #e82;}
+.corner-ribbon.berntOrange{background: #d76c14;}
 .corner-ribbon.yellow{background: #ec0;}
 
 @media (min-width: 1300px) {
