@@ -1,14 +1,17 @@
 Template.state.helpers({
-  yaks: function() {
+  posts: function() {
     if(Session.get("query") === "mostRecent" || !Session.get("query")) {
-      return Posts.find().fetch().reverse();
+      return Posts.find({ location: this.state }).fetch().sort(function(a, b) {
+        if(a.createdAt < b.createdAt) { return 1; }
+        else { return -1; }
+      });
     }
     else {
-      return Posts.find({}, { sort: { score: -1 }}).fetch();
+      return Posts.find({ location: this.state }, { sort: { sticky: -1, score: -1 }}).fetch().sort(function(a, b) {
+        if(a.score < b.score) { return 1; }
+        else { return -1; }
+      });
     }
-  }
-  fullStateName: function() {
-    return "Missouri"; //Temporary
   }
 });
 
@@ -27,14 +30,10 @@ Template.state.events({
       parent.removeAttr("selected");
 
       //Setting the filters in Session allows reactive update
-      switch(targetId) {
-        case "mostRecent":
-          Session.set("filterMethod", "Recent");
-          break;
-        case "mostPopular":
-          Session.set("filterMethod", "Popular");
-          break;
-      }
+      var query = Session.get("query");
+      query = targetId;
+
+      Session.set("query", query);
     }
   }
 });
