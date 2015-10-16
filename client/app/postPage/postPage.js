@@ -1,4 +1,4 @@
-Template.yakPage.helpers({
+Template.postPage.helpers({
 	comments: function() {
 		return Comments.find({ postId: this._id });
 	},
@@ -7,13 +7,13 @@ Template.yakPage.helpers({
   }
 });
 
-Template.yakPage.onRendered(function() {
+Template.postPage.onRendered(function() {
   Meteor.call('kudosCount', Meteor.userId(), function(err, result) {
     Session.set('kudos', result);
   });
 })
 
-Template.yakPage.events({
+Template.postPage.events({
   'click #openCommentBox': function(event, err) {
     $('#openCommentBox').hide();
 		$('#body').focus();

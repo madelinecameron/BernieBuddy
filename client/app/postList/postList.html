@@ -1,26 +1,29 @@
-<template name="yaksList">
-  <div class="yaks">
+<template name="postList">
+  <div class="posts">
     <div class="form-style">
       <div class="container">
-        <div id="postYak" class="text-center">
+        <div id="post" class="text-center">
           {{#if currentUser}}
             <a class="btn btn-primary" data-toggle="collapse"
-              data-target="#yakBox" type="button" aria-expanded="false"
-              aria-controls="yakBox" id="openYakBox">
+              data-target="#postBox" type="button" aria-expanded="false"
+              aria-controls="postBox" id="openPostBox">
                 Tap Here To Create Post
             </a>
-            <div class="collapse" id="yakBox">
-              {{> yaksSubmit}}
+            <div class="collapse" id="postBox">
+              {{> postSubmit}}
             </div>
           {{/if}}
         </div><br/>
         <ul class="list-group">
+          <center><div>
+            <a href="/donate" class="btn donateBtn">Support the Developers</a>
+          </div></center>
           <h3>What other Bernie Buddies are saying</h3>
           <div style="margin-top:-3rem">
             <center>{{> filters}}</center>
           </div>
-          {{#each yaks}}
-            {{> yakItem}}
+          {{#each posts}}
+            {{> postItem}}
           {{/each}}
           {{#if moreResults}}
             <div id="showMoreResults" style="margin-left: 25px;">

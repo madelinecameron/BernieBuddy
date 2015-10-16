@@ -1,25 +1,25 @@
-Template.yaksSubmit.events({
-  'submit .yaksSubmitForm': function(event,err) {
+Template.postSubmit.events({
+  'submit .postSubmitForm': function(event, err) {
 
     event.preventDefault();
 
-    var yakItem = {};
-    yakItem["yak"] = event.target.yak.value; 		// get text
-    yakItem["creatorId"] = Meteor.userId();
-    yakItem["coords"] = {};
-    yakItem["anonymous"] = false;
-    yakItem["sticky"] = false;
-    yakItem["adminPost"] = false;
+    var postItem = {};
+    postItem["post"] = event.target.submitPostText.value; 		// get text
+    postItem["creatorId"] = Meteor.userId();
+    postItem["coords"] = {};
+    postItem["anonymous"] = false;
+    postItem["sticky"] = false;
+    postItem["adminPost"] = false;
 
     if($("#postAnon").prop("checked")) {
-      yakItem["anonymous"] = true;
+      postItem["anonymous"] = true;
     }
     if($("#postAsAdmin").prop("checked")) {
-      yakItem["sticky"] = true;
-      yakItem["adminPost"] = true;
+      postItem["sticky"] = true;
+      postItem["adminPost"] = true;
     }
 
-    if (yakItem["yak"] == "") {
+    if (postItem["post"] == "") {
       alert("You can’t create an empty post! Write something here instead. :)");
 
       delete Session.keys["length"];
@@ -27,7 +27,7 @@ Template.yaksSubmit.events({
       return;
     }
 
-    if(yakItem["yak"].length > 500) {
+    if(postItem["post"].length > 500) {
       alert("Please make your post shorter");
 
       delete Session.keys["length"];
@@ -35,42 +35,42 @@ Template.yaksSubmit.events({
 
     if(navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function(position) {
-        yakItem["coords"]["long"] = position.coords.longitude;
-        yakItem["coords"]["lat"] = position.coords.latitude;
+        postItem["coords"]["long"] = position.coords.longitude;
+        postItem["coords"]["lat"] = position.coords.latitude;
 
-        Meteor.call('yakInsert', yakItem);
+        Meteor.call('postInsert', postItem);
 
         delete Session.keys["length"];
-        $(event.target.yak).val('');
+        $(event.target.post).val('');
 
-        $('#openYakBox').show("slow");
+        $('#openPostBox').show("slow");
       }, function() {
-        yakItem["coords"]["long"] = 0;
-        yakItem["coords"]["lat"] = 0;
+        postItem["coords"]["long"] = 0;
+        postItem["coords"]["lat"] = 0;
 
-        Meteor.call('yakInsert', yakItem);
+        Meteor.call('postInsert', postItem);
 
         delete Session.keys["length"];
-        $(event.target.yak).val('');  //Clear text box
+        $(event.target.post).val('');  //Clear text box
 
-        $('#openYakBox').show("slow");
+        $('#openPostBox').show("slow");
       });
     }
     else {
-      yakItem["coords"]["long"] = 0;
-      yakItem["coords"]["lat"] = 0;
+      postItem["coords"]["long"] = 0;
+      postItem["coords"]["lat"] = 0;
 
-      Meteor.call('yakInsert', yakItem);
+      Meteor.call('postInsert', postItem);
 
       delete Session.keys["length"];
-      $(event.target.yak).val('');  //Clear text box
+      $(event.target.post).val('');  //Clear text box
 
-      $('#openYakBox').show("slow");
+      $('#openPostBox').show("slow");
     }
 
   },
-  'keyup #yak': function(e) {
-    var length = $('#yak').val().length;
+  'keyup #submitPostText': function(e) {
+    var length = $('#submitPostText').val().length;
     if(length > 500 || length == 0) {
       $('#submitButton').prop("disabled", true);
     }
@@ -81,8 +81,8 @@ Template.yaksSubmit.events({
     }
     Session.set("length", length);
   },
-  'mouseup #yak': function(e) {
-    var length = $('#yak').val().length;
+  'mouseup #submitPostText': function(e) {
+    var length = $('#submitPostText').val().length;
     if(length > 500 || length == 0) {
       $('#submitButton').prop("disabled", true);
     }
@@ -93,8 +93,8 @@ Template.yaksSubmit.events({
     }
     Session.set("length", length);
   },
-  'change #yak': function(e) {
-    var length = $('#yak').val().length;
+  'change #submitPostText': function(e) {
+    var length = $('#submitPostText').val().length;
     if(length > 500 || length == 0) {
       $('#submitButton').prop("disabled", true);
     }
@@ -107,11 +107,11 @@ Template.yaksSubmit.events({
   }
 });
 
-Template.yaksSubmit.onCreated(function() {
+Template.postSubmit.onCreated(function() {
   Session.set("length", 0);
 });
 
-Template.yaksSubmit.helpers({
+Template.postSubmit.helpers({
   length: function() {
     return Session.get("length");
   }

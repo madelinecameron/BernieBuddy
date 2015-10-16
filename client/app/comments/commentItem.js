@@ -69,7 +69,7 @@ Template.commentItem.events({
 
       Comments.update(selectedId, update);
 
-      if (comment.score <= -5 && !comment.adminPost) {  //Delete post if score is below threshold and it isn't an admin post
+      if (comment.score <= -10 && !comment.adminPost) {  //Delete post if score is below threshold and it isn't an admin post
         console.log('delete');
         Comments.remove({ _id: this._id })
       }

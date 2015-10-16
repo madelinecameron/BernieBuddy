@@ -1,18 +1,18 @@
 Meteor.methods({
-  yakInsert: function(yak) {
+  postInsert: function(post) {
 
     //Find town and state
     var area, location;
 
     //Only possible with no geolocation on... or extreme luck.
-    if(yak.coords.long == 0 && yak.coords.lat == 0) { location = "Anonymous Location" }
+    if(post.coords.long == 0 && post.coords.lat == 0) { location = "Anonymous Location" }
     else {
       area = Towns.findOne({
         location: {
           $near: {
             $geometry: {
               type: "Point",
-              coordinates: [ parseFloat(yak.coords.long), parseFloat(yak.coords.lat) ]
+              coordinates: [ parseFloat(post.coords.long), parseFloat(post.coords.lat) ]
             }
           }
         }
@@ -20,16 +20,16 @@ Meteor.methods({
       location = area.state
     }
 
-    var post_id = Yaks.insert({
-      yak : yak.yak,  //wow. such many yaks.
-      creatorId: yak.creatorId,
+    var post_id = Posts.insert({
+      post : post.post,  //wow. such many yaks.
+      creatorId: post.creatorId,
       score : 0,
       location: location,
       active: true,
       createdAt: new Date(),
-      sticky: yak.sticky,
-      anon: yak.anonymous,
-      adminPost: yak.adminPost
+      sticky: post.sticky,
+      anon: post.anonymous,
+      adminPost: post.adminPost
     });
   },
   commentInsert: function(comment) {
@@ -67,7 +67,7 @@ Meteor.methods({
     return Comments.find({ postId: id }).count();
   },
   kudosCount: function(id) {
-    var postKudos = Yaks.aggregate([
+    var postKudos = Posts.aggregate([
       {
         $match: {
           creatorId: id

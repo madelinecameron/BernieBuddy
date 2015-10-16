@@ -1,4 +1,4 @@
-Yaks = new Mongo.Collection("yaks");
+Posts = new Mongo.Collection("posts");
 Comments = new Mongo.Collection("comments");
 Towns = new Mongo.Collection("towns");
 
