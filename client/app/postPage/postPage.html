@@ -1,33 +1,35 @@
 <template name="postPage">
-	<div class="form-style">
-		<div class="container">
-			{{> pageItem}}
-			<div class="comment">
-				<h4>Comments</h4>
-					{{#each comments}}
-						{{> commentItem}}
-					{{/each}}
-			</div>
-			<br/>
-			{{#if currentUser}}
-				{{#if isMobile}}
-					<a class="btn btn-primary" data-toggle="collapse"
-						data-target="#commentBox" type="button" aria-expanded="false"
-						aria-controls="commentBox" id="openCommentBox">
-							Tap Here To Create Comment
-					</a>
-					<div class="collapse" id="commentBox">
-						{{> commentSubmit}}
-					</div>
+		<div class="form-style" draggable="true">
+			{{#HammerTouchArea gestureMap=gestures}}
+			<div class="container">
+				{{> pageItem}}
+				<div class="comment">
+					<h4>Comments</h4>
+						{{#each comments}}
+							{{> commentItem}}
+						{{/each}}
+				</div>
+				<br/>
+				{{#if currentUser}}
+					{{#if isMobile}}
+						<a class="btn btn-primary" data-toggle="collapse"
+							data-target="#commentBox" type="button" aria-expanded="false"
+							aria-controls="commentBox" id="openCommentBox">
+								Tap Here To Create Comment
+						</a>
+						<div class="collapse" id="commentBox">
+							{{> commentSubmit}}
+						</div>
+					{{else}}
+						<div id="commentBox">
+							{{> commentSubmit}}
+						</div>
+					{{/if}}
 				{{else}}
-					<div id="commentBox">
-						{{> commentSubmit}}
-					</div>
+					<p>Login to comment</p>
 				{{/if}}
-			{{else}}
-				<p>Login to comment</p>
-			{{/if}}
 
+			</div>
+			{{/HammerTouchArea}}
 		</div>
-	</div>
 </template>

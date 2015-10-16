@@ -26,6 +26,24 @@ if(Meteor.isServer) {
 }
 
 if(Meteor.isClient) {
+  var donationTiers = [
+    { "$1": "50" },
+    { "$3": "150" },
+    { "$5": "250" },
+    { "$10": "500" },
+    { "$20": "1000" },
+    { "$50": "2500" },
+    { "$100": "5000" }
+  ];
+  _.each(donationTiers, function(item) {
+    var key = Object.keys(item)[0]
+    /*store.register({
+      id: "berniebuddy." + item[key],
+      alias: key + " donation for " + item[key] + " kudos",
+      type: store.NON_CONSUMABLE
+    });*/
+  })
+
   Meteor.subscribe('profilePics');
 
   Deps.autorun(function() {

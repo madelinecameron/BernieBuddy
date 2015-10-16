@@ -4,7 +4,17 @@ Template.postPage.helpers({
 	},
   isMobile: function() {
     return Darwin.device.match("phone");
-  }
+  },
+	gestures: {
+		'dragright .form-style': function(event, error) {
+			console.log("swipe");
+			window.location.replace('/');
+		},
+		'swiperight .form-style': function(event, error) {
+			console.log("swipe");
+			window.location.replace('/');
+		}
+	}
 });
 
 Template.postPage.onRendered(function() {
