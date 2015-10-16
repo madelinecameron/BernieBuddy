@@ -11,10 +11,17 @@
                       {{#if anon}}<a class="fakeBtn" style="margin-left: 1.5rem">Anonymous</a>{{/if}}
                 {{#if isMobile}}
                   <br/><span class="fakeBtn"><a class="btn" href="/location/{{location}}">{{location}}</a></span>
-                  <br/><span class="sm-fakeBtn">{{time}}</span>&nbsp;&nbsp;&nbsp;{{#if ownPost}}<a href="#" id="deletePost" style="font-size:11px">Delete</a>{{/if}}
+                  <br/><span class="sm-fakeBtn">{{time}}</span>&nbsp;&nbsp;&nbsp;{{#if userCanDelete}}<a href="#" id="deletePost" style="font-size:11px">Delete</a>{{/if}}
                 {{else}}
                   {{#unless anon}}<span class="fakeBtn" style="margin-left:-2.5rem"> from <a class="btn" style="margin-left:-1.30rem; margin-top:-0.15rem" href="/location/{{location}}">{{location}}</a></span>{{/unless}}
-                  <br/><span class="sm-fakeBtn">{{time}}</span>&nbsp;&nbsp;&nbsp;{{#if ownPost}}<a href="#" id="deletePost" style="font-size:11px">Delete</a>{{/if}}
+                  <br/><span class="sm-fakeBtn">{{time}}</span>&nbsp;&nbsp;&nbsp;{{#if userCanDelete}}<a href="#" id="deletePost" style="font-size:11px">Delete</a>{{/if}}&nbsp;&nbsp;&nbsp;
+                  {{#if currentUser.isAdmin}}
+                    {{#if sticky}}
+                      <a href="#" id="unstickyPost" style="font-size:11px">Unsticky</a>
+                    {{else}}
+                      <a href="#" id="stickyPost" style="font-size:11px">Sticky</a>
+                    {{/if}}
+                  {{/if}}
                 {{/if}}
               </div>
             </div>

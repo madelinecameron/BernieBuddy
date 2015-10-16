@@ -11,10 +11,10 @@ if(Meteor.isServer) {
 
   Posts.allow({
     update: function(id, doc, fields, modifier) {
-      return (_.difference(fields, [ 'score', 'upVoted' ]).length === 0 || _.difference(fields, [ 'score', 'downVoted' ]).length === 0);
+      return (_.difference(fields, [ 'score', 'upVoted' ]).length === 0 || _.difference(fields, [ 'score', 'downVoted' ]).length === 0) || Meteor.user().isAdmin;
     },
     remove: function(id, doc, fields, modifier) {
-      return doc.creatorId === Meteor.userId();
+      return doc.creatorId === Meteor.userId() || Meteor.user().isAdmin;
     }
   });
 

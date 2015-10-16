@@ -4,6 +4,12 @@ Template.pageItem.events({
     Posts.remove({ _id: this._id });
     window.location.replace('/');
   },
+  'click #stickyPost': function() {
+    Posts.update({ _id: this._id }, { $set: { sticky: true } });
+  },
+  'click #unstickyPost': function() {
+    Posts.update({ _id: this._id }, { $set: { sticky: false } });
+  },
   'click': function() {
     Session.set('selected_post', this._id);
   },
@@ -146,7 +152,7 @@ Template.pageItem.helpers({
   isMobile: function() {
     return Darwin.device.match("phone");
   },
-  ownPost: function() {
-    return this.creatorId === Meteor.userId();  //If creator is currently logged in user
+  userCanDelete: function() {
+    return this.creatorId === Meteor.userId() || Meteor.user().isAdmin;  //If creator is currently logged in user
   }
 });
