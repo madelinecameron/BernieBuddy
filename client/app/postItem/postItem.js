@@ -83,7 +83,7 @@ Template.postItem.events({
 
 Template.postItem.onCreated(function() {
   var id = this.data.creatorId;
-  if(!Session.get(id)) {
+  if(!Session.get(id) && id !== null) {
     Meteor.call('getUserName', id, function(err, result) {
       Session.set(id, result);
     });
@@ -105,10 +105,15 @@ Template.postItem.helpers({
     return Comments.find({ postId: this._id }).count();
   },
   creatorName: function() {
-    return Session.get(this.creatorId);
+    return Session.get(this.creatorId) ? Session.get(this.creatorId) : "Anonymous";
   },
   kudos: function() {
-    return Session.get(this.creatorId + "kudos");
+    if(this.creatorId !== Meteor.userId()) {
+        return Session.get(this.creatorId + "kudos") ? Session.get(this.creatorId + "kudos") : "?";
+    }
+    else {
+      return Session.get("kudos");
+    }
   },
   time: function() {
     var dateCreatedAt = Posts.findOne({ _id: this._id }, {createdAt: 1 });

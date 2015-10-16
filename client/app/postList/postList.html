@@ -3,16 +3,14 @@
     <div class="form-style">
       <div class="container">
         <div id="post" class="text-center">
-          {{#if currentUser}}
-            <a class="btn btn-primary" data-toggle="collapse"
-              data-target="#postBox" type="button" aria-expanded="false"
-              aria-controls="postBox" id="openPostBox">
-                Tap Here To Create Post
-            </a>
-            <div class="collapse" id="postBox">
-              {{> postSubmit}}
-            </div>
-          {{/if}}
+          <a class="btn btn-primary" data-toggle="collapse"
+            data-target="#postBox" type="button" aria-expanded="false"
+            aria-controls="postBox" id="openPostBox">
+              Tap Here To Create Post
+          </a>
+          <div class="collapse" id="postBox">
+            {{> postSubmit}}
+          </div>
         </div><br/>
         <ul class="list-group">
           <center><div>

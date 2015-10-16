@@ -11,7 +11,7 @@ Template.postSubmit.events({
     postItem["sticky"] = false;
     postItem["adminPost"] = false;
 
-    if($("#postAnon").prop("checked")) {
+    if($("#postAnon").prop("checked") || !postItem["creatorId"]) {
       postItem["anonymous"] = true;
     }
     if($("#postAsAdmin").prop("checked")) {

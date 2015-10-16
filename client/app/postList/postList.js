@@ -3,16 +3,10 @@ var POSTS_INCREMENT = 20;
 Template.postList.helpers({
   posts: function() {
     if(Session.get("query") === "mostRecent" || !Session.get("query")) {
-      return Posts.find({}).fetch().sort(function(a, b) {
-        if(a.createdAt < b.createdAt && !a.sticky) { return 1; }
-        else { return -1; }
-      });
+      return Posts.find({}, { sort: { sticky: -1, createdAt: -1 }}).fetch();
     }
     else {
-      return Posts.find({}, { sort: { sticky: -1, score: -1 }}).fetch().sort(function(a, b) {
-        if(a.score < b.score && !a.sticky) { return 1; }
-        else { return -1; }
-      });
+      return Posts.find({}, { sort: { sticky: -1, score: -1 }}).fetch();
     }
   }
 });

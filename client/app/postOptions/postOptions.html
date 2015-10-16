@@ -1,16 +1,18 @@
 <template name="postOptions">
-  <div class="checkbox">
-    <label>
-      <input id="postAnon" type="checkbox" value="">
-      Post anonymously
-    </label>
-  </div>
-  {{#if currentUser.isAdmin}}
+  {{#if currentUser}}
     <div class="checkbox">
       <label>
-        <input id="postAsAdmin" type="checkbox" value="">
-        Post as admin
+        <input id="postAnon" type="checkbox" value="">
+        Post anonymously
       </label>
     </div>
+    {{#if currentUser.isAdmin}}
+      <div class="checkbox">
+        <label>
+          <input id="postAsAdmin" type="checkbox" value="">
+          Post as admin
+        </label>
+      </div>
+    {{/if}}
   {{/if}}
 </template>
