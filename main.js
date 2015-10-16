@@ -3,6 +3,12 @@ Comments = new Mongo.Collection("comments");
 Towns = new Mongo.Collection("towns");
 
 if(Meteor.isServer) {
+  Meteor.users.deny({
+    update: function() {
+      return true;
+    }
+  });
+
   Towns._ensureIndex({ 'location': '2dsphere' });
 
   Meteor.publish('profilePics', function() {
@@ -21,5 +27,3 @@ if(Meteor.isClient) {
     }
   });
 }
-
-// comments
