@@ -4,13 +4,13 @@ Template.postList.helpers({
   posts: function() {
     if(Session.get("query") === "mostRecent" || !Session.get("query")) {
       return Posts.find({}).fetch().sort(function(a, b) {
-        if(a.createdAt < b.createdAt) { return 1; }
+        if(a.createdAt < b.createdAt && !a.sticky) { return 1; }
         else { return -1; }
       });
     }
     else {
       return Posts.find({}, { sort: { sticky: -1, score: -1 }}).fetch().sort(function(a, b) {
-        if(a.score < b.score) { return 1; }
+        if(a.score < b.score && !a.sticky) { return 1; }
         else { return -1; }
       });
     }
