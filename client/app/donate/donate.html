@@ -1,11 +1,14 @@
 <template name="donate">
   {{#if isCordova}}
-    {{#each storeItems}}
-      {{> storeItem}}
-    {{/each}}
+    {{#HammerTouchArea gestureMap=gestures}}
+      <p>Cordova</p>
+      {{#each storeItems}}
+        {{> storeItem}}
+      {{/each}}
+    {{/HammerTouchArea}}
   {{else}}
   	{{#HammerTouchArea gestureMap=gestures}}
-      <div class="container" draggable="true">
+      <div class="container" draggable="{{isMobile}}">
         <div class="jumbotron">
           <h1>GIVE US MONEY!</h1>
           <p>Blah, blah, blah. Give us money. Put real message here.</p>

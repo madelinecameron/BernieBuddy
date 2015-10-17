@@ -5,14 +5,30 @@ Template.postPage.helpers({
   isMobile: function() {
     return Darwin.device.match("phone");
   },
-	gestures: {
-		'dragright .form-style': function(event, error) {
-			console.log("swipe");
-			window.location.replace('/');
-		},
-		'swiperight .form-style': function(event, error) {
-			console.log("swipe");
-			window.location.replace('/');
+	configureHammer: function () {
+		return function (hammer, templateInstance) {
+			var slowSwipe = new Hammer.Swipe({
+				event: 'slowSwipe', /* prefix for custom swipe events, e.g. 2fingerswipeleft, 2fingerswiperight */
+				velocity: 0.1
+			});
+			hammer.add(slowSwipe);
+			return hammer;
+		}
+	},
+	gestures: function() {
+		if(Darwin.device.match("phone")) {
+			return {
+				'swiperight .form-style': function(event, error) {
+					console.log("swipe");
+					window.location.replace('/');
+				},
+				'slowSwipe .form-style': function(event, error) {
+					console.log("SlowSwipe");
+				}
+			}
+		}
+		else {
+			return {};
 		}
 	}
 });

@@ -10,18 +10,27 @@ Template.donate.helpers({
   isCordova: function() {
     return Meteor.isCordova
   },
+  isMobile: function() {
+    return Darwin.device.match("phone");
+  },
   storeItems: function() {
     console.log(store.products);
     return store.products //All registered products
   },
-  gestures: {
-    'dragright .form-style': function(event, error) {
-      console.log("swipe");
-      window.location.replace('/');
-    },
-    'swiperight .form-style': function(event, error) {
-      console.log("swipe");
-      window.location.replace('/');
-    }
-  }
+  gestures: function() {
+		if(Darwin.device.match("phone")) {
+			return {
+				'swiperight .form-style': function(event, error) {
+					console.log("swipe");
+					//window.location.replace('/');
+				},
+				'slowSwipe .form-style': function(event, error) {
+					console.log("SlowSwipe");
+				}
+			}
+		}
+		else {
+			return {};
+		}
+	}
 });

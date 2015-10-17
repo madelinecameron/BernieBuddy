@@ -37,11 +37,11 @@ if(Meteor.isClient) {
   ];
   _.each(donationTiers, function(item) {
     var key = Object.keys(item)[0]
-    /*store.register({
+    store.register({
       id: "berniebuddy." + item[key],
       alias: key + " donation for " + item[key] + " kudos",
       type: store.NON_CONSUMABLE
-    });*/
+    });
   })
 
   Meteor.subscribe('profilePics');
