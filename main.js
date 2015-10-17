@@ -25,7 +25,7 @@ if(Meteor.isServer) {
   });
 }
 
-if(Meteor.isClient) {
+if(Meteor.isCordova) {
   var donationTiers = [
     { "$1": "50" },
     { "$3": "150" },
@@ -42,8 +42,10 @@ if(Meteor.isClient) {
       alias: key + " donation for " + item[key] + " kudos",
       type: store.NON_CONSUMABLE
     });
-  })
+  });
+}
 
+if(Meteor.isClient) {
   Meteor.subscribe('profilePics');
 
   Deps.autorun(function() {

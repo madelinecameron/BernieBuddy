@@ -17,6 +17,9 @@
           <div style="margin-top:-3rem">
             <center>{{> filters}}</center>
           </div>
+          {{#if isMobile}}
+            {{> specialListItem text="SpecialPost"}}
+          {{/if}}
           {{#each posts}}
             {{> listItem}}
           {{/each}}
