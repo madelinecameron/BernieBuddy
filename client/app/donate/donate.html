@@ -1,23 +1,62 @@
 <template name="donate">
   {{#if isCordova}}
     {{#HammerTouchArea gestureMap=gestures}}
-      <p>Cordova</p>
-      {{#each storeItems}}
-        {{> storeItem}}
-      {{/each}}
+      <ul class="list-group">
+        <h3>Donate to Bernie Buddy!</h3>
+        {{#each storeItems}}
+          {{> storeItem}}
+        {{/each}}
+      </ul>
     {{/HammerTouchArea}}
   {{else}}
   	{{#HammerTouchArea gestureMap=gestures}}
       <div class="container" draggable="{{isMobile}}">
         <div class="jumbotron">
-          <h1>GIVE US MONEY!</h1>
-          <p>Blah, blah, blah. Give us money. Put real message here.</p>
+          <h1>Support Bernie Buddy!</h1>
+          <p>
+            Thanks for being a part of the Bernie Buddy family!<br/><br/>
+
+            Do you like the application? Want to help us make it even better,
+            while supporting Bernie in the process!?<br/><br/>
+
+            If so, help support our tiny team of student developers with a small
+            token of your gratitude!<br/><br/>
+
+            Seriously, any little bit helps a lot. And you even get 50 Kudos
+            for every $1 contributed!<br/><br/>
+
+            Donate today to help a small group of students accomplish really big things!<br/><br/>
+          </p>
           <p><a class="btn btn-primary btn-lg" href="#" role="button">Go to IndieGoGo</a></p>
         </div>
         <div>
-          <p> Here is why we deserve money: [put stuff here]</p>
+          We feel that Bernie Sanders is showing the rest of America what a
+          truly qualified leader acts like – while his incredibly enthusiastic
+          supporters are showing what a group of responsible adults coming
+          together to solve serious problems looks like.<br/><br/>
+
+          We want everyone to know that supporting the Bernie Buddy
+          application and the team behind it is simply supporting a fun &amp;
+          creative way to spread the message of restoring honesty, integrity,
+          and character to our government.<br/><br/>
+
+          Bernie Buddy will always be free, but we do plan to eventually make
+          money with this application. With the profits we make - after we pay
+          our team &amp; the other costs associated with providing the
+          application - we are going to provide funding, promotional materials,
+          campaign merchandise, adequate venues, and organizational support
+          to ordinary individuals across the nation that want to host their
+          own Bernie events &amp; debate watch parties.<br/><br/>
+
+          These people desperately want to inspire their friends, family,
+          and communities but they won’t be able to pull it off without our
+          help!<br/><br/>
+
+          A buddy of Bernie is a buddy of ours! Want to help us assist the
+          revolution?<br/><br/>
         </div>
       </div>
+
     {{/HammerTouchArea}}
   {{/if}}
 </template>

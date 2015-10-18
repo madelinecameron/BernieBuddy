@@ -1,36 +1,35 @@
-Template.donate.onCreated(function() {
-  Session.set("disableDonateBanner", true);
-});
+Template.donate.onCreated(function () {
+  Session.set("disableDonateBanner", true)
+})
 
-Template.donate.onDestroyed(function() {
-  Session.set("disableDonateBanner", false);
-});
+Template.donate.onDestroyed(function () {
+  Session.set("disableDonateBanner", false)
+})
 
 Template.donate.helpers({
-  isCordova: function() {
+  isCordova: function () {
     return Meteor.isCordova
   },
-  isMobile: function() {
-    return Darwin.device.match("phone");
+  isMobile: function () {
+    return Darwin.device.match("phone")
   },
-  storeItems: function() {
-    console.log(store.products);
+  storeItems: function () {
     return store.products //All registered products
   },
-  gestures: function() {
+  gestures: function () {
 		if(Darwin.device.match("phone")) {
 			return {
-				'swiperight .form-style': function(event, error) {
-					console.log("swipe");
-					//window.location.replace('/');
+				"swiperight .form-style": function(event, error) {
+					console.log("swipe")
+					//window.location.replace("/")
 				},
-				'slowSwipe .form-style': function(event, error) {
-					console.log("SlowSwipe");
+				"slowSwipe .form-style": function(event, error) {
+					console.log("SlowSwipe")
 				}
 			}
 		}
 		else {
-			return {};
+			return {}
 		}
 	}
-});
+})

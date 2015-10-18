@@ -2,7 +2,7 @@ Meteor.methods({
   postInsert: function(post) {
 
     //Find town and state
-    var area, location;
+    var area, location
 
     //Only possible with no geolocation on... or extreme luck.
     if(post.coords.long == 0 && post.coords.lat == 0) { location = "Anonymous Location" }
@@ -16,7 +16,7 @@ Meteor.methods({
             }
           }
         }
-      });
+      })
       location = area.state
     }
 
@@ -30,11 +30,11 @@ Meteor.methods({
       sticky: post.sticky,
       anon: post.anonymous,
       adminPost: post.adminPost
-    });
+    })
   },
   commentInsert: function(comment) {
-    var location, area;
-    if(comment.coords.long == 0 && comment.coords.lat == 0) { location = "Anonymous Location"; }
+    var location, area
+    if(comment.coords.long == 0 && comment.coords.lat == 0) { location = "Anonymous Location" }
     else {
       var area = Towns.findOne({
         location: {
@@ -45,8 +45,8 @@ Meteor.methods({
             }
           }
         }
-      });
-      location = area.state;
+      })
+      location = area.state
     }
 
     Comments.insert({
@@ -58,13 +58,13 @@ Meteor.methods({
       score: 0,
       anon: comment.anonymous,
       adminPost: comment.adminPost
-    });
+    })
   },
   getUserName: function(id) {
-    return Meteor.users.findOne({ _id: id }).profile.name;
+    return Meteor.users.findOne({ _id: id }).profile.name
   },
   getCommentCount: function(id) {
-    return Comments.find({ postId: id }).count();
+    return Comments.find({ postId: id }).count()
   },
   kudosCount: function(id) {
     var postKudos = Posts.aggregate([
@@ -79,7 +79,7 @@ Meteor.methods({
           kudos: { $sum: "$score" }
         }
       }
-    ]);
+    ])
 
     var commentKudos = Comments.aggregate([
       {
@@ -93,21 +93,21 @@ Meteor.methods({
           kudos: { $sum: "$score" }
         }
       }
-    ]);
+    ])
 
-    var totalKudos = 0;
+    var totalKudos = 0
     if(postKudos.length > 0 && commentKudos.length > 0) {
-      totalKudos = postKudos[0].kudos + commentKudos[0].kudos;
+      totalKudos = postKudos[0].kudos + commentKudos[0].kudos
     }
     else {
       if(postKudos.length > 0) {
-        totalKudos = postKudos[0].kudos;
+        totalKudos = postKudos[0].kudos
       }
-      if(commentKudos.length > 0) {  //If we are down here, we know one of them is null and we know comment && post can't not be null
-        totalKudos = commentKudos[0].kudos;
+      if(commentKudos.length > 0) {  //If we are down here, we know one of them is null and we know comment && post can"t not be null
+        totalKudos = commentKudos[0].kudos
       }
     }
 
-    return totalKudos;
+    return totalKudos
   }
-});
+})
