@@ -6,7 +6,8 @@ App.info({
   description: "Feel the Bern",
   author: "Madeline Cameron @ Bernie Buddy",
   email: "admin@berniebuddy.com",
-  website: "http://berniebuddy.com"
+  website: "http://berniebuddy.com",
+  version: "0.0.3"
 })
 
 App.icons({
@@ -41,6 +42,8 @@ App.launchScreens({
   "android_xhdpi_portrait": "public/Android/drawable-xhdpi/screen.png",
   "android_xhdpi_landscape": "public/Android/drawable-land-xhdpi/screen.png"
 })
+
+App.setPreference('android-versionCode', '3');
 
 App.accessRule("https://graph.facebook.com/*")
 App.accessRule("https://pbs.twimg.com/*")

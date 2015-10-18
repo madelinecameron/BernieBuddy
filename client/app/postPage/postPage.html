@@ -10,23 +10,19 @@
 						{{/each}}
 				</div>
 				<br/>
-				{{#if currentUser}}
-					{{#if isMobile}}
-						<a class="btn btn-primary" data-toggle="collapse"
-							data-target="#commentBox" type="button" aria-expanded="false"
-							aria-controls="commentBox" id="openCommentBox">
-								Tap Here To Create Comment
-						</a>
-						<div class="collapse" id="commentBox">
-							{{> commentSubmit}}
-						</div>
-					{{else}}
-						<div id="commentBox">
-							{{> commentSubmit}}
-						</div>
-					{{/if}}
+				{{#if isMobile}}
+					<a class="btn btn-primary" data-toggle="collapse"
+						data-target="#commentBox" type="button" aria-expanded="false"
+						aria-controls="commentBox" id="openCommentBox">
+							Tap Here To Create Comment
+					</a>
+					<div class="collapse" id="commentBox">
+						{{> commentSubmit}}
+					</div>
 				{{else}}
-					<p>Login to comment</p>
+					<div id="commentBox">
+						{{> commentSubmit}}
+					</div>
 				{{/if}}
 
 			</div>

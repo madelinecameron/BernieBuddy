@@ -1,11 +1,12 @@
 <template name="storeItem">
-  <div class="storeItem">
-    <li class="list-group-item">
+  <div class="storeItem" id="{{id}}">
+    <li class="list-group-item" id="{{id}}">
       <a href="#" id="{{id}}">
         <div class="row" id="content">
             <div id="textContainer">
-              <p class="break-el" style="{{#if sticky}}white-space:pre-line{{/if}}">{{alias}}</p>
+              <p class="break-el">{{alias}} - {{price}}</p>
             </div>
+            <p>{{debugMsg}}</p>
           </div>
       </a>
     </li>

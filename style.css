@@ -21,7 +21,7 @@ span {
   font-weight: bold;
 }
 
-li.activeFilter a {
+li.activeFilter a, li.activeFilter a:focus {
   background-color: #147FD7;
   color: #FFF;
 }

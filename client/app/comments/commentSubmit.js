@@ -13,7 +13,7 @@ Template.commentSubmit.events({
     comment["anonymous"] = false
     comment["adminPost"] = false
 
-    if($("#postAnon").prop("checked")) {
+    if($("#postAnon").prop("checked") || !comment["creatorId"]) {
       comment["anonymous"] = true
     }
     if($("#postAsAdmin").prop("checked")) {

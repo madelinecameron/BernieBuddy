@@ -26,14 +26,11 @@ if(Meteor.isServer) {
 }
 
 if(Meteor.isCordova) {
+  store.verbosity = store.INFO
   var donationTiers = [
     { "$1": "50" },
     { "$3": "150" },
-    { "$5": "250" },
-    { "$10": "500" },
-    { "$20": "1000" },
-    { "$50": "2500" },
-    { "$100": "5000" }
+    { "$5": "250" }
   ]
   _.each(donationTiers, function(item) {
     var key = Object.keys(item)[0]
@@ -42,6 +39,10 @@ if(Meteor.isCordova) {
       alias: key + " donation for " + item[key] + " kudos",
       type: store.CONSUMABLE
     })
+  })
+
+  store.error(function(err) {
+    alert(err);
   })
 }
 

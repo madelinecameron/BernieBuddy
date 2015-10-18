@@ -3,10 +3,12 @@ Template.accounts.events({
     Meteor.loginWithFacebook({
       requestPermissions: ["email"]
     })
+    window.location.replace('/');
   },
   "click .btn-twitter": function(event, err) {
     Meteor.loginWithTwitter({
       requestPermissions: ["email"]
     })
+    window.location.replace('/');
   }
 })

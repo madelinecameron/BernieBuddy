@@ -1,7 +1,5 @@
 <template name="accounts">
-  {{#if currentUser}}
-    {{> yaksList}}
-  {{else}}
+  {{#unless currentUser}}
     <div class="form-style">
       <div class="container">
         <div class="list-group-item">
@@ -15,5 +13,5 @@
         </div>
       </div>
     </div>
-  {{/if}}
+  {{/unless}}
 </template>
