@@ -1,12 +1,14 @@
 <template name="donate">
   {{#if isCordova}}
     {{#HammerTouchArea gestureMap=gestures}}
-      <ul class="list-group">
-        <h3>Donate to Bernie Buddy!</h3>
-        {{#each storeItems}}
-          {{> storeItem}}
-        {{/each}}
-      </ul>
+      <div class="container" draggable="true">
+        <ul class="list-group">
+          <h3>Donate to Bernie Buddy!</h3>
+          {{#each storeItems}}
+            {{> storeItem}}
+          {{/each}}
+        </ul>
+      </div>
     {{/HammerTouchArea}}
   {{else}}
   	{{#HammerTouchArea gestureMap=gestures}}

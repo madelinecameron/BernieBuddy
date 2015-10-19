@@ -29,11 +29,11 @@ Template.donate.helpers({
   gestures: function () {
 		if(Darwin.device.match("phone")) {
 			return {
-				"swiperight .form-style": function(event, error) {
+				"swiperight .container": function(event, error) {
 					console.log("swipe")
 					window.location.replace("/")
 				},
-				"slowSwipe .form-style": function(event, error) {
+				"dragright .container": function(event, error) {
 					console.log("SlowSwipe")
 				}
 			}

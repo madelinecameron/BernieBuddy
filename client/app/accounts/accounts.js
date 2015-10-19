@@ -12,3 +12,7 @@ Template.accounts.events({
     window.location.replace('/');
   }
 })
+
+Template.accounts.onCreated(function() {
+  Session.set("disableDonateBanner", false)
+})
