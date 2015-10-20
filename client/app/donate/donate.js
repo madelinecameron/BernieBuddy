@@ -1,13 +1,13 @@
 Template.donate.onCreated(function () {
   Session.set("disableDonateBanner", true)
+});
+
+Template.donate.onRendered(function() {
   if(Meteor.isCordova) {
     store.ready(function() {
       store.refresh();
     });
   }
-});
-
-Template.donate.onRendered(function() {
 });
 
 Template.donate.onDestroyed(function () {
@@ -24,20 +24,15 @@ Template.donate.helpers({
   storeItems: function () {
     return store.products
   },
-  gestures: function () {
-		if(Darwin.device.match("phone")) {
-			return {
-				"swiperight .container": function(event, error) {
-					console.log("swipe")
-					window.location.replace("/")
-				},
-				"dragright .container": function(event, error) {
-					console.log("SlowSwipe")
-				}
-			}
-		}
-		else {
-			return {}
-		}
-	}
+  gestures:
+  {
+  	"swiperight .container": function(event, error) {
+  		console.log("swipe")
+  		window.location.replace("/")
+  	},
+  	"dragright .container": function(event, error) {
+  		console.log("SlowSwipe")
+      window.location.replace("/")
+  	}
+  }
 })

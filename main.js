@@ -26,7 +26,8 @@ if(Meteor.isServer) {
 }
 
 if(Meteor.isCordova) {
-  store.verbosity = store.INFO
+  
+  store.verbosity = store.DEBUG
   var donationTiers = [
     { "$1": "50" },
     { "$3": "150" },
