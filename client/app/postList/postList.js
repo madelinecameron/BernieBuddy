@@ -45,9 +45,13 @@ Template.postList.onCreated(function() {
   }, 250)
 })
 
+Template.postList.onDestroyed(function() {
+  delete Session.keys["length"]  //Reset filter
+});
+
 Template.postList.onRendered(function() {
   if(Darwin.device.match("phone")) {
-    Session.set("disableDonateBanner", true)  
+    Session.set("disableDonateBanner", true)
   }
 
   Meteor.call("kudosCount", Meteor.userId(), function(err, result) {

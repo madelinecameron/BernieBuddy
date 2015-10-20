@@ -1,57 +1,42 @@
 <template name="profile">
   {{#if currentUser}}
-        {{#if isOwnProfile}}
-        <form class="form-inline">
-          <div class="form-group">
-          </div>
-        </form>
-          <center>
-            <span class="badge">{{> avatar userId=this._id shape="circle" size="large" }} {{kudos}} kudos</span>
-            <h3>These are your posts!</h3>
-          </center><br/>
-          <div class="yaks">
-            <div class="form-style">
-              <div class="container">
-                <ul class="list-group">
-                  {{#each ownYaks}}
-                    {{> yakItem}}
-                  {{/each}}
-                </ul>
-              </div>
-            </div>
-          </div>
-        {{else}}
-        <center>
-          <span class="badge">{{> avatar userId=this._id shape="circle" size="large" }} {{kudos}} kudos</span>
-          <h3>Check out their posts!</h3>
-        </center><br/>
-        <div class="yaks">
-          <div class="form-style">
-            <div class="container">
-              <ul class="list-group">
-                {{#each ownYaks}}
-                  {{> yakItem}}
-                {{/each}}
-              </ul>
-            </div>
-          </div>
+    {{#if isOwnProfile}}
+      <center>
+        <span class="badge">{{> avatar userId=this._id shape="circle" size="large" }} {{kudos}} kudos</span>
+        <h3>These are your posts!</h3>
+        <div style="margin-top:-2rem">
+          <center>{{> filters}}</center>
         </div>
-        {{/if}}
-  {{else}}
-    <center>
-      <span class="badge">{{> avatar userId=this._id shape="circle" size="large" }} {{kudos}} kudos</span>
-      <h3>Check out their posts!</h3>
-    </center><br/>
-    <div class="yaks">
-      <div class="form-style">
-        <div class="container">
-          <ul class="list-group">
-            {{#each ownYaks}}
-              {{> yakItem}}
-            {{/each}}
-          </ul>
+      </center><br/>
+      <div class="yaks">
+        <div class="form-style">
+          <div class="container">
+            <ul class="list-group">
+              {{#each posts}}
+                {{> postItem}}
+              {{/each}}
+            </ul>
+          </div>
         </div>
       </div>
-    </div>
+    {{/if}}
   {{/if}}
+  <center>
+    <span class="badge">{{> avatar userId=this._id shape="circle" size="large" }} {{kudos}} kudos</span>
+    <h3>Check out their posts!</h3>
+    <div style="margin-top:2rem">
+      <center>{{> filters}}</center>
+    </div>
+  </center><br/>
+  <div class="yaks">
+    <div class="form-style">
+      <div class="container">
+        <ul class="list-group">
+          {{#each posts}}
+            {{> postItem}}
+          {{/each}}
+        </ul>
+      </div>
+    </div>
+  </div>
 </template>

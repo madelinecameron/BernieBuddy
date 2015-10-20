@@ -1,10 +1,11 @@
 Template.state.helpers({
   posts: function() {
+    console.log(this.state);
     if(Session.get("query") === "mostRecent" || !Session.get("query")) {
-      return Posts.find({}, { sort: { sticky: -1, createdAt: -1 }}).fetch()
+      return Posts.find({ location: this.state, anon: false }, { sort: { sticky: -1, createdAt: -1 }}).fetch()
     }
     else {
-      return Posts.find({}, { sort: { sticky: -1, score: -1 }}).fetch()
+      return Posts.find({ location: this.state, anon: false }, { sort: { sticky: -1, score: -1 }}).fetch()
     }
   }
 })

@@ -1,7 +1,7 @@
 /* CSS declarations go here */
 .navbar { background-color: #147FD7; }
-.brand { font-size: 3em; font-family: 'jubilat'; font-weight: 500;  color: #FFF }
-.brandMobile { font-size: 2em; font-family: 'jubilat'; font-weight: 500;  color: #FFF }
+.brand, .brand:focus { font-size: 3em; font-family: 'jubilat'; font-weight: 500;  color: #FFF }
+.brandMobile, .brandMobile:focus { font-size: 2em; font-family: 'jubilat'; font-weight: 500;  color: #FFF }
 .brandMobile:visited { color: #147FD7 }
 a:link { text-decoration: none;}
 a:hover { text-decoration: none;}

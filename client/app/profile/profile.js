@@ -14,13 +14,22 @@ Template.profile.onRendered(function() {
   })
 })
 
+Template.profile.onDestroyed(function() {
+  delete Session.keys["length"]  //Reset filter
+});
+
 Template.profile.helpers({
   isOwnProfile: function() {
     //If logged-in userID === context ID
     return Meteor.userId() === this._id
   },
-  ownYaks: function() {
-    return Yaks.find({ creatorId: this._id }).fetch().reverse()
+  posts: function() {
+    if(Session.get("query") === "mostRecent" || !Session.get("query")) {
+      return Posts.find({ creatorId: this._id }, { sort: { sticky: -1, createdAt: -1 }}).fetch()
+    }
+    else {
+      return Posts.find({ creatorId: this._id }, { sort: { sticky: -1, score: -1 }}).fetch()
+    }
   },
   kudos: function() {
     if(Meteor.userId() === this._id) {

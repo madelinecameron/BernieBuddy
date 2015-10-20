@@ -2,7 +2,7 @@ Template.storeItem.events({
   'click': function (event, err) {
     Session.set("kudos", 1)
     Session.set("debugMsg", this.id);
-    Session.set("debugMsg", Session.get("debugMsg") + store.get("berniebuddy.50").price)
+    Session.set("debugMsg", Session.get("debugMsg") + " " + store.get("$1 donation for 50 kudos").price)
     store.order(this.id)
   }
 })
