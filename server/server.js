@@ -109,5 +109,18 @@ Meteor.methods({
     }
 
     return totalKudos
+  },
+  'chargeCard': function(stripeToken, amount) {
+    var Stripe = StripeAPI('sk_test_tIqkZCYayMs99W4WJjfwO5do');
+
+    Stripe.charges.create({
+      amount: amount * 100, //in cents
+      currency: 'usd',
+      source: stripeToken
+    }, function(err, charge) {
+      if(charge.paid) {
+        console.log("Adding " + amount * 50 + " to kudos!") 
+      }
+    });
   }
 })

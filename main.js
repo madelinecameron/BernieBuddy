@@ -25,29 +25,11 @@ if(Meteor.isServer) {
   })
 }
 
-if(Meteor.isCordova) {
-  
-  store.verbosity = store.DEBUG
-  var donationTiers = [
-    { "$1": "50" },
-    { "$3": "150" },
-    { "$5": "250" }
-  ]
-  _.each(donationTiers, function(item) {
-    var key = Object.keys(item)[0]
-    store.register({
-      id: "berniebuddy." + item[key],
-      alias: key + " donation for " + item[key] + " kudos",
-      type: store.CONSUMABLE
-    })
-  })
-
-  store.error(function(err) {
-    alert(err);
-  })
-}
-
 if(Meteor.isClient) {
+  Meteor.startup(function() {
+    Stripe.setPublishableKey('pk_test_OGnwLaTmq3rbvcfIQNFZefBh')
+  })
+  
   Meteor.subscribe("profilePics")
 
   Deps.autorun(function() {

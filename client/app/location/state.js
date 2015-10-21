@@ -38,3 +38,5 @@ Template.state.onRendered(function() {
     Session.set("kudos", result)
   })
 })
+
+Like I am struggling with suicidal thoughts and slowly slipping back into self-harming (along with self-esteem issues but that is likely a no duh). Like I am not struggling terribly but I really just need some kind of support until I graduate in December.
