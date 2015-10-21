@@ -1,3 +1,5 @@
+var currentId = null;
+
 Template.donate.onCreated(function () {
   Session.set("disableDonateBanner", true)
   Session.set("amount", 1)
@@ -5,11 +7,7 @@ Template.donate.onCreated(function () {
 });
 
 Template.donate.onRendered(function() {
-  if(Meteor.isCordova) {
-    store.ready(function() {
-      store.refresh();
-    });
-  }
+  currentId = Meteor.userId()
 });
 
 Template.donate.onDestroyed(function () {
@@ -56,16 +54,12 @@ Template.donate.events({
         exp_year: expYr,
     }, function(status, response) {
         stripeToken = response.id;
-        console.log(response);
-        Meteor.call('chargeCard', stripeToken, amount > 1 ? amount : 1);
+        Meteor.call('chargeCard', stripeToken, amount > 1 ? amount : 1, currentId);
     });
   }
 })
 
 Template.donate.helpers({
-  isCordova: function () {
-    return Meteor.isCordova
-  },
   isMobile: function () {
     return Darwin.device.match("phone")
   },
@@ -85,7 +79,6 @@ Template.donate.helpers({
   		window.location.replace("/")
   	},
   	"dragright .container": function(event, error) {
-  		console.log("SlowSwipe")
       window.location.replace("/")
   	}
   }

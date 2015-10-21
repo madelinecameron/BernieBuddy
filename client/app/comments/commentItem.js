@@ -34,6 +34,7 @@ Template.commentItem.events({
       $.extend(update, update, { $addToSet: { upVoted : Meteor.userId() } })  //Add current user to list of upvoters
 
       Comments.update(selectedId, update)
+      Meteor.users.update(comment.creatorId, { $inc: { "kudos": netUpdateScore } })
     }
   },
   "click a.no": function(event) {  //Downvote
@@ -68,6 +69,7 @@ Template.commentItem.events({
       $.extend(update, update, { $addToSet: { downVoted : Meteor.userId() } })
 
       Comments.update(selectedId, update)
+      Meteor.users.update(comment.creatorId, { $inc: { "kudos": netUpdateScore } })
 
       if (comment.score <= -10 && !comment.adminPost) {  //Delete post if score is below threshold and it isn"t an admin post
         console.log("delete")

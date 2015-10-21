@@ -5,7 +5,7 @@ Template.listItem.events({
 
   "click a.yes": function(event) {
     if(Meteor.user()) {
-      var postId = Posts.findOne({ _id: this._id }),
+      var post = Posts.findOne({ _id: this._id }),
           update = {},
           netUpdateScore = 0,
           selectedId = Session.get("selected_post"),
@@ -17,7 +17,7 @@ Template.listItem.events({
       }
 
       //Undo upvote!
-      if ($.inArray(Meteor.userId(), postId.upVoted) !== -1) {
+      if ($.inArray(Meteor.userId(), post.upVoted) !== -1) {
         Posts.update(selectedId, { $pull: {
             upVoted : Meteor.userId()
           },
@@ -27,7 +27,7 @@ Template.listItem.events({
         return
       }
       //Downvote!
-      if ($.inArray(Meteor.userId(), postId.downVoted) !== -1) {
+      if ($.inArray(Meteor.userId(), post.downVoted) !== -1) {
         $.extend(update, update, { $pull: { downVoted : Meteor.userId() } })
         netUpdateScore += 1
       }
@@ -37,6 +37,7 @@ Template.listItem.events({
       $.extend(update, update, { $addToSet: { upVoted : Meteor.userId() } })
 
       Posts.update(selectedId, update)
+      Meteor.users.update(post.creatorId, { $inc: { "kudos": netUpdateScore } })
     }
   },
   "click a.no": function(event) {
@@ -72,6 +73,7 @@ Template.listItem.events({
       $.extend(update, update, { $addToSet: { downVoted : Meteor.userId() } })
 
       Posts.update(selectedId, update)
+      Meteor.users.update(post.creatorId, { $inc: { "kudos": netUpdateScore } })
 
       if (post.score <= -10 && !post.adminPost) {
         console.log("delete")

@@ -4,7 +4,6 @@ Template.userBox.onCreated(function() {
   })
 })
 
-
 Template.userBox.helpers({
   kudos: function() {
     return Session.get("kudos")

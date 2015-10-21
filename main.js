@@ -1,6 +1,7 @@
 Posts = new Mongo.Collection("posts")
 Comments = new Mongo.Collection("comments")
 Towns = new Mongo.Collection("towns")
+//Fiber = Meteor.require('fibers')
 
 if(Meteor.isServer) {
   Meteor.users.deny({
@@ -29,7 +30,7 @@ if(Meteor.isClient) {
   Meteor.startup(function() {
     Stripe.setPublishableKey('pk_test_OGnwLaTmq3rbvcfIQNFZefBh')
   })
-  
+
   Meteor.subscribe("profilePics")
 
   Deps.autorun(function() {
