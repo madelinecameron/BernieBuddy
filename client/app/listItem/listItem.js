@@ -96,6 +96,10 @@ Template.listItem.onCreated(function() {
   })
 })
 
+Template.listItem.onRendered(function() {
+  $("#score" + this.data._id).css("margin-left", (-0.25 * ($("#score" + this.data._id).text().length - 1)).toString() + "rem")
+})
+
 Template.listItem.helpers({
   madeDownvote: function() {
     return _.contains(this.downVoted, Meteor.userId())
