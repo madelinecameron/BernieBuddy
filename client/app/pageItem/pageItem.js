@@ -104,6 +104,13 @@ Template.pageItem.onCreated(function() {
   })
 })
 
+Template.pageItem.onRendered(function() {
+  $("#score" + this.data._id).css("margin-left", (-0.25 * ($("#score" + this.data._id).text().length - 1)).toString() + "rem")
+  if(this.data.location === "Anonymous Location") {
+    $("#location" + this.data._id).attr("href", "#").removeClass("btn").addClass("fakeBtn")
+  }
+})
+
 Template.pageItem.helpers({
   madeDownvote: function() {
     return _.contains(this.downVoted, Meteor.userId())

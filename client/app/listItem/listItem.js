@@ -98,6 +98,9 @@ Template.listItem.onCreated(function() {
 
 Template.listItem.onRendered(function() {
   $("#score" + this.data._id).css("margin-left", (-0.25 * ($("#score" + this.data._id).text().length - 1)).toString() + "rem")
+  if(this.data.location === "Anonymous Location") {
+    $("#location" + this.data._id).attr("href", "#").removeClass("btn").addClass("fakeBtn")
+  }
 })
 
 Template.listItem.helpers({

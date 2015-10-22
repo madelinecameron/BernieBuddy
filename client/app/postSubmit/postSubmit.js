@@ -1,4 +1,12 @@
 Template.postSubmit.events({
+  "keydown #submitPostText": function (event, err) {
+    var keyCode = event ? (event.which ? event.which : event.keyCode) : event.keyCode;
+    if(keyCode == 13)  //Enter
+    {
+        $("#postBox").collapse('hide')
+        $('.postSubmitForm').submit()
+    }
+  },
   "submit .postSubmitForm": function(event, err) {
 
     event.preventDefault()
@@ -41,7 +49,6 @@ Template.postSubmit.events({
         Meteor.call("postInsert", postItem)
 
         delete Session.keys["length"]
-        $(event.target.post).val("")
 
         $("#openPostBox").show("slow")
       }, function() {
@@ -51,7 +58,6 @@ Template.postSubmit.events({
         Meteor.call("postInsert", postItem)
 
         delete Session.keys["length"]
-        $(event.target.post).val("")  //Clear text box
 
         $("#openPostBox").show("slow")
       })
@@ -63,10 +69,10 @@ Template.postSubmit.events({
       Meteor.call("postInsert", postItem)
 
       delete Session.keys["length"]
-      $(event.target.post).val("")  //Clear text box
-
       $("#openPostBox").show("slow")
     }
+
+    $("#submitPostText").val("").blur()
 
   },
   "keyup #submitPostText": function(e) {
