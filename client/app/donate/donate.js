@@ -3,7 +3,8 @@ var Schema = {}
 Schema.donatePage = new SimpleSchema({
   amount: {
     type: Number,
-    min: 1
+    min: 1,
+    optional: false
   },
   creditCard: {
     type: String,
@@ -37,10 +38,10 @@ Template.donate.onCreated(function () {
 Template.donate.onRendered(function() {
   currentId = Meteor.userId()
   this.autorun(function(){
-    $('#creditCardNum').payment('formatCardNumber');
-    $('#expiration').payment('formatCardExpiry');
-    $('#cvc').payment('formatCardCVC');
-});
+    $('#card-num').payment('formatCardNumber');
+    $('#card-exp').payment('formatCardExpiry');
+    $('#card-cvc').payment('formatCardCVC');
+  });
 });
 
 Template.donate.onDestroyed(function () {
@@ -74,21 +75,27 @@ Template.donate.events({
     Session.set("kudosTotal", kudosTotal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
   },
   "click #submit": function(e) {
-    var ccNum = $('#card-num').val(),
+    e.preventDefault();
+
+    var ccNum = $('#card-num').val().split(" ").join(""),
     cvc = $('#card-cvc').val(),
-    expMo = $('#card-expMo').val(),
-    expYr = $('#card-expYr').val(),
+    exp = $('#card-exp').val().split(" ").join(""),
     amount = $('#amount').val()
 
     Stripe.card.createToken({
         number: ccNum,
         cvc: cvc,
-        exp_month: expMo,
-        exp_year: expYr,
+        exp_month: exp.split('/')[0],
+        exp_year: exp.split('/')[1]
     }, function(status, response) {
         stripeToken = response.id;
         Meteor.call('chargeCard', stripeToken, amount > 1 ? amount : 1, currentId);
+        $("#checkout").modal("hide")
+        $("#thankYou").modal("show")
     });
+  },
+  "hide.bs.modal #thankYou": function(e) {
+    window.location.replace('/');  //Redirect
   }
 })
 
