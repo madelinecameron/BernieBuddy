@@ -43,6 +43,14 @@ Template.postList.onCreated(function() {
   setTimeout(function() {
     console.log("Loaded")
   }, 250)
+
+  if(Meteor.user()) {
+    console.log("User")
+    if(!Meteor.user().kudos) {
+      console.log("No kudos!")
+      Meteor.call("transferAggKudosToUserKudos", Meteor.userId())
+    }
+  }
 })
 
 Template.postList.onDestroyed(function() {

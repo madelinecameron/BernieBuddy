@@ -69,6 +69,50 @@ Meteor.methods({
   kudosCount: function(id) {
     return Meteor.users.findOne({ _id: id }, { kudos: 1 }).kudos;
   },
+  transferAggKudosToUserKudos: function(id) {
+    var postKudos = Posts.aggregate([
+      {
+        $match: {
+          creatorId: id
+        }
+      },
+      {
+        $group: {
+          _id: null,
+          kudos: { $sum: "$score" }
+        }
+      }
+    ]);
+
+    var commentKudos = Comments.aggregate([
+      {
+        $match: {
+          creatorId: id
+        }
+      },
+      {
+        $group: {
+          _id: null,
+          kudos: { $sum: "$score" }
+        }
+      }
+    ]);
+
+    var totalKudos = 0;
+    if(postKudos.length > 0 && commentKudos.length > 0) {
+      totalKudos = postKudos[0].kudos + commentKudos[0].kudos;
+    }
+    else {
+      if(postKudos.length > 0) {
+        totalKudos = postKudos[0].kudos;
+      }
+      if(commentKudos.length > 0) {  //If we are down here, we know one of them is null and we know comment && post can't not be null
+        totalKudos = commentKudos[0].kudos;
+      }
+    }
+
+    Meteor.users.update(id, { $set: { "kudos": totalKudos } })
+  },
   chargeCard: function(stripeToken, amount, user) {
     var Stripe = StripeAPI('sk_test_tIqkZCYayMs99W4WJjfwO5do');
 
