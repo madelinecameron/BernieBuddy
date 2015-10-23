@@ -1,7 +1,7 @@
 Template.postSubmit.events({
   "keydown #submitPostText": function (event, err) {
-    var keyCode = event ? (event.which ? event.which : event.keyCode) : event.keyCode;
-    if(keyCode == 13)  //Enter
+    var keyCode = event.which;
+    if(keyCode == 13 && !event.shiftKey)  //If enter pressed and not also shift
     {
         $("#postBox").collapse('hide')
         $('.postSubmitForm').submit()

@@ -69,7 +69,8 @@ Meteor.methods({
   kudosCount: function(id) {
     return Meteor.users.findOne({ _id: id }, { kudos: 1 }).kudos;
   },
-  'chargeCard': function(stripeToken, amount, user) {
+  chargeCard: function(stripeToken, amount, user) {
+    console.log("Submit")
     var Stripe = StripeAPI('sk_test_tIqkZCYayMs99W4WJjfwO5do');
 
     var syncCharge = Meteor.wrapAsync(Stripe.charges.create, Stripe.charges);

@@ -1,4 +1,32 @@
 var currentId = null;
+var Schema = {}
+Schema.donatePage = new SimpleSchema({
+  amount: {
+    type: Number,
+    min: 1
+  },
+  creditCard: {
+    type: String,
+    autoform: {
+      type: "payments/creditCard"
+    },
+    custom: PaymentsHelpers.CreditCardValidation
+  },
+  cvc: {
+    type: String,
+    autoform: {
+      type: "payments/creditCardCVC"
+    },
+    custom: PaymentsHelpers.CVCValidation
+  },
+  expiration: {
+    type: String,
+    autoform: {
+      type: "payments/creditCardExpiry"
+    },
+    custom: PaymentsHelpers.CCExpiryValidation
+  }
+})
 
 Template.donate.onCreated(function () {
   Session.set("disableDonateBanner", true)
@@ -8,6 +36,11 @@ Template.donate.onCreated(function () {
 
 Template.donate.onRendered(function() {
   currentId = Meteor.userId()
+  this.autorun(function(){
+    $('#creditCardNum').payment('formatCardNumber');
+    $('#expiration').payment('formatCardExpiry');
+    $('#cvc').payment('formatCardCVC');
+});
 });
 
 Template.donate.onDestroyed(function () {
@@ -16,28 +49,28 @@ Template.donate.onDestroyed(function () {
 
 Template.donate.events({
   "keyup #amount": function(e) {
-    var amount = $("#amount").val().replace(',', '')
+    var amount = parseFloat($("#amount").val()) >= 1 ? $("#amount").val().split(',').join('') : 1
     var kudosTotal = (Math.ceil(amount * 50) > 0) ? Math.ceil(amount * 50) : 50
 
     //.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","); to put commas
-    Session.set("amount", amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+    Session.set("amount", amount >= 1 ? parseFloat(amount).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") : 1);
     Session.set("kudosTotal", kudosTotal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
 
   },
   "mouseup #amount": function(e) {
-    var amount = $("#amount").val().replace(',', '')
+    var amount = parseFloat($("#amount").val()) >= 1 ? $("#amount").val().split(',').join('') : 1
     var kudosTotal = (Math.ceil(amount * 50) > 0) ? Math.ceil(amount * 50) : 50
 
     //.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","); to put commas
-    Session.set("amount", amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+    Session.set("amount", amount >= 1 ? parseFloat(amount).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") : 1);
     Session.set("kudosTotal", kudosTotal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
   },
   "change #amount": function(e) {
-    var amount = $("#amount").val().replace(',', '')
+    var amount = parseFloat($("#amount").val()) >= 1 ? $("#amount").val().split(',').join('') : 1
     var kudosTotal = (Math.ceil(amount * 50) > 0) ? Math.ceil(amount * 50) : 50
 
     //.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","); to put commas
-    Session.set("amount", amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+    Session.set("amount", amount >= 1 ? parseFloat(amount).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") : 1);
     Session.set("kudosTotal", kudosTotal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
   },
   "click #submit": function(e) {
@@ -72,6 +105,9 @@ Template.donate.helpers({
   kudosTotal: function() {
     return Session.get("kudosTotal") ? Session.get("kudosTotal") : 50
   },
+  errors: function() {
+    return Session.get("errors")
+  },
   gestures:
   {
   	"swiperight .container": function(event, error) {
@@ -81,5 +117,8 @@ Template.donate.helpers({
   	"dragright .container": function(event, error) {
       window.location.replace("/")
   	}
+  },
+  donatePage: function() {
+    return Schema.donatePage;
   }
 })

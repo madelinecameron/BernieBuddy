@@ -1,7 +1,6 @@
 Posts = new Mongo.Collection("posts")
 Comments = new Mongo.Collection("comments")
 Towns = new Mongo.Collection("towns")
-//Fiber = Meteor.require('fibers')
 
 if(Meteor.isServer) {
   Meteor.users.deny({
