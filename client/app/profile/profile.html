@@ -1,6 +1,20 @@
 <template name="profile">
   <center>
-    <span class="badge">{{> avatar userId=this._id shape="circle" size="large" }} {{kudos}} kudos</span>
+    <div class="container">
+    	<div class="row">
+        <div class="profile-header-container">
+      		<div class="profile-header-img">
+            <div class="img-circle">
+              <center><div style="z-index:100; position:relative">{{> avatar userId=this._id shape="circle" size="profile"}}</div></center>
+              <!-- badge -->
+              <div class="rank-label-container" style="z-index:101; position:relative">
+                  <span class="label label-default rank-label">{{kudos}} kudos</span>
+              </div>
+            </div>
+          </div>
+    	   </div>
+       </div>
+    </div>
     <h3>Check out {{#if isOwnProfile}}your{{else}}their{{/if}} posts!</h3>
     <div style="margin-top:2rem">
       <center>{{> filters}}</center>

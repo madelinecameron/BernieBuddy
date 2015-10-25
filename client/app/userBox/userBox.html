@@ -22,7 +22,30 @@
             </div>
           {{/if}}
         {{else}}
-            <a href="/login" type="button" class="btn btn-primary">Login</a>
+          {{#if isMobile}}
+            <a href="/accounts" type="button" class="btn btn-primary">Login</a>
+          {{else}}
+            <a href="#" role="button" data-toggle="modal" data-target="#login-modal" class="btn btn-primary">Login</a>
+            <div class="modal" id="login-modal" data-backdrop="false">
+              <div class="modal-dialog">
+                  <div class="modal-content">
+                      <div class="modal-body">
+                        <button type="button" class="close" data-dismiss="modal" id="closeModal">&times;</button>
+                        <div class="container">
+                          <div style="border:0">
+                            <div>
+                              <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-social-login btn-facebook"><i class="fa fa-facebook"></i> Sign in with Facebook</button>
+                                <button type="button" class="btn btn-social-login btn-twitter" style="margin-left:5px"><i class="fa fa-twitter"></i> Sign in with Twitter</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+              </div>
+            </div>
+            {{/if}}
         {{/if}}
     </div>
 

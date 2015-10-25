@@ -131,6 +131,9 @@ Template.postSubmit.events({
         }, function(error, result) {
           photoLoc = result.secure_url
     });
+  },
+  'click #isImagePost': function() {
+    $("#fileUpload").toggle();
   }
 })
 

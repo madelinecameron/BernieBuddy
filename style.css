@@ -224,6 +224,61 @@ a.post:hover{
 .corner-ribbon.berntOrange{background: #d76c14;}
 .corner-ribbon.yellow{background: #ec0;}
 
+.avatarContainer {
+    height: 100%;
+    background-repeat: no-repeat;
+    background-image: linear-gradient(rgb(104, 145, 162), rgb(12, 97, 33));
+}
+/**
+ * Profile image component
+ */
+.profile-header-container{
+    margin: 0 auto;
+    text-align: center;
+}
+
+.avatar > img {
+    width: 120px;
+    height: 120px;
+    border: 2px solid #147FD7;
+}
+
+.profile-header {
+    margin-top: 0px;
+}
+
+/**
+ * Ranking component
+ */
+.rank-label-container {
+    margin-top: -19px;
+    /* z-index: 1000; */
+    text-align: center;
+}
+
+.label.label-default.rank-label {
+    background-color: #147FD7;
+    padding: 5px 10px 5px 10px;
+    border-radius: 27px;
+}
+
+.fileUpload {
+    position: relative;
+    overflow: hidden;
+    margin: 10px;
+}
+.fileUpload input.upload {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
 @media (min-width: 1300px) {
   .container{
     width: 55%;

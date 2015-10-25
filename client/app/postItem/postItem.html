@@ -1,4 +1,4 @@
-<template name="listItem">
+<template name="postItem">
   <div class="post">
     <li class="list-group-item">
       <a href="{{pathFor 'postPage' _id=_id}}" class="post">
@@ -16,25 +16,22 @@
                       {{#if anon}}<a class="fakeBtn" style="margin-left: 1.5rem">Anonymous</a>{{/if}}
                 {{#if isMobile}}
                   <br/><span class="fakeBtn">{{commentsCount}} comments</span>
-                  <br/><span class="fakeBtn"><a id="location{{_id}}" class="btn" href="/location/{{location}}">{{location}}</a></span>
+                  <br/><span class="fakeBtn"><a class="btn" href="/location/{{location}}">{{location}}</a></span>
                   <br/><span class="sm-fakeBtn">{{time}}</span>
                 {{else}}
-                  {{#unless anon}}<span class="fakeBtn" style="margin-left:-2.5rem"> from <a id="location{{_id}}" class="btn" style="margin-left:-1.30rem; margin-top:-0.15rem" href="/location/{{location}}">{{location}}</a></span>{{/unless}}
+                  {{#unless anon}}<span class="fakeBtn" style="margin-left:-2.5rem"> from <a class="btn" style="margin-left:-1.30rem; margin-top:-0.15rem" href="/location/{{location}}">{{location}}</a></span>{{/unless}}
                   <br/><span class="fakeBtn">{{commentsCount}} comments</span>
                   <br/><span class="sm-fakeBtn">{{time}}</span>
                 {{/if}}
-                <a href="#" id="reportPost" style="margin-left:0.5rem; font-size:11px">Report</a>
               </div>
             </div>
             <div id="voteButtons" class="col-xs-2 col-md-1">
               {{#if sticky}}
                 <a class="fakeBtn pull-right fa fa-thumb-tack" href="#"></a>
               {{else}}
-              <div style="margin-left:-0.75rem">
-                <a style="margin-left:-0.15rem" class="btn btn-small {{#if currentUser}}yes{{#if madeUpvote}} vote {{/if}}{{/if}} fa fa-chevron-up" href="{{#if currentUser}}#{{else}}/login{{/if}}"></a><br/>
-                <a class="btn fakeBtn" id="score{{_id}}" href="#" style="line-height:1.5rem">{{score}}</a><br/>
-                <a style="margin-left:-0.15rem" class="btn btn-small {{#if currentUser}}no{{#if madeDownvote}} vote {{/if}} {{/if}} fa fa-chevron-down" href="{{#if currentUser}}#{{else}}/login{{/if}}"></a>
-              </div>
+                <a class="btn pull-right btn-small {{#if currentUser}}yes{{#if madeUpvote}} vote {{/if}}{{/if}} fa fa-chevron-up" href="{{#if currentUser}}#{{else}}/login{{/if}}"></a><br/>
+                <a class="fakeBtn pull-right" href="#" style="margin-right:0.3rem;line-height:1.5rem">{{score}}</a><br/>
+                <a class="btn pull-right btn-small {{#if currentUser}}no{{#if madeDownvote}} vote {{/if}} {{/if}} fa fa-chevron-down" href="{{#if currentUser}}#{{else}}/login{{/if}}"></a>
               {{/if}}
             </div>
           </div>

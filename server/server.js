@@ -136,5 +136,16 @@ Meteor.methods({
         Meteor.users.update(user, { $inc: { "kudos": amount * 50 } })
       }
     }
+  },
+  reportPost: function(postId) {
+    HTTP.post("https://hooks.slack.com/services/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",
+    {
+      data: {
+        text: "Post reported: <http://berniebuddydev.herokuapp.com/posts/" + postId + ">"
+      }
+    },
+    function() {
+      console.log("ReportedForSure!")
+    });
   }
 })

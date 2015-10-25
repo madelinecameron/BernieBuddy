@@ -1,4 +1,4 @@
-Template.listItem.events({
+Template.postItem.events({
   "click": function() {
     Session.set("selected_post", this._id)
   },
@@ -80,16 +80,10 @@ Template.listItem.events({
         Posts.remove({ _id: this._id })
       }
     }
-  },
-  "click #reportPost": function(e) {
-    e.preventDefault();
-    $("#reportPost").toggle();
-    Meteor.call("reportPost", this._id);
-    console.log("Reported!")
   }
 })
 
-Template.listItem.onCreated(function() {
+Template.postItem.onCreated(function() {
   var id = this.data.creatorId
   if(!Session.get(id) && id !== null) {
     Meteor.call("getUserName", id, function(err, result) {
@@ -102,14 +96,7 @@ Template.listItem.onCreated(function() {
   })
 })
 
-Template.listItem.onRendered(function() {
-  $("#score" + this.data._id).css("margin-left", (-0.25 * ($("#score" + this.data._id).text().length - 1)).toString() + "rem")
-  if(this.data.location === "Anonymous Location") {
-    $("#location" + this.data._id).attr("href", "#").removeClass("btn").addClass("fakeBtn")
-  }
-})
-
-Template.listItem.helpers({
+Template.postItem.helpers({
   madeDownvote: function() {
     return _.contains(this.downVoted, Meteor.userId())
   },
@@ -131,7 +118,7 @@ Template.listItem.helpers({
     }
   },
   time: function() {
-    var dateCreatedAt = Posts.findOne({ _id: this._id }, {createdAt: 1 })
+    var dateCreatedAt = Posts.findOne({ _id: this._id }, { createdAt: 1 })
 
     if(isNaN(dateCreatedAt.createdAt)) { return "Forever" }
     var diff = new Date().getTime() - new Date(dateCreatedAt.createdAt).getTime()

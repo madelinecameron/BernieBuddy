@@ -2,6 +2,11 @@ Posts = new Mongo.Collection("posts")
 Comments = new Mongo.Collection("comments")
 Towns = new Mongo.Collection("towns")
 
+Avatar.setOptions({
+  imageSizes: {
+    'profile': '120'
+  }
+})
 if(Meteor.isServer) {
   Meteor.users.deny({
     update: function() {
@@ -23,7 +28,7 @@ if(Meteor.isServer) {
   Meteor.publish("profilePics", function() {
     return Meteor.users.find({}, { "services.twitter.profile_image_url_https": 1, "services.facebook.id": 1 })
   })
-  
+
   S3.config = {
     key: process.env.S3_KEY,
     secret: process.env.S3_SECRET,
