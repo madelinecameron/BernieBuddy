@@ -23,6 +23,12 @@ if(Meteor.isServer) {
   Meteor.publish("profilePics", function() {
     return Meteor.users.find({}, { "services.twitter.profile_image_url_https": 1, "services.facebook.id": 1 })
   })
+  
+  S3.config = {
+    key: process.env.S3_KEY,
+    secret: process.env.S3_SECRET,
+    bucket: 'berniebuddydev'
+  };
 }
 
 if(Meteor.isClient) {

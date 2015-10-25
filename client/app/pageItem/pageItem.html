@@ -3,6 +3,11 @@
     <li class="list-group-item">
       <a href="#" class="post">
         <div class="row" id="content">
+            {{#if hasPhoto}}
+              <div style="padding:5px; margin-top:-10px">
+                <img src="{{photoLoc}}" class="img-responsive">
+              </div><br/>
+            {{/if}}
             <div id="textContainer" class="col-xs-10 col-md-11">
               <p class="break-el" style="{{#if sticky}}white-space:pre-line{{/if}}">{{post}}</p>
               <div>

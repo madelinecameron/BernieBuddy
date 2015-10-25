@@ -150,5 +150,9 @@ Template.listItem.helpers({
   },
   isMobile: function() {
     return Darwin.device.match("phone")
+  },
+  hasPhoto: function() {
+    if(this.photoLoc) { return true; }
+    else { return false; }
   }
 })

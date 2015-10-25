@@ -1,3 +1,5 @@
+var photoLoc = null
+
 Template.postSubmit.events({
   "keydown #submitPostText": function (event, err) {
     var keyCode = event.which;
@@ -18,6 +20,12 @@ Template.postSubmit.events({
     postItem["anonymous"] = false
     postItem["sticky"] = false
     postItem["adminPost"] = false
+
+    if($("#file")[0].files[0]) {
+      console.log("File uploaded");
+      console.log(photoLoc);
+      postItem["photoLoc"] = photoLoc
+    }
 
     if($("#postAnon").prop("checked") || !postItem["creatorId"]) {
       postItem["anonymous"] = true
@@ -72,7 +80,9 @@ Template.postSubmit.events({
       $("#openPostBox").show("slow")
     }
 
+    $(".postSubmitForm").trigger('reset');
     $("#submitPostText").val("").blur()
+    S3.collection.remove({})
 
   },
   "keyup #submitPostText": function(e) {
@@ -110,6 +120,17 @@ Template.postSubmit.events({
       }
     }
     Session.set("length", length)
+  },
+  "change #file": function() {  //On selection of file
+    var file = $("#file")[0].files
+
+    console.log(file);
+
+    S3.upload({
+            files: file
+        }, function(error, result) {
+          photoLoc = result.secure_url
+    });
   }
 })
 
@@ -120,5 +141,18 @@ Template.postSubmit.onCreated(function() {
 Template.postSubmit.helpers({
   length: function() {
     return Session.get("length")
+  },
+  files: function(){
+    var photo = S3.collection.find().fetch();
+    if(photo.length > 0) {
+      if(photo[0].percent_uploaded < 100) {
+        $("#submitButton").prop("disabled", true)
+      }
+      else {
+        $("#submitButton").prop("disabled", false)
+      }
+    }
+
+    return photo
   }
 })

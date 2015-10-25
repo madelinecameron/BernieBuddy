@@ -7,6 +7,17 @@
               class="post-form form-control" name="submitPostText"
               placeholder="Type your post here..." style="resize: none"></textarea>
             <span id="lengthMonitor">{{length}}/500</span><br/>
+            <input type="file" accept="image/*" name="file" id="file">
+
+            {{#each files}}
+              <br/><div class="progress">
+                <div class="progress-bar" role="progressbar" aria-valuenow="{{percent_uploaded}}" aria-valuemin="0" aria-valuemax="100" style="width:{{percent_uploaded}}%">
+                  <span class="sr-only">{{percent_uploaded}}% Complete</span>
+                </div>
+              </div>
+              {{percent_uploaded}}
+            {{/each}}
+
             {{> postOptions}}
             <input type="submit" id="submitButton" value="Tap Here To Create Post" data-toggle="collapse"
               data-target="#postBox" aria-expanded="false"

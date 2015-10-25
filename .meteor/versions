@@ -57,6 +57,7 @@ jparker:crypto-md5@0.1.1
 jparker:gravatar@0.3.1
 jquery@1.11.4
 launch-screen@1.0.4
+lepozepo:s3@5.1.2
 less@2.5.0_3
 livedata@1.0.15
 localstorage@1.0.5
@@ -75,6 +76,7 @@ monbro:mongodb-mapreduce-aggregation@1.0.1
 mongo@1.1.2
 mongo-id@1.0.1
 mrgalaxy:stripe@2.1.0
+mrt:jquery-visible@1.2.0
 natestrauser:font-awesome@4.4.0
 npm-mongo@1.4.39_1
 oauth@1.1.6

@@ -92,6 +92,7 @@ Template.pageItem.events({
 })
 
 Template.pageItem.onCreated(function() {
+  console.log(this)
   var id = this.data.creatorId
   if(!Session.get(id) && id !== null) {
     Meteor.call("getUserName", id, function(err, result) {
@@ -161,5 +162,9 @@ Template.pageItem.helpers({
   },
   userCanDelete: function() {
     return this.creatorId === Meteor.userId() || Meteor.user().isAdmin  //If creator is currently logged in user
+  },
+  hasPhoto: function() {
+    if(this.photoLoc) { return true; }
+    else { return false; }
   }
 })

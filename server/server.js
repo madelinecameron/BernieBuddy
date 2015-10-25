@@ -29,7 +29,8 @@ Meteor.methods({
       createdAt: new Date(),
       sticky: post.sticky,
       anon: post.anonymous,
-      adminPost: post.adminPost
+      adminPost: post.adminPost,
+      photoLoc: post.photoLoc
     })
   },
   commentInsert: function(comment) {
@@ -67,7 +68,13 @@ Meteor.methods({
     return Comments.find({ postId: id }).count()
   },
   kudosCount: function(id) {
-    return Meteor.users.findOne({ _id: id }, { kudos: 1 }).kudos;
+    var userResult = Meteor.users.findOne({ _id: id }, { kudos: 1 });
+    if(userResult) {  //To prevent null objects
+      return userResult.kudos;
+    }
+    else {
+      return 0
+    }
   },
   transferAggKudosToUserKudos: function(id) {
     var postKudos = Posts.aggregate([
