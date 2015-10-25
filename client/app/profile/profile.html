@@ -1,29 +1,7 @@
 <template name="profile">
-  {{#if currentUser}}
-    {{#if isOwnProfile}}
-      <center>
-        <span class="badge">{{> avatar userId=this._id shape="circle" size="large" }} {{kudos}} kudos</span>
-        <h3>These are your posts!</h3>
-        <div style="margin-top:-2rem">
-          <center>{{> filters}}</center>
-        </div>
-      </center><br/>
-      <div class="yaks">
-        <div class="form-style">
-          <div class="container">
-            <ul class="list-group">
-              {{#each posts}}
-                {{> postItem}}
-              {{/each}}
-            </ul>
-          </div>
-        </div>
-      </div>
-    {{/if}}
-  {{/if}}
   <center>
     <span class="badge">{{> avatar userId=this._id shape="circle" size="large" }} {{kudos}} kudos</span>
-    <h3>Check out their posts!</h3>
+    <h3>Check out {{#if isOwnProfile}}your{{else}}their{{/if}} posts!</h3>
     <div style="margin-top:2rem">
       <center>{{> filters}}</center>
     </div>
@@ -33,7 +11,7 @@
       <div class="container">
         <ul class="list-group">
           {{#each posts}}
-            {{> postItem}}
+            {{> listItem}}
           {{/each}}
         </ul>
       </div>

@@ -19,6 +19,22 @@ Template.accounts.events({
   }
 })
 
+Template.accounts.helpers({
+  isMobile: function () {
+    return Darwin.device.match("phone")
+  },
+  gestures:
+  {
+  	"swiperight .container": function(event, error) {
+  		console.log("swipe")
+  		window.location.replace("/")
+  	},
+  	"dragright .container": function(event, error) {
+      window.location.replace("/")
+  	}
+  }
+})
+
 Template.accounts.onCreated(function() {
   Session.set("disableDonateBanner", false)
 })

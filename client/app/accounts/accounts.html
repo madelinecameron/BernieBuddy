@@ -1,6 +1,7 @@
 <template name="accounts">
+  {{#HammerTouchArea gestureMap=gestures}}
   {{#unless currentUser}}
-    <div class="form-style">
+    <div class="form-style" draggable="{{isMobile}}">
       <div class="container">
         <div class="list-group-item">
           <div class="pagination-centered">
@@ -14,4 +15,5 @@
       </div>
     </div>
   {{/unless}}
+  {{/HammerTouchArea}}
 </template>

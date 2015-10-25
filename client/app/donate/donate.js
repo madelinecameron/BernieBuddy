@@ -46,6 +46,7 @@ Template.donate.onRendered(function() {
 
 Template.donate.onDestroyed(function () {
   Session.set("disableDonateBanner", false)
+  $("#checkout").modal("hide")
 })
 
 Template.donate.events({

@@ -9,7 +9,6 @@ Template.profile.onCreated(function () {
 
 Template.profile.onRendered(function() {
   Meteor.call("kudosCount", Meteor.userId(), function(err, result) {
-    console.log("KudosRefresh")
     Session.set("kudos", result)
   })
 })

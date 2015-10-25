@@ -1,6 +1,6 @@
 <template name="postPage">
+	{{#HammerTouchArea gestureMap=gestures}}
 		<div class="form-style" draggable="{{isMobile}}">
-			{{#HammerTouchArea gestureMap=gestures configureCallback=configureHammer }}
 			<div class="container">
 				{{> pageItem}}
 				<div class="comment">
@@ -26,6 +26,6 @@
 				{{/if}}
 
 			</div>
-			{{/HammerTouchArea}}
 		</div>
+	{{/HammerTouchArea}}
 </template>

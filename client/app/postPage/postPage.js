@@ -5,32 +5,15 @@ Template.postPage.helpers({
   isMobile: function() {
     return Darwin.device.match("phone")
   },
-	configureHammer: function () {
-		return function (hammer, templateInstance) {
-			var slowSwipe = new Hammer.Swipe({
-				event: "slowSwipe", /* prefix for custom swipe events, e.g. 2fingerswipeleft, 2fingerswiperight */
-				velocity: 0.1
-			})
-			hammer.add(slowSwipe)
-			return hammer
-		}
-	},
-	gestures: function() {
-		if(Darwin.device.match("phone")) {
-			return {
+	gestures: {
 				"swiperight .form-style": function(event, error) {
 					console.log("swipe")
 					window.location.replace("/")
 				},
-				"slowSwipe .form-style": function(event, error) {
+				"dragright .form-style": function(event, error) {
 					console.log("SlowSwipe")
 				}
 			}
-		}
-		else {
-			return {}
-		}
-	}
 })
 
 Template.postPage.onRendered(function() {

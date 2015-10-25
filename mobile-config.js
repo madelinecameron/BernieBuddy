@@ -7,7 +7,7 @@ App.info({
   author: "Madeline Cameron @ Bernie Buddy",
   email: "admin@berniebuddy.com",
   website: "http://berniebuddy.com",
-  version: "0.0.3"
+  version: "0.0.4"
 })
 
 App.icons({
@@ -43,8 +43,9 @@ App.launchScreens({
   "android_xhdpi_landscape": "public/Android/drawable-land-xhdpi/screen.png"
 })
 
-App.setPreference('android-versionCode', '3');
+App.setPreference('android-versionCode', '4');
 
 App.accessRule("https://graph.facebook.com/*")
 App.accessRule("https://pbs.twimg.com/*")
 App.accessRule("*.bootstrapcdn.com/*")
+App.accessRule("https://s3.amazonaws.com/berniebuddydev/*")

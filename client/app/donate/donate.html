@@ -1,130 +1,130 @@
 <template name="donate">
 	{{#HammerTouchArea gestureMap=gestures}}
-    <div class="container" draggable="{{isMobile}}">
-      <div class="jumbotron">
-        <h1>Support Bernie Buddy!</h1>
-        <p>
-          Thanks for being a part of the Bernie Buddy family!<br/><br/>
+	  <div class="container" draggable="{{isMobile}}">
+	    <div class="jumbotron">
+	      <h1>Support Bernie Buddy!</h1>
+	      <p>
+	        Thanks for being a part of the Bernie Buddy family!<br/><br/>
 
-          Do you like the application? Want to help us make it even better,
-          while supporting Bernie in the process!?<br/><br/>
+	        Do you like the application? Want to help us make it even better,
+	        while supporting Bernie in the process!?<br/><br/>
 
-          If so, help support our tiny team of student developers with a small
-          token of your gratitude!<br/><br/>
+	        If so, help support our tiny team of student developers with a small
+	        token of your gratitude!<br/><br/>
 
-          Seriously, any little bit helps a lot. And you even get 50 Kudos
-          for every $1 contributed!<br/><br/>
+	        Seriously, any little bit helps a lot. And you even get 50 Kudos
+	        for every $1 contributed!<br/><br/>
 
-          Donate today to help a small group of students accomplish really big things!<br/><br/>
-        </p>
-        <p><a class="btn btn-primary btn-lg" href="#" role="button">Go to IndieGoGo</a>
-        <a class="btn btn-primary btn-lg" href="#" role="button" data-toggle="modal" data-target="#checkout">Donate via Stripe</a></p>
-      </div>
-      <div>
-        We feel that Bernie Sanders is showing the rest of America what a
-        truly qualified leader acts like – while his incredibly enthusiastic
-        supporters are showing what a group of responsible adults coming
-        together to solve serious problems looks like.<br/><br/>
+	        Donate today to help a small group of students accomplish really big things!<br/><br/>
+	      </p>
+	      <p><a class="btn btn-primary btn-lg" href="#" role="button">Go to IndieGoGo</a>
+	      <a class="btn btn-primary btn-lg" href="#" role="button" data-toggle="modal" data-target="#checkout">Donate via Stripe</a></p>
+	    </div>
+	    <div>
+	      We feel that Bernie Sanders is showing the rest of America what a
+	      truly qualified leader acts like – while his incredibly enthusiastic
+	      supporters are showing what a group of responsible adults coming
+	      together to solve serious problems looks like.<br/><br/>
 
-        We want everyone to know that supporting the Bernie Buddy
-        application and the team behind it is simply supporting a fun &amp;
-        creative way to spread the message of restoring honesty, integrity,
-        and character to our government.<br/><br/>
+	      We want everyone to know that supporting the Bernie Buddy
+	      application and the team behind it is simply supporting a fun &amp;
+	      creative way to spread the message of restoring honesty, integrity,
+	      and character to our government.<br/><br/>
 
-        Bernie Buddy will always be free, but we do plan to eventually make
-        money with this application. With the profits we make - after we pay
-        our team &amp; the other costs associated with providing the
-        application - we are going to provide funding, promotional materials,
-        campaign merchandise, adequate venues, and organizational support
-        to ordinary individuals across the nation that want to host their
-        own Bernie events &amp; debate watch parties.<br/><br/>
+	      Bernie Buddy will always be free, but we do plan to eventually make
+	      money with this application. With the profits we make - after we pay
+	      our team &amp; the other costs associated with providing the
+	      application - we are going to provide funding, promotional materials,
+	      campaign merchandise, adequate venues, and organizational support
+	      to ordinary individuals across the nation that want to host their
+	      own Bernie events &amp; debate watch parties.<br/><br/>
 
-        These people desperately want to inspire their friends, family,
-        and communities but they won’t be able to pull it off without our
-        help!<br/><br/>
+	      These people desperately want to inspire their friends, family,
+	      and communities but they won’t be able to pull it off without our
+	      help!<br/><br/>
 
-        A buddy of Bernie is a buddy of ours! Want to help us assist the
-        revolution?<br/><br/>
-      </div>
+	      A buddy of Bernie is a buddy of ours! Want to help us assist the
+	      revolution?<br/><br/>
+	    </div>
+	  </div>
+	{{/HammerTouchArea}}
+
+  <div class="modal fade" id="checkout">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" id="closeModal">&times;</button>
+            </div>
+
+						{{#autoForm schema=donatePage id="stripeModal" validation="blur" preserveForm=false}}
+            <div class="modal-body">
+                <form id="payForm" method="POST" class="form-horizontal">
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <div class="input-group">
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-credit-card"></span></span>
+																{{> afFieldInput name="creditCard" id="card-num" preserveForm=false class="form-control" type="text" size="2" placeholder="CC"}}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-6">
+                            <div class="input-group">
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                                {{> afFieldInput name="expiration" id="card-exp" class="form-control" type="text" size="2" placeholder="Expiration"}}
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="input-group">
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+                                {{> afFieldInput name="cvc" id="card-cvc" class="form-control" type="text" size="2" placeholder="CVC"}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <div class="input-group">
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-usd"></span></span>
+                                {{> afFieldInput name="amount" id="amount" class="form-control" type="text" size="2" placeholder="Any Amount"}}
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-footer">
+								<div id="donateFailMessage">
+									{{#each afFieldNames}}
+										<div class="{{#if afFieldIsInvalid name=this.name}}alert alert-danger{{/if}}" style="margin-top:0.65rem; margin-bottom: 0.65rem; padding: 0.5rem; display:{{#if afFieldIsInvalid name=this.name}}block{{else}}none{{/if}}">
+											{{afFieldMessage name=this.name}}
+										</div>
+									{{/each}}
+								</div>
+                <button id="submit" type="submit" class="btn btn-primary col-sm-12 col-md-12 col-xs-12"
+                        data-progress-text="<span class='glyphicon glyphicon-refresh fa-spin'></span>"
+                        data-success-text="<span class='glyphicon glyphicon-ok'></span>">
+                    Pay ${{amount}} for {{kudosTotal}} kudos
+                </button><br/>
+            </div>
+						{{/autoForm}}
+            <img src="solid.png" class="img-rounded" style="float:left">
+        </div>
     </div>
+  </div>
 
-    <div class="modal fade" id="checkout">
-      <div class="modal-dialog">
-          <div class="modal-content">
-              <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" id="closeModal">&times;</button>
-              </div>
+	<div class="modal fade" id="thankYou">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" id="closeModal">&times;</button>
+            </div>
 
-							{{#autoForm schema=donatePage id="stripeModal" validation="blur" preserveForm=false}}
-              <div class="modal-body">
-                  <form id="payForm" method="POST" class="form-horizontal">
-                      <div class="form-group">
-                          <div class="col-sm-12">
-                              <div class="input-group">
-                                  <span class="input-group-addon"><span class="glyphicon glyphicon-credit-card"></span></span>
-																	{{> afFieldInput name="creditCard" id="card-num" preserveForm=false class="form-control" type="text" size="2" placeholder="CC"}}
-                              </div>
-                          </div>
-                      </div>
-
-                      <div class="form-group">
-                          <div class="col-sm-6">
-                              <div class="input-group">
-                                  <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-                                  {{> afFieldInput name="expiration" id="card-exp" class="form-control" type="text" size="2" placeholder="Expiration"}}
-                              </div>
-                          </div>
-
-                          <div class="col-sm-6">
-                              <div class="input-group">
-                                  <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-                                  {{> afFieldInput name="cvc" id="card-cvc" class="form-control" type="text" size="2" placeholder="CVC"}}
-                              </div>
-                          </div>
-                      </div>
-                      <div class="form-group">
-                          <div class="col-sm-12">
-                              <div class="input-group">
-                                  <span class="input-group-addon"><span class="glyphicon glyphicon-usd"></span></span>
-                                  {{> afFieldInput name="amount" id="amount" class="form-control" type="text" size="2" placeholder="Any Amount"}}
-                              </div>
-                          </div>
-                      </div>
-                  </form>
-              </div>
-
-              <div class="modal-footer">
-									<div id="donateFailMessage">
-										{{#each afFieldNames}}
-											<div class="{{#if afFieldIsInvalid name=this.name}}alert alert-danger{{/if}}" style="margin-top:0.65rem; margin-bottom: 0.65rem; padding: 0.5rem; display:{{#if afFieldIsInvalid name=this.name}}block{{else}}none{{/if}}">
-												{{afFieldMessage name=this.name}}
-											</div>
-										{{/each}}
-									</div>
-                  <button id="submit" type="submit" class="btn btn-primary col-sm-12 col-md-12 col-xs-12"
-                          data-progress-text="<span class='glyphicon glyphicon-refresh fa-spin'></span>"
-                          data-success-text="<span class='glyphicon glyphicon-ok'></span>">
-                      Pay ${{amount}} for {{kudosTotal}} kudos
-                  </button><br/>
-              </div>
-							{{/autoForm}}
-              <img src="solid.png" class="img-rounded" style="float:left">
-          </div>
-      </div>
+            <div class="modal-body">
+                <p>Your ${{amount}} has given you {{kudosTotal}} kudos and the infinite gratitude of the Bernie Buddy Team!</p>
+            </div>
+        </div>
     </div>
-
-		<div class="modal fade" id="thankYou">
-      <div class="modal-dialog">
-          <div class="modal-content">
-              <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" id="closeModal">&times;</button>
-              </div>
-
-              <div class="modal-body">
-                  <p>Your ${{amount}} has given you {{kudosTotal}} kudos and the infinite gratitude of the Bernie Buddy Team!</p>
-              </div>
-          </div>
-      </div>
-    </div>
-  {{/HammerTouchArea}}
+  </div>
 </template>

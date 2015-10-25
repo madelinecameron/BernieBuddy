@@ -1,10 +1,11 @@
 <template name="state">
-  <div class="yaks">
+  {{#HammerTouchArea gestureMap=gestures}}
+  <div class="yaks" draggable="{{isMobile}}">
     <div class="form-style">
       <div class="container">
         <ul class="list-group">
           <center><h3>What other {{state}} Bernie Buddies are saying</h3></center>
-          <center>{{ > filters}}</center>
+          <center>{{> filters}}</center>
           <br/>
           {{#each posts}}
             {{> postItem}}
@@ -13,4 +14,5 @@
       </div>
     </div>
   </div>
+  {{/HammerTouchArea}}
 </template>

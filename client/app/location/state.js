@@ -7,7 +7,19 @@ Template.state.helpers({
     else {
       return Posts.find({ location: this.state, anon: false }, { sort: { sticky: -1, score: -1 }}).fetch()
     }
-  }
+  },
+  isMobile: function() {
+    return Darwin.device.match("phone")
+  },
+	gestures: {
+				"swiperight .form-style": function(event, error) {
+					console.log("swipe")
+					window.location.replace("/")
+				},
+				"dragright .form-style": function(event, error) {
+					console.log("SlowSwipe")
+				}
+			}
 })
 
 Template.state.events({
