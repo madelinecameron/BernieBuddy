@@ -2,28 +2,28 @@ Meteor.methods({
   postInsert: function(post) {
 
     //Find town and state
-    var area, location
+    var area, location;
 
     //Only possible with no geolocation on... or extreme luck.
-    if(post.coords.long == 0 && post.coords.lat == 0) { location = "Anonymous Location" }
+    if (post.coords.long == 0 && post.coords.lat == 0) { location = 'Anonymous Location'; }
     else {
       area = Towns.findOne({
         location: {
           $near: {
             $geometry: {
-              type: "Point",
-              coordinates: [ parseFloat(post.coords.long), parseFloat(post.coords.lat) ]
+              type: 'Point',
+              coordinates: [parseFloat(post.coords.long), parseFloat(post.coords.lat)]
             }
           }
         }
-      })
-      location = area.state
+      });
+      location = area.state;
     }
 
     var post_id = Posts.insert({
-      post : post.post,  //wow. such many yaks.
+      post: post.post,  //wow. such many yaks.
       creatorId: post.creatorId,
-      score : 0,
+      score: 0,
       location: location,
       active: true,
       createdAt: new Date(),
@@ -31,25 +31,25 @@ Meteor.methods({
       anon: post.anonymous,
       adminPost: post.adminPost,
       photoLoc: post.photoLoc
-    })
+    });
   },
   commentInsert: function(comment) {
-    var location, area
-    if(comment.coords.long == 0 && comment.coords.lat == 0) {
-      location = "Anonymous Location"
+    var location, area;
+    if (comment.coords.long == 0 && comment.coords.lat == 0) {
+      location = 'Anonymous Location';
     }
     else {
       var area = Towns.findOne({
         location: {
           $near: {
             $geometry: {
-              type: "Point",
-              coordinates: [ parseFloat(comment.coords.long), parseFloat(comment.coords.lat) ]
+              type: 'Point',
+              coordinates: [parseFloat(comment.coords.long), parseFloat(comment.coords.lat)]
             }
           }
         }
-      })
-      location = area.state
+      });
+      location = area.state;
     }
 
     Comments.insert({
@@ -61,21 +61,23 @@ Meteor.methods({
       score: 0,
       anon: comment.anonymous,
       adminPost: comment.adminPost
-    })
+    });
   },
   getUserName: function(id) {
-    return Meteor.users.findOne({ _id: id }).profile.name
+    return Meteor.users.findOne({ _id: id }).profile.name;
   },
   getCommentCount: function(id) {
-    return Comments.find({ postId: id }).count()
+    return Comments.find({ postId: id }).count();
   },
   kudosCount: function(id) {
     var userResult = Meteor.users.findOne({ _id: id }, { kudos: 1 });
-    if(userResult) {  //To prevent null objects
+    if (userResult) {  //To prevent null objects
+      console.log("Returning userResult")
       return userResult.kudos;
     }
     else {
-      return 0
+      console.log("Returning 0")
+      return 0;
     }
   },
   transferAggKudosToUserKudos: function(id) {
@@ -88,7 +90,7 @@ Meteor.methods({
       {
         $group: {
           _id: null,
-          kudos: { $sum: "$score" }
+          kudos: { $sum: '$score' }
         }
       }
     ]);
@@ -102,25 +104,25 @@ Meteor.methods({
       {
         $group: {
           _id: null,
-          kudos: { $sum: "$score" }
+          kudos: { $sum: '$score' }
         }
       }
     ]);
 
     var totalKudos = 0;
-    if(postKudos.length > 0 && commentKudos.length > 0) {
+    if (postKudos.length > 0 && commentKudos.length > 0) {
       totalKudos = postKudos[0].kudos + commentKudos[0].kudos;
     }
     else {
-      if(postKudos.length > 0) {
+      if (postKudos.length > 0) {
         totalKudos = postKudos[0].kudos;
       }
-      if(commentKudos.length > 0) {  //If we are down here, we know one of them is null and we know comment && post can't not be null
+      if (commentKudos.length > 0) {  //If we are down here, we know one of them is null and we know comment && post can't not be null
         totalKudos = commentKudos[0].kudos;
       }
     }
 
-    Meteor.users.update(id, { $set: { "kudos": totalKudos } })
+    Meteor.users.update(id, { $set: { 'kudos': totalKudos } });
   },
   chargeCard: function(stripeToken, amount, user) {
     var Stripe = StripeAPI('sk_test_tIqkZCYayMs99W4WJjfwO5do');
@@ -132,23 +134,25 @@ Meteor.methods({
       source: stripeToken
     });
 
-    if(result.paid) {
-      if(user) {
-        Meteor.call("sendSlackMessage", "Someone just donated $" + amount + "!");
-        Meteor.users.update(user, { $inc: { "kudos": amount * 50 } })
+    if (result.paid) {
+      if (user) {
+        Meteor.call('sendSlackMessage', 'Someone just donated $' + amount + '!', ':happybernie:', 'DonationBot');
+        Meteor.users.update(user, { $inc: { 'kudos': amount * 50 } });
       }
     }
   },
-  sendSlackMessage: function(message) {
+  sendSlackMessage: function(message, icon, bot_name) {
     //Send a message to Slack channel
-    HTTP.post("https://hooks.slack.com/services/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",
+    HTTP.post('https://hooks.slack.com/services/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',
     {
       data: {
-        text: message
+        text: message,
+        bot_name: bot_name ? bot_name : 'Bernie Buddy Reporter',
+        icon_emoji: icon ? icon : ':cold_sweat:'
       }
     },
     function() {
-      console.log("ReportedForSure!")
+      console.log('ReportedForSure!');
     });
   }
-})
+});

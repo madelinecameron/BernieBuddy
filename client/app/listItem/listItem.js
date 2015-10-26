@@ -1,164 +1,165 @@
 Template.listItem.events({
-  "click": function() {
-    Session.set("selected_post", this._id)
+  'click': function() {
+    Session.set('selected_post', this._id);
   },
 
-  "click a.yes": function(event) {
-    if(Meteor.user()) {
+  'click a.yes': function(event) {
+    if (Meteor.user()) {
       var post = Posts.findOne({ _id: this._id }),
           update = {},
           netUpdateScore = 0,
-          selectedId = Session.get("selected_post"),
-          element = $(event.currentTarget)
+          selectedId = Session.get('selected_post'),
+          element = $(event.currentTarget);
 
-      element.toggleClass("vote")
-      if($(".no").hasClass("vote")) {
-        $(".no").removeClass("vote")
+      element.toggleClass('vote');
+      if ($('.no').hasClass('vote')) {
+        $('.no').removeClass('vote');
       }
 
       //Undo upvote!
       if ($.inArray(Meteor.userId(), post.upVoted) !== -1) {
         Posts.update(selectedId, { $pull: {
-            upVoted : Meteor.userId()
+            upVoted: Meteor.userId()
           },
-          $inc: { "score": -1 }
-        })
+          $inc: { 'score': -1 }
+        });
 
-        return
+        return;
       }
       //Downvote!
       if ($.inArray(Meteor.userId(), post.downVoted) !== -1) {
-        $.extend(update, update, { $pull: { downVoted : Meteor.userId() } })
-        netUpdateScore += 1
+        $.extend(update, update, { $pull: { downVoted: Meteor.userId() } });
+        netUpdateScore += 1;
       }
-      console.log("Voting")
-      netUpdateScore += 1
-      $.extend(update, update, { $inc: { "score": netUpdateScore } })
-      $.extend(update, update, { $addToSet: { upVoted : Meteor.userId() } })
+      console.log('Voting');
+      netUpdateScore += 1;
+      $.extend(update, update, { $inc: { 'score': netUpdateScore } });
+      $.extend(update, update, { $addToSet: { upVoted: Meteor.userId() } });
 
-      Posts.update(selectedId, update)
-      Meteor.users.update(post.creatorId, { $inc: { "kudos": netUpdateScore } })
+      Posts.update(selectedId, update);
+      Meteor.users.update(post.creatorId, { $inc: { 'kudos': netUpdateScore } });
     }
   },
-  "click a.no": function(event) {
+  'click a.no': function(event) {
     if (Meteor.user()) {
       var post = Posts.findOne({ _id: this._id }),
           update = {},
           netUpdateScore = 0,
-          selectedId = Session.get("selected_post"),
-          element = $(event.currentTarget)
+          selectedId = Session.get('selected_post'),
+          element = $(event.currentTarget);
 
-      element.toggleClass("vote")
-      if($(".yes").hasClass("vote")) {
-        $(".yes").removeClass("vote")
+      element.toggleClass('vote');
+      if ($('.yes').hasClass('vote')) {
+        $('.yes').removeClass('vote');
       }
 
       if ($.inArray(Meteor.userId(), post.upVoted) !== -1) {
-        $.extend(update, update, { $pull: { upVoted : Meteor.userId() } })
-        netUpdateScore += -1
+        $.extend(update, update, { $pull: { upVoted: Meteor.userId() } });
+        netUpdateScore += -1;
       }
       if ($.inArray(Meteor.userId(), post.downVoted) !== -1) {
         Yaks.update(selectedId, { $pull: {
-            downVoted : Meteor.userId()
+            downVoted: Meteor.userId()
           },
-          $inc: { "score": 1 }
-        })
+          $inc: { 'score': 1 }
+        });
 
-        return
+        return;
       }
 
-      console.log("Voting")
-      netUpdateScore += -1
-      $.extend(update, update, { $inc: { "score": netUpdateScore } })
-      $.extend(update, update, { $addToSet: { downVoted : Meteor.userId() } })
+      console.log('Voting');
+      netUpdateScore += -1;
+      $.extend(update, update, { $inc: { 'score': netUpdateScore } });
+      $.extend(update, update, { $addToSet: { downVoted: Meteor.userId() } });
 
-      Posts.update(selectedId, update)
-      Meteor.users.update(post.creatorId, { $inc: { "kudos": netUpdateScore } })
+      Posts.update(selectedId, update);
+      Meteor.users.update(post.creatorId, { $inc: { 'kudos': netUpdateScore } });
 
       if (post.score <= -10 && !post.adminPost) {
-        console.log("delete")
-        Posts.remove({ _id: this._id })
+        console.log('delete');
+        Posts.remove({ _id: this._id });
       }
     }
   },
-  "click #reportPost": function(e) {
+  'click #reportPost': function(e) {
     e.preventDefault();
-    $("#reportPost").toggle();
-    Meteor.call("sendSlackMessage", "Post reported: <http://berniebuddydev.herokuapp.com/posts/" + this._id + ">");
-    console.log("Reported!")
+    $('#reportPost').toggle();
+    Meteor.call('sendSlackMessage', 'Post reported: <http://berniebuddydev.herokuapp.com/posts/' + this._id + '>');
+    console.log('Reported!');
   }
-})
+});
 
 Template.listItem.onCreated(function() {
-  var id = this.data.creatorId
-  if(!Session.get(id) && id !== null) {
-    Meteor.call("getUserName", id, function(err, result) {
-      Session.set(id, result)
-    })
+  var id = this.data.creatorId;
+  if (!Session.get(id) && id !== null) {
+    Meteor.call('getUserName', id, function(err, result) {
+      Session.set(id, result);
+    });
   }
 
-  Meteor.call("kudosCount", id, function(err, result) {
-    Session.set(id + "kudos", result)
-  })
-})
+  Meteor.call('kudosCount', id, function(err, result) {
+    Session.set(id + 'kudos', result);
+  });
+});
 
 Template.listItem.onRendered(function() {
-  $("#score" + this.data._id).css("margin-left", (-0.25 * ($("#score" + this.data._id).text().length - 1)).toString() + "rem")
-  if(this.data.location === "Anonymous Location") {
-    $("#location" + this.data._id).attr("href", "#").removeClass("btn").addClass("fakeBtn")
+  $('#score' + this.data._id).css('margin-left', (-0.25 * ($('#score' + this.data._id).text().length - 1)).toString() + 'rem');
+  if (this.data.location === 'Anonymous Location') {
+    $('#location' + this.data._id).attr('href', '#').removeClass('btn').addClass('fakeBtn');
   }
-})
+});
 
 Template.listItem.helpers({
   madeDownvote: function() {
-    return _.contains(this.downVoted, Meteor.userId())
+    return _.contains(this.downVoted, Meteor.userId());
   },
   madeUpvote: function() {
-    return _.contains(this.upVoted, Meteor.userId())
+    return _.contains(this.upVoted, Meteor.userId());
   },
   commentsCount: function() {
-    return Comments.find({ postId: this._id }).count()
+    return Comments.find({ postId: this._id }).count();
   },
   creatorName: function() {
-    return Session.get(this.creatorId) ? Session.get(this.creatorId) : "Anonymous"
+    return Session.get(this.creatorId) ? Session.get(this.creatorId) : 'Anonymous';
   },
   kudos: function() {
-    if(this.creatorId !== Meteor.userId()) {
-        return Session.get(this.creatorId + "kudos") ? Session.get(this.creatorId + "kudos") : "?"
+    if (this.creatorId !== Meteor.userId()) {
+      console.log(Session.get(this.creatorId + 'kudos'));
+      return Session.get(this.creatorId + 'kudos') ? Session.get(this.creatorId + 'kudos') : '?';
     }
     else {
-      return Session.get("kudos")
+      return Session.get('kudos');
     }
   },
   time: function() {
-    var dateCreatedAt = Posts.findOne({ _id: this._id }, {createdAt: 1 })
+    var dateCreatedAt = Posts.findOne({ _id: this._id }, {createdAt: 1 });
 
-    if(isNaN(dateCreatedAt.createdAt)) { return "Forever" }
-    var diff = new Date().getTime() - new Date(dateCreatedAt.createdAt).getTime()
-    var diff = diff / (1000 * 3600)  //Returned in ms, 1000ms in a second, 3600s in an hour
+    if (isNaN(dateCreatedAt.createdAt)) { return 'Forever' }
+    var diff = new Date().getTime() - new Date(dateCreatedAt.createdAt).getTime();
+    var diff = diff / (1000 * 3600);  //Returned in ms, 1000ms in a second, 3600s in an hour
 
-    if(diff < 1.0) {  //If the difference is less than 1 hour
-      return Math.round((diff * 60)) + "m"
+    if (diff < 1.0) {  //If the difference is less than 1 hour
+      return Math.round((diff * 60)) + 'm';
     }
     else {
-      if(diff < 24.0) {  //If the diff is less than 24 hours
-        return Math.round(diff) + "h"
+      if (diff < 24.0) {  //If the diff is less than 24 hours
+        return Math.round(diff) + 'h';
       }
       else {
-        if(Math.round(diff / 24.0) > 7.0) {  //If diff / 24 is greater than 7 (days)
-          return Math.round(diff / (24.0 * 7.0)) + "w"
+        if (Math.round(diff / 24.0) > 7.0) {  //If diff / 24 is greater than 7 (days)
+          return Math.round(diff / (24.0 * 7.0)) + 'w';
         }
         else {
-          return Math.round(diff / 24.0) + "d"  //Return in days
+          return Math.round(diff / 24.0) + 'd';  //Return in days
         }
       }
     }
   },
   isMobile: function() {
-    return Darwin.device.match("phone")
+    return Darwin.device.match('phone');
   },
   hasPhoto: function() {
-    if(this.photoLoc) { return true; }
+    if (this.photoLoc) { return true; }
     else { return false; }
   }
-})
+});
