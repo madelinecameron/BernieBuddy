@@ -1,10 +1,13 @@
 Template.postPage.helpers({
 	comments: function() {
-		return Comments.find({ postId: this._id })
+		return Comments.find({ postId: this.id })
 	},
   isMobile: function() {
     return Darwin.device.match("phone")
   },
+	pageData: function() {
+		return Posts.findOne({ _id: this.id })
+	},
 	gestures: {
 				"swiperight .form-style": function(event, error) {
 					console.log("swipe")
@@ -14,6 +17,11 @@ Template.postPage.helpers({
 					console.log("SlowSwipe")
 				}
 			}
+})
+
+Template.postPage.onCreated(function() {
+	console.log("PostPage:")
+	console.log(this)
 })
 
 Template.postPage.onRendered(function() {

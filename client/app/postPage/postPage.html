@@ -2,7 +2,9 @@
 	{{#HammerTouchArea gestureMap=gestures}}
 		<div class="form-style" draggable="{{isMobile}}">
 			<div class="container">
-				{{> pageItem}}
+				{{#with pageData}}
+					{{> pageItem }}
+				{{/with}}
 				<div class="comment">
 					<h4>Comments</h4>
 						{{#each comments}}
