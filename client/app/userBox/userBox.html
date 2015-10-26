@@ -11,13 +11,26 @@
               </div>
             </div>
           {{else}}
-            <div style="white-space:nowrap; margin-top:15px">
+            <div style="white-space:nowrap; margin-top:15px;">
               <div class="center-block">
-                <a href="/profile/{{currentUser._id}}">
-                  <div style="float:left; margin-right: 15px; margin-top:-15px">{{> avatar user=currentUser shape="rounded"}}</div>
-                </a>
-                <a href="/profile/{{currentUser._id}}" class="btn btn-default" style="background-color:#147FD7; color:#FFF">{{currentUser.profile.name}} ( {{kudos}} )</a>&nbsp;&nbsp;&nbsp;
-                <a href="/logout" class="btn btn-default" style="background-color:#147FD7; color:#FFF">Logout</a>
+                <div class="container">
+                  <div class="row">
+                    <div class="profile-header-container" style="float:left; margin-right:2rem">
+                      <div class="profile-header-img">
+                        <a href="/profile/{{currentUser._id}}">
+                          <div class="img-circle">
+                            <center><div style="z-index:100; position:relative; margin-top:-2rem">{{> avatar userId=currentUser shape="circle" size="userbox"}}</div></center>
+                            <!-- badge -->
+                            <div class="rank-label-container" style="z-index:101; position:relative;margin-top:-1.25rem">
+                                <span class="label label-default rank-label label-outline" style="padding:2.5px 5px 2.5px 5px">{{kudos}} kudos</span>
+                            </div>
+                          </div>
+                         </a>
+                        </div>
+                  	   </div>
+                      <a href="/logout" class="btn btn-default" style="background-color:#147FD7; color:#FFF">Logout</a>
+                     </div>
+                  </div>
               </div>
             </div>
           {{/if}}
@@ -29,7 +42,7 @@
             <div class="modal" id="login-modal" data-backdrop="false">
               <div class="modal-dialog">
                   <div class="modal-content">
-                      <div class="modal-body">
+                      <div class="modal-body" style="margin-top:-15px">
                         <button type="button" class="close" data-dismiss="modal" id="closeModal">&times;</button>
                         <div class="container">
                           <div style="border:0">

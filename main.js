@@ -4,7 +4,8 @@ Towns = new Mongo.Collection("towns")
 
 Avatar.setOptions({
   imageSizes: {
-    'profile': '120'
+    'profile': '120',
+    'userbox': '65'
   }
 })
 

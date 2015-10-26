@@ -262,6 +262,10 @@ a.post:hover{
     border-radius: 27px;
 }
 
+.label-outline {
+  border: 1px solid #FFF;
+}
+
 .fileUpload {
     position: relative;
     overflow: hidden;

@@ -46,7 +46,7 @@ Template.postList.onCreated(function() {
 
   if (Meteor.user()) {
     console.log('User');
-    if (!Meteor.user().kudos) {
+    if (!("kudos" in Meteor.user())) {
       console.log('No kudos!');
       Meteor.call('transferAggKudosToUserKudos', Meteor.userId());
     }
