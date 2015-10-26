@@ -19,11 +19,15 @@
 							Tap Here To Create Comment
 					</a>
 					<div class="collapse" id="commentBox">
-						{{> commentSubmit}}
+						{{#with pageData}}
+							{{> commentSubmit}}
+						{{/with}}
 					</div>
 				{{else}}
 					<div id="commentBox">
-						{{> commentSubmit}}
+						{{#with pageData}}
+							{{> commentSubmit}}
+						{{/with}}
 					</div>
 				{{/if}}
 
