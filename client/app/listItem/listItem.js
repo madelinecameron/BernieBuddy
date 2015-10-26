@@ -84,7 +84,7 @@ Template.listItem.events({
   "click #reportPost": function(e) {
     e.preventDefault();
     $("#reportPost").toggle();
-    Meteor.call("reportPost", this._id);
+    Meteor.call("sendSlackMessage", "Post reported: <http://berniebuddydev.herokuapp.com/posts/" + this._id + ">");
     console.log("Reported!")
   }
 })

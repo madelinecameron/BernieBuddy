@@ -35,7 +35,9 @@ Meteor.methods({
   },
   commentInsert: function(comment) {
     var location, area
-    if(comment.coords.long == 0 && comment.coords.lat == 0) { location = "Anonymous Location" }
+    if(comment.coords.long == 0 && comment.coords.lat == 0) {
+      location = "Anonymous Location"
+    }
     else {
       var area = Towns.findOne({
         location: {
@@ -132,16 +134,17 @@ Meteor.methods({
 
     if(result.paid) {
       if(user) {
-        console.log("Adding " + amount * 50 + " to kudos for " + user + "!")
+        Meteor.call("sendSlackMessage", "Someone just donated $" + amount + "!");
         Meteor.users.update(user, { $inc: { "kudos": amount * 50 } })
       }
     }
   },
-  reportPost: function(postId) {
+  sendSlackMessage: function(message) {
+    //Send a message to Slack channel
     HTTP.post("https://hooks.slack.com/services/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",
     {
       data: {
-        text: "Post reported: <http://berniebuddydev.herokuapp.com/posts/" + postId + ">"
+        text: message
       }
     },
     function() {

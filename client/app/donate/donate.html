@@ -57,57 +57,57 @@
             </div>
 
 						{{#autoForm schema=donatePage id="stripeModal" validation="blur" preserveForm=false}}
-            <div class="modal-body">
-                <form id="payForm" method="POST" class="form-horizontal">
-                    <div class="form-group">
-                        <div class="col-sm-12">
-                            <div class="input-group">
-                                <span class="input-group-addon"><span class="glyphicon glyphicon-credit-card"></span></span>
-																{{> afFieldInput name="creditCard" id="card-num" preserveForm=false class="form-control" type="text" size="2" placeholder="CC"}}
-                            </div>
-                        </div>
-                    </div>
+	            <div class="modal-body">
+	                <form id="payForm" method="POST" class="form-horizontal">
+	                    <div class="form-group">
+	                        <div class="col-sm-12">
+	                            <div class="input-group">
+	                                <span class="input-group-addon"><span class="glyphicon glyphicon-credit-card"></span></span>
+																	{{> afFieldInput name="creditCard" id="card-num" preserveForm=false class="form-control" type="text" size="2" placeholder="CC"}}
+	                            </div>
+	                        </div>
+	                    </div>
 
-                    <div class="form-group">
-                        <div class="col-sm-6">
-                            <div class="input-group">
-                                <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-                                {{> afFieldInput name="expiration" id="card-exp" class="form-control" type="text" size="2" placeholder="Expiration"}}
-                            </div>
-                        </div>
+	                    <div class="form-group">
+	                        <div class="col-sm-6">
+	                            <div class="input-group">
+	                                <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+	                                {{> afFieldInput name="expiration" id="card-exp" class="form-control" type="text" size="2" placeholder="Expiration"}}
+	                            </div>
+	                        </div>
 
-                        <div class="col-sm-6">
-                            <div class="input-group">
-                                <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-                                {{> afFieldInput name="cvc" id="card-cvc" class="form-control" type="text" size="2" placeholder="CVC"}}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-sm-12">
-                            <div class="input-group">
-                                <span class="input-group-addon"><span class="glyphicon glyphicon-usd"></span></span>
-                                {{> afFieldInput name="amount" id="amount" class="form-control" type="text" size="2" placeholder="Any Amount"}}
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
+	                        <div class="col-sm-6">
+	                            <div class="input-group">
+	                                <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+	                                {{> afFieldInput name="cvc" id="card-cvc" class="form-control" type="text" size="2" placeholder="CVC"}}
+	                            </div>
+	                        </div>
+	                    </div>
+	                    <div class="form-group">
+	                        <div class="col-sm-12">
+	                            <div class="input-group">
+	                                <span class="input-group-addon"><span class="glyphicon glyphicon-usd"></span></span>
+	                                {{> afFieldInput name="amount" id="amount" class="form-control" type="text" size="2" placeholder="Any Amount"}}
+	                            </div>
+	                        </div>
+	                    </div>
+	                </form>
+	            </div>
 
-            <div class="modal-footer">
-								<div id="donateFailMessage">
-									{{#each afFieldNames}}
-										<div class="{{#if afFieldIsInvalid name=this.name}}alert alert-danger{{/if}}" style="margin-top:0.65rem; margin-bottom: 0.65rem; padding: 0.5rem; display:{{#if afFieldIsInvalid name=this.name}}block{{else}}none{{/if}}">
-											{{afFieldMessage name=this.name}}
-										</div>
-									{{/each}}
-								</div>
-                <button id="submit" type="submit" class="btn btn-primary col-sm-12 col-md-12 col-xs-12"
-                        data-progress-text="<span class='glyphicon glyphicon-refresh fa-spin'></span>"
-                        data-success-text="<span class='glyphicon glyphicon-ok'></span>">
-                    Pay ${{amount}} for {{kudosTotal}} kudos
-                </button><br/>
-            </div>
+	            <div class="modal-footer">
+									<div id="donateFailMessage">
+										{{#each afFieldNames}}
+											<div class="{{#if afFieldIsInvalid name=this.name}}alert alert-danger{{/if}}" style="margin-top:0.65rem; margin-bottom: 0.65rem; padding: 0.5rem; display:{{#if afFieldIsInvalid name=this.name}}block{{else}}none{{/if}}">
+												{{afFieldMessage name=this.name}}
+											</div>
+										{{/each}}
+									</div>
+	                <button id="submit" type="submit" class="btn btn-primary col-sm-12 col-md-12 col-xs-12"
+	                        data-progress-text="<span class='glyphicon glyphicon-refresh fa-spin'></span>"
+	                        data-success-text="<span class='glyphicon glyphicon-ok'></span>">
+	                    Pay ${{amount}} for {{kudosTotal}} kudos
+	                </button><br/>
+	            </div>
 						{{/autoForm}}
             <img src="solid.png" class="img-rounded" style="float:left">
         </div>
