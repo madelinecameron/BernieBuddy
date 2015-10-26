@@ -72,11 +72,9 @@ Meteor.methods({
   kudosCount: function(id) {
     var userResult = Meteor.users.findOne({ _id: id }, { kudos: 1 });
     if (userResult) {  //To prevent null objects
-      console.log("Returning userResult")
       return userResult.kudos;
     }
     else {
-      console.log("Returning 0")
       return 0;
     }
   },

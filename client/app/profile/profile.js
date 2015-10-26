@@ -17,6 +17,27 @@ Template.profile.onDestroyed(function() {
   delete Session.keys.length;  //Reset filter
 });
 
+Template.profile.events({
+  'click .pagination li': function(event, err) {
+    var targetId = event.target.id;
+    var parent = $('#' + targetId).parent();
+
+    if (!parent.hasClass('activeFilter')) {  //Filter not selected
+      for (var index in parent.siblings()) {
+        var siblingId = parent.siblings()[index].id;
+        $('#' + siblingId).removeClass('activeFilter');
+      }
+
+      parent.addClass('activeFilter');
+      parent.removeAttr('selected');
+
+      var query = Session.get('query');
+      query = targetId;
+
+      Session.set('query', query);
+    }
+  }
+})
 Template.profile.helpers({
   isOwnProfile: function() {
     //If logged-in userID === context ID
