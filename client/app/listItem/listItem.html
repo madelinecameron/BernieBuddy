@@ -9,7 +9,7 @@
               </div><br/>
             {{/if}}
             <div id="textContainer" class="col-xs-10 col-md-11">
-              <p class="break-el" style="{{#if sticky}}white-space:pre-line{{/if}}">{{post}}</p>
+              <p class="break-el" style="{{#if sticky}}white-space:pre-line{{/if}}">{{#markdown}}{{#emoji}}{{post}}{{/emoji}}{{/markdown}}</p>
               <div>
                 <span class="fakeBtn" style="margin-right:-4rem">By: </span>
                       {{#unless anon}}<a class="btn {{#if adminPost}}adminPost{{/if}}" href="{{pathFor 'profile' _id=creatorId}}" style="margin-left: 1.5rem">{{creatorName}} ({{kudos}})</a>{{/unless}}
