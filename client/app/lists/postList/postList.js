@@ -24,10 +24,6 @@ Template.postList.events({
 });
 
 Template.postList.onCreated(function() {
-  setTimeout(function() {
-    console.log('Loaded');
-  }, 250);
-
   if (Meteor.user()) {
     console.log('User');
     if (!("kudos" in Meteor.user())) {

@@ -52,7 +52,6 @@ Template.listItem.helpers({
   },
   kudos: function() {
     if (this.creatorId !== Meteor.userId()) {
-      console.log(Session.get(this.creatorId + 'kudos'));
       return Session.get(this.creatorId + 'kudos') ? Session.get(this.creatorId + 'kudos') : '?';
     }
     else {

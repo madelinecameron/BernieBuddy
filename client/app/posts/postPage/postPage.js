@@ -27,7 +27,7 @@ Template.postPage.helpers({
 					window.location.replace('/');
 				},
 				'dragright .form-style': function(event, error) {
-					console.log('SlowSwipe');
+					window.location.replace('/');
 				}
 			}
 });

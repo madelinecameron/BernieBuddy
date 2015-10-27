@@ -1,4 +1,14 @@
 Template.commentSubmit.events({
+  'keydown #body': function(event, err) {
+    var keyCode = event.which;
+    if (keyCode == 13 && !event.shiftKey)  //If enter pressed and not also shift
+    {
+      if(Meteor.utilities.isMobile()) {
+        $('#commentBox').collapse('hide');
+      }
+      $('form').submit();
+    }
+  },
   'submit form': function(e, template) {
     e.preventDefault();
 

@@ -22,7 +22,6 @@ Template.pageItem.events({
 });
 
 Template.pageItem.onCreated(function() {
-  console.log(this);
   var id = this.data.creatorId;
   if (!Session.get(id) && id !== null) {
     Meteor.call('getUserName', id, function(err, result) {

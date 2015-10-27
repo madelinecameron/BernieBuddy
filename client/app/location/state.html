@@ -5,10 +5,10 @@
       <div class="container">
         <ul class="list-group">
           <center><h3>What other {{state}} Bernie Buddies are saying</h3></center>
-          <center>{{> filters}}</center>
+          <center><div style="margin-top:-1.50rem">{{> filters}}</div></center>
           <br/>
           {{#each posts}}
-            {{> postItem}}
+            {{> listItem}}
           {{/each}}
         </ul>
       </div>
