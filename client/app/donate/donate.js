@@ -29,51 +29,24 @@ Schema.donatePage = new SimpleSchema({
   }
 });
 
-Template.donate.onCreated(function() {
-  Session.set('disableDonateBanner', true);
-  Session.set('amount', 1);
-  Session.set('kudosTotal', 50);
-});
+function parseAmount() {
+  var amount = parseFloat($('#amount').val()) >= 1 ? $('#amount').val().split(',').join('') : 1;
+  var kudosTotal = (Math.ceil(amount * 50) > 0) ? Math.ceil(amount * 50) : 50;
 
-Template.donate.onRendered(function() {
-  currentId = Meteor.userId();
-  this.autorun(function() {
-    $('#card-num').payment('formatCardNumber');
-    $('#card-exp').payment('formatCardExpiry');
-    $('#card-cvc').payment('formatCardCVC');
-  });
-});
-
-Template.donate.onDestroyed(function() {
-  Session.set('disableDonateBanner', false);
-  $('#checkout').modal('hide');
-});
+  //.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","); to put commas
+  Session.set('amount', amount >= 1 ? parseFloat(amount).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : 1);
+  Session.set('kudosTotal', kudosTotal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','));
+}
 
 Template.donate.events({
   'keyup #amount': function(e) {
-    var amount = parseFloat($('#amount').val()) >= 1 ? $('#amount').val().split(',').join('') : 1;
-    var kudosTotal = (Math.ceil(amount * 50) > 0) ? Math.ceil(amount * 50) : 50;
-
-    //.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","); to put commas
-    Session.set('amount', amount >= 1 ? parseFloat(amount).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : 1);
-    Session.set('kudosTotal', kudosTotal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','));
-
+    parseAmount()
   },
   'mouseup #amount': function(e) {
-    var amount = parseFloat($('#amount').val()) >= 1 ? $('#amount').val().split(',').join('') : 1;
-    var kudosTotal = (Math.ceil(amount * 50) > 0) ? Math.ceil(amount * 50) : 50;
-
-    //.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","); to put commas
-    Session.set('amount', amount >= 1 ? parseFloat(amount).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : 1);
-    Session.set('kudosTotal', kudosTotal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','));
+    parseAmount()
   },
   'change #amount': function(e) {
-    var amount = parseFloat($('#amount').val()) >= 1 ? $('#amount').val().split(',').join('') : 1;
-    var kudosTotal = (Math.ceil(amount * 50) > 0) ? Math.ceil(amount * 50) : 50;
-
-    //.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","); to put commas
-    Session.set('amount', amount >= 1 ? parseFloat(amount).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : 1);
-    Session.set('kudosTotal', kudosTotal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','));
+    parseAmount()
   },
   'click #submit': function(e) {
     e.preventDefault();
@@ -100,12 +73,30 @@ Template.donate.events({
   }
 });
 
+
+Template.donate.onCreated(function() {
+  Session.set('disableDonateBanner', true);
+  Session.set('amount', 1);
+  Session.set('kudosTotal', 50);
+});
+
+Template.donate.onRendered(function() {
+  currentId = Meteor.userId();
+  this.autorun(function() {
+    $('#card-num').payment('formatCardNumber');
+    $('#card-exp').payment('formatCardExpiry');
+    $('#card-cvc').payment('formatCardCVC');
+  });
+});
+
+Template.donate.onDestroyed(function() {
+  Session.set('disableDonateBanner', false);
+  $('#checkout').modal('hide');
+});
+
 Template.donate.helpers({
   isMobile: function() {
-    return Darwin.device.match('phone');
-  },
-  storeItems: function() {
-    return store.products;
+    return Meteor.utilities.isMobile()
   },
   amount: function() {
     return Session.get('amount') ? Session.get('amount') : 1;
@@ -113,11 +104,7 @@ Template.donate.helpers({
   kudosTotal: function() {
     return Session.get('kudosTotal') ? Session.get('kudosTotal') : 50;
   },
-  errors: function() {
-    return Session.get('errors');
-  },
-  gestures:
-  {
+  gestures: {
   	'swiperight .container': function(event, error) {
   		console.log('swipe');
   		window.location.replace('/');

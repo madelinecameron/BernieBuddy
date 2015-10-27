@@ -1,22 +1,3 @@
-Template.profile.onCreated(function() {
-  var id = this.data._id;
-  Meteor.call('kudosCount', id, function(err, result) {
-    if (Meteor.userId() !== this._id) {
-      Session.set(this._id + 'kudos', result);
-    }
-  });
-});
-
-Template.profile.onRendered(function() {
-  Meteor.call('kudosCount', Meteor.userId(), function(err, result) {
-    Session.set('kudos', result);
-  });
-});
-
-Template.profile.onDestroyed(function() {
-  delete Session.keys.length;  //Reset filter
-});
-
 Template.profile.events({
   'click .pagination li': function(event, err) {
     var targetId = event.target.id;
@@ -38,6 +19,26 @@ Template.profile.events({
     }
   }
 })
+
+Template.profile.onCreated(function() {
+  var id = this.data._id;
+  Meteor.call('kudosCount', id, function(err, result) {
+    if (Meteor.userId() !== this._id) {
+      Session.set(this._id + 'kudos', result);
+    }
+  });
+});
+
+Template.profile.onRendered(function() {
+  Meteor.call('kudosCount', Meteor.userId(), function(err, result) {
+    Session.set('kudos', result);
+  });
+});
+
+Template.profile.onDestroyed(function() {
+  delete Session.keys.length;  //Reset filter
+});
+
 Template.profile.helpers({
   isOwnProfile: function() {
     //If logged-in userID === context ID

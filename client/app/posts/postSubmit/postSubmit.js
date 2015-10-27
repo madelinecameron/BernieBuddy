@@ -1,5 +1,18 @@
 var photoLoc = null;
 
+function checkPostLength() {
+  var length = $('#submitPostText').val().length;
+  if (length > 500 || length == 0) {
+    $('#submitButton').prop('disabled', true);
+  }
+  else {
+    if ($('#submitButton').prop('disabled')) {  //Submitingly-challenged is the PC term.
+      $('#submitButton').prop('disabled', false);
+    }
+  }
+  Session.set('length', length);
+}
+
 Template.postSubmit.events({
   'keydown #submitPostText': function(event, err) {
     var keyCode = event.which;
@@ -86,45 +99,16 @@ Template.postSubmit.events({
 
   },
   'keyup #submitPostText': function(e) {
-    var length = $('#submitPostText').val().length;
-    if (length > 500 || length == 0) {
-      $('#submitButton').prop('disabled', true);
-    }
-    else {
-      if ($('#submitButton').prop('disabled')) {  //Submitingly-challenged is the PC term.
-        $('#submitButton').prop('disabled', false);
-      }
-    }
-    Session.set('length', length);
+    checkPostLength()
   },
   'mouseup #submitPostText': function(e) {
-    var length = $('#submitPostText').val().length;
-    if (length > 500 || length == 0) {
-      $('#submitButton').prop('disabled', true);
-    }
-    else {
-      if ($('#submitButton').prop('disabled')) {  //Submitingly-challenged is the PC term.
-        $('#submitButton').prop('disabled', false);
-      }
-    }
-    Session.set('length', length);
+    checkPostLength()
   },
   'change #submitPostText': function(e) {
-    var length = $('#submitPostText').val().length;
-    if (length > 500 || length == 0) {
-      $('#submitButton').prop('disabled', true);
-    }
-    else {
-      if ($('#submitButton').prop('disabled')) {  //Submitingly-challenged is the PC term.
-        $('#submitButton').prop('disabled', false);
-      }
-    }
-    Session.set('length', length);
+    checkPostLength()
   },
   'change #file': function() {  //On selection of file
     var file = $('#file')[0].files;
-
-    console.log(file);
 
     S3.upload({
             files: file

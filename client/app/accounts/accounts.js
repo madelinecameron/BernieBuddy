@@ -19,12 +19,15 @@ Template.accounts.events({
   }
 });
 
+Template.accounts.onCreated(function() {
+  Session.set('disableDonateBanner', false);  //This is used for disabled the banner on /donate
+});
+
 Template.accounts.helpers({
   isMobile: function() {
-    return Darwin.device.match('phone');
+    return Meteor.utilities.isMobile()
   },
-  gestures:
-  {
+  gestures: {
   	'swiperight .container': function(event, error) {
   		console.log('swipe');
   		window.location.replace('/');
@@ -33,8 +36,4 @@ Template.accounts.helpers({
       window.location.replace('/');
   	}
   }
-});
-
-Template.accounts.onCreated(function() {
-  Session.set('disableDonateBanner', false);
 });

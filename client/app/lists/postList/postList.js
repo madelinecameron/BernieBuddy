@@ -1,19 +1,3 @@
-var POSTS_INCREMENT = 20;
-
-Template.postList.helpers({
-  isMobile: function() {
-    return Darwin.device.match('phone');
-  },
-  posts: function() {
-    if (Session.get('query') === 'mostRecent' || !Session.get('query')) {
-      return Posts.find({}, { sort: { sticky: -1, createdAt: -1 }}).fetch();
-    }
-    else {
-      return Posts.find({}, { sort: { sticky: -1, score: -1 }}).fetch();
-    }
-  }
-});
-
 Template.postList.events({
   'click #openPostBox': function(event, err) {
     $('#openPostBox').hide();
@@ -58,13 +42,25 @@ Template.postList.onDestroyed(function() {
 });
 
 Template.postList.onRendered(function() {
-  if (Darwin.device.match('phone')) {
+  if (Meteor.utilities.isMobile()) {
     Session.set('disableDonateBanner', true);
   }
 
   Meteor.call('kudosCount', Meteor.userId(), function(err, result) {
     Session.set('kudos', result);
   });
+});
 
-  console.log($('#mostRecentFilter').hasClass('active'));
+Template.postList.helpers({
+  isMobile: function() {
+    return Meteor.utilities.isMobile()
+  },
+  posts: function() {
+    if (Session.get('query') === 'mostRecent' || !Session.get('query')) {
+      return Posts.find({}, { sort: { sticky: -1, createdAt: -1 }}).fetch();
+    }
+    else {
+      return Posts.find({}, { sort: { sticky: -1, score: -1 }}).fetch();
+    }
+  }
 });

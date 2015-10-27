@@ -123,7 +123,7 @@ Meteor.methods({
     Meteor.users.update(id, { $set: { 'kudos': totalKudos } });
   },
   chargeCard: function(stripeToken, amount, user) {
-    var Stripe = StripeAPI('sk_test_tIqkZCYayMs99W4WJjfwO5do');
+    var Stripe = StripeAPI(process.env.DEBUG ? 'sk_test_tIqkZCYayMs99W4WJjfwO5do' : process.env.LIVE_SECRET_STRIPE_KEY);
 
     var syncCharge = Meteor.wrapAsync(Stripe.charges.create, Stripe.charges);
     var result = syncCharge({

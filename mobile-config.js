@@ -20,10 +20,6 @@ App.icons({
   'android_xhdpi': 'public/Android//drawable-xhdpi/icon.png'
 });
 
-App.configurePlugin('cc.fovea.cordova.purchase', {
-  BILLING_KEY: 'MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAt1jKU0BtAlbyRUrKVWpPgCNNTAm25m9J/NqyBFK3bOUWQOLz7Eusn3euuQjXJmLDeG0IHMyF01/yd55VfFf+JoyUEwf+/D849wMGU+ZDP8G59tsOSKvYOzIAu1yG8aLI5jldkLnVTCZbiYEvQiv1eQZLhks5/T28/o8VTOaXpprtR5/cK3HIcLFu818Yz8WYjYt5MQqCy6GqfypNACmnT/+TbgYDf8szqV8ULKHtJMfipu2aUyPoN+JtfuoU4b+tPLbuoZWhOzKGQNnqaMslWh+hi8PMXZuZ1YReeGBgEaOWb6WOwwBprRfXKhtbLFbXaChZan2rnUC7Oj8cP2Dc2wIDAQAB'
-});
-
 App.launchScreens({
   'iphone': 'public/iOS/splash/Default~iphone.png',
   'iphone_2x': 'public/iOS/splash/Default-568h@2x~iphone_640x1136.png',
@@ -49,3 +45,5 @@ App.accessRule('https://graph.facebook.com/*');
 App.accessRule('https://pbs.twimg.com/*');
 App.accessRule('*.bootstrapcdn.com/*');
 App.accessRule('https://s3.amazonaws.com/berniebuddydev/*');
+App.accessRule('https://s3.amazonaws.com/berniebuddy/*');
+App.accessRule('https://*.stripe.com/*');

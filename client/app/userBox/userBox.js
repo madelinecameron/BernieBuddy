@@ -9,7 +9,7 @@ Template.userBox.helpers({
     return Session.get('kudos');
   },
   isMobile: function() {
-    return Darwin.device.match('phone');
+    return Meteor.utilities.isMobile();
   }
 });
 

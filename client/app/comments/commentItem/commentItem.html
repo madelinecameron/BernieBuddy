@@ -8,23 +8,31 @@
           {{#if anon}}
             <a class="fakeBtn" style="margin-left: 1.5rem">Anonymous</a>
           {{else}}
-            <a class="btn {{#if adminPost}}adminPost{{/if}}" href="{{pathFor 'profile' _id=creatorId}}" style="margin-left: 1.5rem">{{creatorName}} ({{kudos}})</a>
+            <a class="btn {{#if adminPost}}adminPost{{/if}}"
+                href="{{pathFor 'profile' _id=creatorId}}"
+                style="margin-left: 1.5rem">{{creatorName}} ({{kudos}})</a>
           {{/if}}
           {{#if isMobile}}
             <br/><span class="fakeBtn">{{location}}</span>
             <br/><span class="sm-fakeBtn">{{time}}</span>
           {{else}}
             {{#unless anon}}
-              <span class="fakeBtn" style="margin-left:-2.5rem"> from {{location}}</span>
+              <span class="fakeBtn" style="margin-left:-2.5rem">
+                from {{location}}
+              </span>
             {{/unless}}
             <br/><span class="sm-fakeBtn">{{time}}</span>
           {{/if}}
         </div>
       </div>
       <div id="voteButtons" class="col-xs-2 col-md-1">
-        <a class="btn pull-right btn-small {{#if currentUser}}yes{{#if madeUpvote}} vote {{/if}}{{/if}} fa fa-chevron-up" href="{{#if currentUser}}#{{else}}/login{{/if}}"></a><br/>
+        <a class="btn pull-right btn-small {{#if currentUser}}yes{{#if madeUpvote}} vote {{/if}}{{/if}} fa fa-chevron-up"
+            href="{{#if currentUser}}#{{else}}/login{{/if}}"></a><br/>
+
         <a class="fakeBtn pull-right" href="#" style="margin-right:0.3rem;line-height:1.5rem">{{score}}</a><br/>
-        <a class="btn pull-right btn-small {{#if currentUser}}no{{#if madeDownvote}} vote {{/if}} {{/if}} fa fa-chevron-down" href="{{#if currentUser}}#{{else}}/login{{/if}}"></a>
+
+        <a class="btn pull-right btn-small {{#if currentUser}}no{{#if madeDownvote}} vote {{/if}} {{/if}} fa fa-chevron-down"
+            href="{{#if currentUser}}#{{else}}/login{{/if}}"></a>
       </div>
     </div>
   </li>
