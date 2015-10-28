@@ -38,21 +38,19 @@
           {{#if isMobile}}
             <a href="/login" type="button" class="btn btn-primary">Login</a>
           {{else}}
-            <div class="row" style="margin-top:2rem; margin-right:-15rem">
-              <div class="col-lg-6 col-md-6 col-sm-6 visible-lg visible-md visible-sm">
-                <button type="button" class="btn btn-social-login btn-facebook"><i class="fa fa-facebook"></i> Sign in with Facebook</button>
-              </div>
-              <div class="col-lg-6 col-md-6 col-sm-6 visible-lg visible-md visible-sm">
-                <button type="button" class="btn btn-social-login btn-twitter" style="margin-left:5px;"><i class="fa fa-twitter"></i> Sign in with Twitter</button>
-              </div>
+            <div class="row visible-lg visible-md" style="margin-top:2rem; margin-right:-15rem;">
+              <div class="well well-lg" style="background-color:rgba(255,255,255,0); margin-top:-15px">
+                <span style="float:left; margin-top:-3.5rem; background-color:#147FD7; color:#FFF">Login</span>
+                <div class="col-lg-6 col-md-6" style="margin-top:-1.5rem">
+                  <button type="btn" class="btn btn-facebook" style="width:3rem; height: 3rem; background-color:rgba(255,255,255,1)"><i style="color:#147FD7" class="fa fa-facebook fa-2x"></i></button>
+                </div>
+                <div class="col-lg-6 col-md-6" style="margin-top:-1.5rem">
+                  <button type="button" class="btn btn-twitter" style="width:3rem; height: 3rem;background-color:rgba(255, 255, 255, 1)"><span style="margin-left:-0.75rem; margin-top:-0.75rem color:#147FD7" class="fa fa-twitter fa-2x"></span></button>
+                </div>
             </div>
-            <div class="row visible-xs" style="margin-top:0rem; margin-right:-4rem">
-              <div class="col-xs-4 visible-xs">
-                <button type="button" class="btn btn-social-login btn-facebook" style="height:3rem; width:3rem"><center><i style="margin-left:-0.15rem" class="fa fa-facebook"></i></center></button>
-              </div>
-              <div class="col-xs-4 visible-xs">
-                <button type="button" class="btn btn-social-login btn-twitter" style="height:3rem; width:3rem"><i style="margin-left:-0.15rem" class="fa fa-twitter"></i></button>
-              </div>
+            </div>
+            <div class="row visible-sm visible-xs" style="margin-top:2rem; margin-right:-15rem">
+            <a href="/login" type="button" class="btn btn-primary">Login</a>
             </div>
           {{/if}}
         {{/if}}
