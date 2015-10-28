@@ -36,29 +36,25 @@
           {{/if}}
         {{else}}
           {{#if isMobile}}
-            <a href="/accounts" type="button" class="btn btn-primary">Login</a>
+            <a href="/login" type="button" class="btn btn-primary">Login</a>
           {{else}}
-            <a href="#" role="button" data-toggle="modal" data-target="#login-modal" class="btn btn-primary">Login</a>
-            <div class="modal" id="login-modal" data-backdrop="false">
-              <div class="modal-dialog">
-                  <div class="modal-content">
-                      <div class="modal-body" style="margin-top:-15px">
-                        <button type="button" class="close" data-dismiss="modal" id="closeModal">&times;</button>
-                        <div class="container">
-                          <div style="border:0">
-                            <div>
-                              <div class="btn-group" role="group" style="margin-top:1.5rem">
-                                <button type="button" class="btn btn-social-login btn-facebook"><i class="fa fa-facebook"></i> Sign in with Facebook</button>
-                                <button type="button" class="btn btn-social-login btn-twitter" style="margin-left:5px"><i class="fa fa-twitter"></i> Sign in with Twitter</button>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                  </div>
+            <div class="row" style="margin-top:2rem; margin-right:-15rem">
+              <div class="col-lg-6 visible-lg">
+                <button type="button" class="btn btn-social-login btn-facebook"><i class="fa fa-facebook"></i> Sign in with Facebook</button>
+              </div>
+              <div class="col-lg-6 visible-lg">
+                <button type="button" class="btn btn-social-login btn-twitter" style="margin-left:5px;"><i class="fa fa-twitter"></i> Sign in with Twitter</button>
               </div>
             </div>
-            {{/if}}
+            <div class="row visible-md visible-sm visible-xs" style="margin-top:0rem; margin-right:-4rem">
+              <div class="col-sm-4 col-md-4 col-xs-4 visible-md visible-sm visible-xs">
+                <button type="button" class="btn btn-social-login btn-facebook" style="height:3rem; width:3rem"><center><i style="margin-left:-0.15rem" class="fa fa-facebook"></i></center></button>
+              </div>
+              <div class="col-sm-4 col-md-4 col-xs-4 visible-md visible-sm visible-xs">
+                <button type="button" class="btn btn-social-login btn-twitter" style="height:3rem; width:3rem"><i style="margin-left:-0.15rem" class="fa fa-twitter"></i></button>
+              </div>
+            </div>
+          {{/if}}
         {{/if}}
     </div>
 

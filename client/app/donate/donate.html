@@ -1,50 +1,64 @@
 <template name="donate">
 	{{#HammerTouchArea gestureMap=gestures}}
 	  <div class="container" draggable="{{isMobile}}">
-	    <div class="jumbotron">
-	      <h1>Support Bernie Buddy!</h1>
+	    <div class="jumbotron" style="height: auto">
+	      <h1>#FeelTheBern</h1>
 	      <p>
-	        Thanks for being a part of the Bernie Buddy family!<br/><br/>
+					Thanks for being a part of the Bernie Buddy family!<br/><br/>
+					We are a small group of Bernie lovers and we’re just trying to make
+					the best tool for organizing, communicating, and having fun with
+					the grassroots revolution that we can!<br/><br/>
+					Do you like Bernie Buddy? Want to help us make it even better, while
+					supporting Bernie’s grassroots revolution in the process!?
+					We’re reaching out to the community because building and maintaining
+					a free application across multiple platforms is very time-consuming
+					and expensive for a tiny team with limited resources. However, we know
+					 that Bernie Buddy will be capable of inspiring people, organizing events,
+					  entertaining the community, and - most importantly - it will be a
+						place we can all share thoughts, ideas, and friendship.<br/><br/>
 
-	        Do you like the application? Want to help us make it even better,
-	        while supporting Bernie in the process!?<br/><br/>
+					Help our tiny team of student developers grow &amp; keep improving Bernie
+					Buddy with a small token of your generosity! Seriously, any little bit
+					helps a lot – and you even get 50 Kudos for every $1 contributed!<br/><br/>
 
-	        If so, help support our tiny team of student developers with a small
-	        token of your gratitude!<br/><br/>
-
-	        Seriously, any little bit helps a lot. And you even get 50 Kudos
-	        for every $1 contributed!<br/><br/>
-
-	        Donate today to help a small group of students accomplish really big things!<br/><br/>
-	      </p>
-	      <p><a class="btn btn-primary btn-lg" href="#" role="button">Go to IndieGoGo</a>
-	      <a class="btn btn-primary btn-lg" href="#" role="button" data-toggle="modal" data-target="#checkout">Donate via Stripe</a></p>
+					Read the text below to see how we plan to directly support Bernie’s grassroots revolution!<br/><br/>
+					<div style="width: auto; padding-bottom:15rem">
+						<div class="alert" style="width:50%; float: left;">
+							<center><a class="btn btn-primary btn-lg" href="#" role="button" data-toggle="modal" data-target="#checkout">Donate Securely via Stripe</a></center>
+						</div>
+						<div class="alert" style="width:50%; float:right">
+							<center>
+								<a class="btn btn-primary btn-lg" href="http://igg.me/at/BernieBuddy" role="button">Visit Our IndieGoGo</a><br/><br/>
+								<strong>LIMITED TIME OFFER</strong>
+									<p style="font-size:14px">
+										Donate to Bernie Buddy through IndieGoGo and receive double kudos
+										and access to special tags that will appear next to your username.<br/>
+										Available only for a limited time.
+									</p>
+							</center>
+						</div>
+					</div><br/>
+					</p>
 	    </div>
-	    <div>
-	      We feel that Bernie Sanders is showing the rest of America what a
-	      truly qualified leader acts like – while his incredibly enthusiastic
-	      supporters are showing what a group of responsible adults coming
-	      together to solve serious problems looks like.<br/><br/>
+	    <div class="jumbotron">
+				<h2>How we are supporting Bernie</h2>
+				We want everyone to know that supporting the Bernie Buddy application
+				and the team behind it is simply supporting a fun &amp; creative way to
+				spread the message of restoring honesty, integrity, and character
+				to our government.<br/><br/>
 
-	      We want everyone to know that supporting the Bernie Buddy
-	      application and the team behind it is simply supporting a fun &amp;
-	      creative way to spread the message of restoring honesty, integrity,
-	      and character to our government.<br/><br/>
+				Bernie Buddy will always be free, but we do plan to eventually make
+				money with this application. With the profits we make - after we pay
+				our team &amp; the other costs associated with providing the application -
+				we are going to provide funding, promotional materials, campaign
+				merchandise, adequate venues, and organizational support to ordinary
+				individuals across the nation that want to host their own Bernie events
+				 &amp; debate watch parties.<br/><br/>
 
-	      Bernie Buddy will always be free, but we do plan to eventually make
-	      money with this application. With the profits we make - after we pay
-	      our team &amp; the other costs associated with providing the
-	      application - we are going to provide funding, promotional materials,
-	      campaign merchandise, adequate venues, and organizational support
-	      to ordinary individuals across the nation that want to host their
-	      own Bernie events &amp; debate watch parties.<br/><br/>
+				These people desperately want to inspire their friends, family, and
+				communities but they won’t be able to pull it off without our help!<br/><br/>
 
-	      These people desperately want to inspire their friends, family,
-	      and communities but they won’t be able to pull it off without our
-	      help!<br/><br/>
-
-	      A buddy of Bernie is a buddy of ours! Want to help us assist the
-	      revolution?<br/><br/>
+				A buddy of Bernie is a buddy of ours! Want to help us assist the revolution?<br/><br/>
 	    </div>
 	  </div>
 	{{/HammerTouchArea}}
@@ -122,7 +136,22 @@
             </div>
 
             <div class="modal-body">
-                <p>Your ${{amount}} has given you {{kudosTotal}} kudos and the infinite gratitude of the Bernie Buddy Team!</p>
+                <p>{{#markdown}}{{#emoji}}
+The Bernie Buddy Team sincerely appreciates your
+donation of ${{amount}}! __{{kudosTotal}} kudos__ will be credited to your account
+very soon. :smiley:<br/><br/>
+
+
+Bernie Buddy’s success would not be possible without people like you.
+Your donation allows us to expand our tiny team of student developers
+while we make the application even better, pay for our servers,
+and use much of our profits to directly support Bernie’s grassroots revolution!<br/><br/>
+
+
+You have the infinite gratitude of The Bernie Buddy Team!
+We want to sincerely thank you for your support.
+									 {{/emoji}}{{/markdown}}
+								</p>
             </div>
         </div>
     </div>

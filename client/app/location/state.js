@@ -22,6 +22,7 @@ Template.state.events({
 });
 
 Template.state.onRendered(function() {
+  window.scrollTo(0,0)
   Meteor.call('kudosCount', Meteor.userId(), function(err, result) {  //On render, re-request self kudo count
     Session.set('kudos', result);
   });

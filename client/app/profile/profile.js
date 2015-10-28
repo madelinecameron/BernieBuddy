@@ -30,6 +30,7 @@ Template.profile.onCreated(function() {
 });
 
 Template.profile.onRendered(function() {
+  window.scrollTo(0, 0)
   Meteor.call('kudosCount', Meteor.userId(), function(err, result) {
     Session.set('kudos', result);
   });

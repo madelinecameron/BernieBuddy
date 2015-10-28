@@ -38,6 +38,7 @@ Template.postList.onDestroyed(function() {
 });
 
 Template.postList.onRendered(function() {
+  window.scrollTo(0, 0)
   if (Meteor.utilities.isMobile()) {
     Session.set('disableDonateBanner', true);
   }

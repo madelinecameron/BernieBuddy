@@ -81,6 +81,7 @@ Template.donate.onCreated(function() {
 });
 
 Template.donate.onRendered(function() {
+  window.scrollTo(0, 0)
   currentId = Meteor.userId();
   this.autorun(function() {
     $('#card-num').payment('formatCardNumber');
