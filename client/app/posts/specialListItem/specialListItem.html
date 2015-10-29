@@ -1,10 +1,14 @@
 <template name="specialListItem">
-  <div class="post">
-    <li class="list-group-item">
+  <div class="post" style="">
+    <li>
       <a href="{{pathFor 'donate' }}" class="post">
         <div class="row" id="content">
             <div id="textContainer" class="col-xs-10 col-md-11">
-              <p class="break-el" style="{{#if sticky}}white-space:pre-line{{/if}}">{{text}}</p>
+              <div style="margin-right:-35px;margin-left:25px;margin-top:-45px;margin-bottom:-25px">
+              <h1 class="ribbon" >
+                 <strong class="ribbon-content">{{text}}</strong>
+              </h1>
+            </div>
             </div>
         </div>
       </a>

@@ -1,7 +1,7 @@
 <template name="donate">
 	{{#HammerTouchArea gestureMap=gestures}}
 	  <div class="container" draggable="{{isMobile}}">
-	    <div class="jumbotron" style="height: auto">
+	    <div class="jumbotron" style="">
 	      <h1>#FeelTheBern</h1>
 	      <p>
 					Thanks for being a part of the Bernie Buddy family!<br/><br/>
@@ -26,12 +26,18 @@
 						<div class="alert" style="width:50%; float:left">
 							<center>
 								<a class="btn btn-primary btn-lg" href="http://igg.me/at/BernieBuddy" role="button">Visit Our IndieGoGo</a><br/><br/>
-								<strong>LIMITED TIME OFFER</strong>
-									<p style="font-size:14px">
-										Donate to Bernie Buddy through IndieGoGo and receive double kudos
-										and access to special tags that will appear next to your username.<br/>
-										Available only for a limited time.
-									</p>
+								<div class="visible-md visible-lg">
+									<strong>LIMITED TIME OFFER</strong>
+										<p style="font-size:14px">
+											Donate to Bernie Buddy through IndieGoGo and receive double kudos
+											and access to special tags that will appear next to your username.<br/>
+											Available only for a limited time.
+										</p>
+								</div>
+								<div class="visible-sm visible-xs">
+									<strong style="font-size:1.75rem">Limited Time:</strong>
+									<p style="font-size:1.5rem">Recieve double kudos and special tags when you donate through IndieGoGo</p>
+								</div>
 							</center>
 						</div>
 						<div class="alert" style="width:50%; float: right;">
@@ -40,7 +46,7 @@
 					</div><br/>
 					</p>
 	    </div>
-	    <div class="jumbotron">
+	    <div class="jumbotron" style="padding-top:50px">
 				<h2>How we are supporting Bernie</h2>
 				We want everyone to know that supporting the Bernie Buddy application
 				and the team behind it is simply supporting a fun &amp; creative way to
