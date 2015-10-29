@@ -12,7 +12,7 @@ Meteor.methods({
           $near: {
             $geometry: {
               type: 'Point',
-              coordinates: [parseFloat(post.coords.long), parseFloat(post.coords.lat)]
+              coordinates: [ parseFloat(post.coords.long), parseFloat(post.coords.lat) ]
             }
           }
         }
