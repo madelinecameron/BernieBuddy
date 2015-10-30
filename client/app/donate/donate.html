@@ -26,18 +26,21 @@
 						<div class="alert" style="width:50%; float:left">
 							<center>
 								<a class="btn btn-primary btn-lg" href="http://igg.me/at/BernieBuddy" role="button">Visit Our IndieGoGo</a><br/><br/>
-								<div class="visible-md visible-lg">
-									<strong>LIMITED TIME OFFER</strong>
-										<p style="font-size:14px">
-											Donate to Bernie Buddy through IndieGoGo and receive double kudos
-											and access to special tags that will appear next to your username.<br/>
-											Available only for a limited time.
-										</p>
-								</div>
-								<div class="visible-sm visible-xs">
-									<strong style="font-size:1.75rem">Limited Time:</strong>
-									<p style="font-size:1.5rem">Recieve double kudos and special tags when you donate through IndieGoGo</p>
-								</div>
+								{{#if isMobile}}
+									<div class="visible-sm visible-xs">
+										<strong style="font-size:1.75rem">Limited Time:</strong>
+										<p style="font-size:1.5rem">Receive double kudos and special tags when you donate through IndieGoGo</p>
+									</div>
+								{{else}}
+									<div class="visible-md visible-lg">
+										<strong>LIMITED TIME OFFER</strong>
+											<p style="font-size:14px">
+												Donate to Bernie Buddy through IndieGoGo and receive double kudos
+												and access to special tags that will appear next to your username.<br/>
+												Available only for a limited time.
+											</p>
+									</div>
+								{{/if}}
 							</center>
 						</div>
 						<div class="alert" style="width:50%; float: right;">
