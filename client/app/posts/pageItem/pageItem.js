@@ -74,5 +74,8 @@ Template.pageItem.helpers({
   },
   hasPhoto: function() {
     return this.photoLoc  //Null / undefined is false-y, everything is truth-y
+  },
+  anonLoc: function() {
+    return this.location === 'Anonymous Location'
   }
 });

@@ -12,18 +12,18 @@
               <p class="break-el" style="{{#if sticky}}white-space:post-line{{/if}}">{{#markdown}}{{#emoji}}{{post}}{{/emoji}}{{/markdown}}</p>
               <div>
                 <span class="fakeBtn" style="margin-right:-4rem">By: </span>
-                  {{#if anon}}
-                    <a class="fakeBtn" style="margin-left: 1.5rem">Anonymous</a>
-                  {{else}}
-                    <a class="btn {{#if adminPost}}adminPost{{/if}}" href="{{pathFor 'profile' _id=creatorId}}" style="margin-left: 1.5rem">{{creatorName}} ({{kudos}})</a>
-                  {{/if}}
+                {{#if anon}}
+                  <a class="fakeBtn" style="margin-left: 1.5rem">Anonymous</a>
+                {{else}}
+                  <a class="btn {{#if adminPost}}adminPost{{/if}}" href="{{pathFor 'profile' _id=creatorId}}" style="margin-left: 1.5rem">{{creatorName}} ({{kudos}})</a>
+                {{/if}}
                 {{#if isMobile}}
                   <br/><span class="fakeBtn">{{commentsCount}} comments</span>
                   <br/><span class="fakeBtn">
                     {{#if anonLoc}}
-                      <span id="location{{_id}}">{{location}}</span>
+                      <span id="location{{_id}}" style="margin-left:1.30rem;margin-top:-1.30rem;margin-bottom:-1.30rem;display:block;color:#545454">{{location}}</span>
                     {{else}}
-                      <a id="location{{_id}}" class="btn" href="{{pathFor 'state' state=location }}">{{location}}</a>
+                      <a id="location{{_id}}" class="btn" href="{{pathFor 'state' state=location }}" style="margin-left:-1.30rem;">{{location}}</a>
                     {{/if}}
                   </span>
                   <br/><span class="sm-fakeBtn">{{time}}</span>
@@ -37,7 +37,7 @@
                       {{/if}}
                     </span>
                   {{/unless}}
-                  <br/><span class="fakeBtn">{{commentsCount}} comments</span>
+                  <br/><span class="fakeBtn" style="margin-top:-0.115rem">{{commentsCount}} comments</span>
                   <br/><span class="sm-fakeBtn">{{time}}</span>
                 {{/if}}
                 <a href="#" id="reportPost" style="margin-left:0.5rem; font-size:11px">Report</a>

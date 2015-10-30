@@ -40,6 +40,13 @@ if(Meteor.isServer) {
     return Meteor.users.find({}, { "services.twitter.profile_image_url_https": 1, "services.facebook.id": 1 })
   })
 
+  var count = Emojis.seed();
+  console.log('Inserted ' + count + ' emojis.');
+
+  Meteor.publish('emojis', function() {
+    return Emojis.find();
+  });
+
   S3.config = {
     key: process.env.S3_KEY,
     secret: process.env.S3_SECRET,
@@ -55,6 +62,9 @@ if(Meteor.isClient) {
   Meteor.subscribe("profilePics")
 
   Deps.autorun(function() {
+    Emojis.setBasePath('/Emojis')
+    Meteor.subscribe('emojis');
+    console.log(Emojis.findOne({ name: "happy_bernie"}))
     if(!Meteor.userId()) {
       if(Session.get("kudos")) {
         delete Session.keys["kudos"]

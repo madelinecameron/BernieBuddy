@@ -15,7 +15,12 @@
                       {{#unless anon}}<a class="btn {{#if adminPost}}adminPost{{/if}}" href="{{pathFor 'profile' _id=creatorId}}" style="margin-left: 1.5rem">{{creatorName}} ({{kudos}})</a>{{/unless}}
                       {{#if anon}}<a class="fakeBtn" style="margin-left: 1.5rem">Anonymous</a>{{/if}}
                 {{#if isMobile}}
-                  <br/><span class="fakeBtn"><a id="location{{_id}}" class="btn" href="{{pathFor 'state' state=location }}">{{location}}</a></span>
+                  <br/>
+                  {{#if anonLoc}}
+                    <span id="location{{_id}}" style="margin-bottom:-1.30rem;display:block;color:#545454">{{location}}</span>
+                  {{else}}
+                    <a id="location{{_id}}" class="btn" href="{{pathFor 'state' state=location }}" style="margin-top:-0.3rem">{{location}}</a>
+                  {{/if}}
                   <br/><span class="sm-fakeBtn">{{time}}</span>&nbsp;&nbsp;&nbsp;{{#if userCanDelete}}<a href="#" id="deletePost" style="font-size:11px">Delete</a>{{/if}}
                 {{else}}
                   {{#unless anon}}<span class="fakeBtn" style="margin-left:-2.5rem"> from <a class="btn" id="location{{_id}}" style="margin-left:-1.30rem; margin-top:-0.15rem" href="{{pathFor 'state' state=location }}">{{location}}</a></span>{{/unless}}
