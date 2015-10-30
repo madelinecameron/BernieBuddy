@@ -40,9 +40,6 @@ if(Meteor.isServer) {
     return Meteor.users.find({}, { "services.twitter.profile_image_url_https": 1, "services.facebook.id": 1 })
   })
 
-  var count = Emojis.seed();
-  console.log('Inserted ' + count + ' emojis.');
-
   Meteor.publish('emojis', function() {
     return Emojis.find();
   });
