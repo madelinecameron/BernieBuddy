@@ -23,16 +23,6 @@ Template.postList.events({
   }
 });
 
-Template.postList.onCreated(function() {
-  if (Meteor.user()) {
-    console.log('User');
-    if (!("kudos" in Meteor.user())) {
-      console.log('No kudos!');
-      Meteor.call('transferAggKudosToUserKudos', Meteor.userId());
-    }
-  }
-});
-
 Template.postList.onDestroyed(function() {
   delete Session.keys['length'];  //Reset filter
 });
