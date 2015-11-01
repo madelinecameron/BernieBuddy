@@ -79,21 +79,28 @@ Meteor.methods({
     }
   },
   chargeCard: function(stripeToken, amount, user) {
-    var Stripe = StripeAPI(process.env.DEBUG ? 'sk_test_tIqkZCYayMs99W4WJjfwO5do' : process.env.LIVE_SECRET_STRIPE_KEY);
+      var Stripe = StripeAPI(process.env.DEBUG ? 'sk_test_tIqkZCYayMs99W4WJjfwO5do' : process.env.LIVE_SECRET_STRIPE_KEY);
+      try {
+        var syncCharge = Meteor.wrapAsync(Stripe.charges.create, Stripe.charges);
+        var result = syncCharge({
+          amount: amount * 100, //in cents
+          currency: 'usd',
+          source: stripeToken
+        });
 
-    var syncCharge = Meteor.wrapAsync(Stripe.charges.create, Stripe.charges);
-    var result = syncCharge({
-      amount: amount * 100, //in cents
-      currency: 'usd',
-      source: stripeToken
-    });
-
-    if (result.paid) {
-      if (user) {
-        Meteor.call('sendSlackMessage', 'Someone just donated $' + amount + '!', ':happybernie:', 'DonationBot');
-        Meteor.users.update(user, { $inc: { 'kudos': amount * 50 } });
+        if(result) {
+          if (result.paid) {
+            Meteor.call('sendSlackMessage', 'Someone just donated $' + amount + '!', ':happybernie:', 'DonationBot');
+            if (user) {
+              Meteor.users.update(user, { $inc: { 'kudos': amount * 50 } });
+              return result;
+            }
+          }
+        }
       }
-    }
+      catch(e) {
+        console.log(e);
+      }
   },
   sendSlackMessage: function(message, icon, bot_name) {
     //Send a message to Slack channel

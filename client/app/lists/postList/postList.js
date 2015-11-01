@@ -28,7 +28,7 @@ Template.postList.onDestroyed(function() {
 });
 
 Template.postList.onRendered(function() {
-  window.scrollTo(0, 0)
+  window.scrollTo(0, 0)  // Fixes bug where scroll of page navigated from would be replicated
   if (Meteor.utilities.isMobile()) {
     Session.set('disableDonateBanner', true);
   }

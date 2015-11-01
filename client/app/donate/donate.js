@@ -39,6 +39,9 @@ function parseAmount() {
 }
 
 Template.donate.events({
+  'blur': function(e) {
+    $('#serverMessage').html("")
+  },
   'keyup #amount': function(e) {
     parseAmount()
   },
@@ -63,9 +66,15 @@ Template.donate.events({
         exp_year: exp.split('/')[1]
     }, function(status, response) {
         stripeToken = response.id;
-        Meteor.call('chargeCard', stripeToken, amount > 1 ? amount : 1, currentId);
-        $('#checkout').modal('hide');
-        $('#thankYou').modal('show');
+        Meteor.call('chargeCard', stripeToken, amount > 1 ? amount : 1, currentId, function(err, result) {
+          if(!err) {
+            $('#checkout').modal('hide');
+            $('#thankYou').modal('show');
+          }
+          else {
+            $('#serverMessage').html("<b>Something went wrong, your card may have been declined.</b>")
+          }
+        });
     });
   },
   'hide.bs.modal #thankYou': function(e) {
@@ -81,7 +90,7 @@ Template.donate.onCreated(function() {
 });
 
 Template.donate.onRendered(function() {
-  window.scrollTo(0, 0)
+  window.scrollTo(0, 0)  // Fixes bug where scroll of page navigated from would be replicated
   currentId = Meteor.userId();
   this.autorun(function() {
     $('#card-num').payment('formatCardNumber');
