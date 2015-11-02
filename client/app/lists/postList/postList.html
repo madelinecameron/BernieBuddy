@@ -11,14 +11,16 @@
           <div class="collapse" id="postBox">
             {{> postSubmit}}
           </div>
-        </div><br/>
-        <ul class="list-group">
-          <div style="margin-top:0.50rem; margin-bottom:-0.5rem">
-            <center>{{> filters}}</center>
-          </div>
+        </div>
+        <div style="margin-top:50px;">
           {{#if isMobile}}
             {{> specialListItem text="Support Us"}}
           {{/if}}
+        </div>
+        <ul class="list-group" style="margin-top:-15px">
+          <div style="margin-top:0.50rem; margin-bottom:-0.5rem">
+            <center>{{> filters}}</center>
+          </div>
           {{#each posts}}
             {{> listItem}}
           {{/each}}

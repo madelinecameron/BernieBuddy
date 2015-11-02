@@ -47,7 +47,7 @@
               {{#if sticky}}
                 <a class="fakeBtn pull-right fa fa-thumb-tack" href="#"></a>
               {{else}}
-              <div style="margin-left:-0.75rem">
+              <div style="margin-left:-0.75rem;float:right">
                 <a style="margin-left:-0.15rem" class="btn btn-small {{#if currentUser}}yes{{#if madeUpvote}} vote {{/if}}{{/if}} fa fa-chevron-up" href="{{#if currentUser}}#{{else}}/login{{/if}}"></a><br/>
                 <a class="btn fakeBtn" id="score{{_id}}" href="#" style="line-height:1.5rem">{{score}}</a><br/>
                 <a style="margin-left:-0.15rem" class="btn btn-small {{#if currentUser}}no{{#if madeDownvote}} vote {{/if}} {{/if}} fa fa-chevron-down" href="{{#if currentUser}}#{{else}}/login{{/if}}"></a>
