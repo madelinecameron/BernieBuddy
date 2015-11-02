@@ -1,61 +1,65 @@
 <template name="listItem">
   <div class="post">
     <li class="list-group-item">
-      <a href="{{pathFor 'postPage' _id=_id}}" class="post">
         <div class="row" id="content">
+          <a href="{{pathFor 'postPage' _id=_id}}" class="post">
             {{#if hasPhoto}}
               <div style="padding:5px; margin-top:-10px">
                 <img src="{{photoLoc}}" class="img-responsive">
               </div><br/>
             {{/if}}
+          </a>
             <div id="textContainer" class="col-xs-10 col-md-11">
               <p class="break-el" style="{{#if sticky}}white-space:post-line{{/if}}">{{#markdown}}{{#emoji}}{{post}}{{/emoji}}{{/markdown}}</p>
-              <div>
-                <span class="fakeBtn" style="margin-right:-4rem">By: </span>
-                {{#if anon}}
-                  <a class="fakeBtn" style="margin-left: 1.5rem">Anonymous</a>
-                {{else}}
-                  <a class="btn {{#if adminPost}}adminPost{{/if}}" href="{{pathFor 'profile' _id=creatorId}}" style="margin-left: 1.5rem">{{creatorName}} ({{kudos}})</a>
-                {{/if}}
-                {{#if isMobile}}
-                  <br/><span class="fakeBtn">{{commentsCount}} comments</span>
-                  <br/><span class="fakeBtn">
-                    {{#if anonLoc}}
-                      <span id="location{{_id}}" style="margin-left:1.30rem;margin-top:-1.30rem;margin-bottom:-1.30rem;display:block;color:#545454">{{location}}</span>
-                    {{else}}
-                      <a id="location{{_id}}" class="btn" href="{{pathFor 'state' state=location }}" style="margin-left:-1.30rem;">{{location}}</a>
-                    {{/if}}
-                  </span>
-                  <br/><span class="sm-fakeBtn">{{time}}</span>
-                {{else}}
-                  {{#unless anon}}
-                    <span class="fakeBtn" style="margin-left:-2.5rem"> from
+              <a href="{{pathFor 'postPage' _id=_id}}" class="post">
+                <div>
+                  <span class="fakeBtn" style="margin-right:-4rem">By: </span>
+                  {{#if anon}}
+                    <a class="fakeBtn" style="margin-left: 1.5rem">Anonymous</a>
+                  {{else}}
+                    <a class="btn {{#if adminPost}}adminPost{{/if}}" href="{{pathFor 'profile' _id=creatorId}}" style="margin-left: 1.5rem">{{creatorName}} ({{kudos}})</a>
+                  {{/if}}
+                  {{#if isMobile}}
+                    <br/><span class="fakeBtn">{{commentsCount}} comments</span>
+                    <br/><span class="fakeBtn">
                       {{#if anonLoc}}
-                        <span id="location{{_id}}" style="margin-left:-1.30rem; margin-top:-0.115rem" class="fakeBtn">{{location}}</span>
+                        <span id="location{{_id}}" style="margin-left:1.30rem;margin-top:-1.30rem;margin-bottom:-1.30rem;display:block;color:#545454">{{location}}</span>
                       {{else}}
-                        <a id="location{{_id}}" class="btn" style="margin-left:-1.30rem; margin-top:-0.115rem" href="{{pathFor 'state' state=location }}">{{location}}</a>
+                        <a id="location{{_id}}" class="btn" href="{{pathFor 'state' state=location }}" style="margin-left:-1.30rem;">{{location}}</a>
                       {{/if}}
                     </span>
-                  {{/unless}}
-                  <br/><span class="fakeBtn" style="margin-top:-0.115rem">{{commentsCount}} comments</span>
-                  <br/><span class="sm-fakeBtn">{{time}}</span>
-                {{/if}}
-                <a href="#" id="reportPost" style="margin-left:0.5rem; font-size:11px">Report</a>
-              </div>
+                    <br/><span class="sm-fakeBtn">{{time}}</span>
+                  {{else}}
+                    {{#unless anon}}
+                      <span class="fakeBtn" style="margin-left:-2.5rem"> from
+                        {{#if anonLoc}}
+                          <span id="location{{_id}}" style="margin-left:-1.30rem; margin-top:-0.115rem" class="fakeBtn">{{location}}</span>
+                        {{else}}
+                          <a id="location{{_id}}" class="btn" style="margin-left:-1.30rem; margin-top:-0.115rem" href="{{pathFor 'state' state=location }}">{{location}}</a>
+                        {{/if}}
+                      </span>
+                    {{/unless}}
+                    <br/><span class="fakeBtn" style="margin-top:-0.115rem">{{commentsCount}} comments</span>
+                    <br/><span class="sm-fakeBtn">{{time}}</span>
+                  {{/if}}
+                  <a href="#" id="reportPost" style="margin-left:0.5rem; font-size:11px">Report</a>
+                </div>
+              </a>
             </div>
             <div id="voteButtons" class="col-xs-2 col-md-1">
-              {{#if sticky}}
-                <a class="fakeBtn pull-right fa fa-thumb-tack" href="#"></a>
-              {{else}}
-              <div style="margin-left:-0.75rem;float:right">
-                <a style="margin-left:-0.15rem" class="btn btn-small {{#if currentUser}}yes{{#if madeUpvote}} vote {{/if}}{{/if}} fa fa-chevron-up" href="{{#if currentUser}}#{{else}}/login{{/if}}"></a><br/>
-                <a class="btn fakeBtn" id="score{{_id}}" href="#" style="line-height:1.5rem">{{score}}</a><br/>
-                <a style="margin-left:-0.15rem" class="btn btn-small {{#if currentUser}}no{{#if madeDownvote}} vote {{/if}} {{/if}} fa fa-chevron-down" href="{{#if currentUser}}#{{else}}/login{{/if}}"></a>
-              </div>
-              {{/if}}
+              <a href="{{pathFor 'postPage' _id=_id}}" class="post">
+                {{#if sticky}}
+                  <a class="fakeBtn pull-right fa fa-thumb-tack" href="#"></a>
+                {{else}}
+                <div style="margin-left:-0.75rem;float:right">
+                  <a style="margin-left:-0.15rem" class="btn btn-small {{#if currentUser}}yes{{#if madeUpvote}} vote {{/if}}{{/if}} fa fa-chevron-up" href="{{#if currentUser}}#{{else}}/login{{/if}}"></a><br/>
+                  <a class="btn fakeBtn" id="score{{_id}}" href="#" style="line-height:1.5rem">{{score}}</a><br/>
+                  <a style="margin-left:-0.15rem" class="btn btn-small {{#if currentUser}}no{{#if madeDownvote}} vote {{/if}} {{/if}} fa fa-chevron-down" href="{{#if currentUser}}#{{else}}/login{{/if}}"></a>
+                </div>
+                {{/if}}
+              </a>
             </div>
           </div>
-      </a>
     </li>
   </div>
 </template>
