@@ -49,7 +49,7 @@ Template.listItem.helpers({
   },
   kudos: function() {
     if (this.creatorId !== Meteor.userId()) {
-      return Session.get(this.creatorId + 'kudos') ? Session.get(this.creatorId + 'kudos') : '?';
+      return Session.get(this.creatorId + 'kudos') ? Session.get(this.creatorId + 'kudos') : '0';
     }
     else {
       return Session.get('kudos');

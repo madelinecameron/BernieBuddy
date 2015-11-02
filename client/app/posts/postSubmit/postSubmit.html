@@ -26,6 +26,11 @@
               </label>
             </div>
             {{> postOptions}}
+            {{#unless currentUser}}
+              <div style="padding-bottom:10px">
+                <i>Posting Anonymously while not logged in</i>
+              </div>
+            {{/unless}}
             <input type="submit" id="submitButton" value="Tap Here To Create Post" data-toggle="collapse"
               data-target="#postBox" aria-expanded="false"
               aria-controls="postBox" class="btn btn-primary">
