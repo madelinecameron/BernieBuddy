@@ -15,7 +15,7 @@
 
 					Like many of you, we had the overwhelming sensation that being a part
 					of this community felt really unique and special, so we created Bernie
-					Buddy – a free mobile application that allows Bernie Sanders' supporters to
+					Buddy – a free mobile application that allows Bernie Sanders supporters to
 					organize, communicate, and connect with each other!<br/><br/>
 
 					We want everyone to know that supporting the Bernie Buddy application
@@ -46,16 +46,20 @@
 					the revolution?
 
 					Read the text below to see how we plan to directly support Bernie’s grassroots revolution!<br/><br/>
-					<div style="width: auto; padding-bottom:15rem">
-						<div class="alert" style="width:50%; float:left">
+					<div style="padding-bottom:15rem">
+						<div class="alert col-md-6 col-sm-6" style="width:45%; float:left">
 							<center>
-								<a class="btn btn-primary btn-lg" href="http://igg.me/at/BernieBuddy" role="button">Visit Our IndieGoGo</a><br/><br/>
+								<a class="btn btn-primary btn-lg wordwrap_anchor" id="indieBtn" href="http://igg.me/at/BernieBuddy" role="button">Visit Our IndieGoGo</a><br/><br/>
 								{{#if isMobile}}
-									<div class="visible-sm visible-xs">
+									<div>
 										<strong style="font-size:1.75rem">Limited Time:</strong>
 										<p style="font-size:1.5rem">Receive double kudos and special tags when you donate through IndieGoGo</p>
 									</div>
 								{{else}}
+									<div class="visible-sm visible-xs">
+										<strong style="font-size:1.75rem">Limited Time:</strong>
+										<p style="font-size:1.5rem">Receive double kudos and special tags when you donate through IndieGoGo</p>
+									</div>
 									<div class="visible-md visible-lg">
 										<strong>LIMITED TIME OFFER</strong>
 											<p style="font-size:14px">
@@ -67,8 +71,8 @@
 								{{/if}}
 							</center>
 						</div>
-						<div class="alert" style="width:50%; float: right;">
-							<center><a class="btn btn-primary btn-lg" href="#" role="button" data-toggle="modal" data-target="#checkout">Donate Securely via Stripe</a></center>
+						<div class="alert" style="width:45%; float: right;">
+							<center><a class="btn btn-primary btn-lg wordwrap_anchor" id="stripeBtn" href="#" role="button" data-toggle="modal" data-target="#checkout">Donate Securely via Stripe</a></center>
 						</div>
 					</div><br/>
 					</p>

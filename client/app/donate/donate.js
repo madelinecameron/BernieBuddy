@@ -97,6 +97,9 @@ Template.donate.onRendered(function() {
     $('#card-exp').payment('formatCardExpiry');
     $('#card-cvc').payment('formatCardCVC');
   });
+
+  var stripeHeight = $('#stripeBtn').height()  //In px
+  $('#indieBtn').height(stripeHeight);
 });
 
 Template.donate.onDestroyed(function() {
