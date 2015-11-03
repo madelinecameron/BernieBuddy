@@ -14,14 +14,12 @@
           </div>
     	   </div>
        </div>
+       <h3>Check out {{#if isOwnProfile}}your{{else}}their{{/if}} posts!</h3>
        <div style="margin-top:25px">
-         {{#if isMobile}}
-           {{> specialListItem text="Like Bernie Buddy? Support Us!"}}
-         {{/if}}
+          {{> specialListItem text="Like Bernie Buddy? Support Us!"}}
        </div>
     </div>
-    <h3>Check out {{#if isOwnProfile}}your{{else}}their{{/if}} posts!</h3>
-    <div style="{{#if isMobile}}margin-top:15px{{else}}margin-top:-2rem{{/if}}">
+    <div style="margin-top:20px">
       <center><div style="margin-top:-2rem;margin-bottom:-3.5rem">{{> filters}}</div></center>
     </div>
   </center><br/>
