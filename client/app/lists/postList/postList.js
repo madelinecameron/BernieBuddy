@@ -1,7 +1,13 @@
+var stickies;
+
 Template.postList.events({
   'click #openPostBox': function(event, err) {
     $('#openPostBox').hide();
   }
+});
+
+Template.postList.onCreated(function() {
+  stickies = Posts.find({ sticky: true }).fetch();
 });
 
 Template.postList.onDestroyed(function() {
@@ -25,10 +31,10 @@ Template.postList.helpers({
   },
   posts: function() {
     if (Session.get('query') === 'mostRecent' || !Session.get('query')) {
-      return Posts.find({}, { sort: { sticky: -1, createdAt: -1 }}).fetch();
+      return stickies.concat(Posts.find({ sticky: false }, { sort: { sticky: -1, createdAt: -1 }}).fetch())
     }
     else {
-      return Posts.find({}, { sort: { sticky: -1, score: -1 }}).fetch();
+      return stickies.concat(Posts.find({ sticky: false }, { sort: { sticky: -1, score: -1 }}).fetch());
     }
   }
 });

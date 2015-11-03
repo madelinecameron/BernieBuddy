@@ -61,7 +61,6 @@ if(Meteor.isClient) {
   Deps.autorun(function() {
     Emojis.setBasePath('/Emojis')
     Meteor.subscribe('emojis');
-    console.log(Emojis.findOne({ name: "happy_bernie"}))
     if(!Meteor.userId()) {
       if(Session.get("kudos")) {
         delete Session.keys["kudos"]
