@@ -53,7 +53,7 @@ if(Meteor.isServer) {
 
 if(Meteor.isClient) {
   Meteor.startup(function() {
-    Stripe.setPublishableKey("pk_test_OGnwLaTmq3rbvcfIQNFZefBh")
+    Stripe.setPublishableKey("pk_live_mn0fBg4dTA6rlJUvpc20QGBi")
   })
 
   Meteor.subscribe("profilePics")

@@ -47,5 +47,7 @@ App.accessRule('*.bootstrapcdn.com/*');
 App.accessRule('https://s3.amazonaws.com/berniebuddydev');
 App.accessRule('https://s3.amazonaws.com/berniebuddydev*');
 App.accessRule('https://s3.amazonaws.com/berniebuddydev/*');
+App.accessRule('https://s3.amazonaws.com/berniebuddy');
+App.accessRule('https://s3.amazonaws.com/berniebuddy*');
 App.accessRule('https://s3.amazonaws.com/berniebuddy/*');
 App.accessRule('https://*.stripe.com/*');
