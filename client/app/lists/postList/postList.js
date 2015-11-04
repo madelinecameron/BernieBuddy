@@ -5,6 +5,7 @@ function getStickies() {
 Template.postList.events({
   'click #openPostBox': function(event, err) {
     $('#openPostBox').hide();
+    $('#fileUpload').hide();
   }
 });
 

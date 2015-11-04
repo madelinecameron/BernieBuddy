@@ -44,6 +44,7 @@ if(Meteor.isServer) {
     return Emojis.find();
   });
 
+  console.log(process.env.S3_KEY, process.env.S3_SECRET);
   S3.config = {
     key: process.env.S3_KEY,
     secret: process.env.S3_SECRET,

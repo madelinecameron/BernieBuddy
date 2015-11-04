@@ -113,6 +113,7 @@ Template.postSubmit.events({
     S3.upload({
             files: file
         }, function(error, result) {
+          console.log(result);
           photoLoc = result.secure_url;
     });
 
