@@ -1,13 +1,11 @@
-var stickies;
+function getStickies() {
+  return Posts.find({ sticky: true }).fetch();
+}
 
 Template.postList.events({
   'click #openPostBox': function(event, err) {
     $('#openPostBox').hide();
   }
-});
-
-Template.postList.onCreated(function() {
-  stickies = Posts.find({ sticky: true }).fetch();
 });
 
 Template.postList.onDestroyed(function() {
@@ -30,6 +28,7 @@ Template.postList.helpers({
     return Meteor.utilities.isMobile()
   },
   posts: function() {
+    var stickies = getStickies();
     if (Session.get('query') === 'mostRecent' || !Session.get('query')) {
       return stickies.concat(Posts.find({ sticky: false }, { sort: { sticky: -1, createdAt: -1 }}).fetch())
     }
