@@ -44,6 +44,8 @@ App.setPreference('android-versionCode', '4');
 App.accessRule('https://graph.facebook.com/*');
 App.accessRule('https://pbs.twimg.com/*');
 App.accessRule('*.bootstrapcdn.com/*');
+App.accessRule('https://s3.amazonaws.com/berniebuddydev');
+App.accessRule('https://s3.amazonaws.com/berniebuddydev*');
 App.accessRule('https://s3.amazonaws.com/berniebuddydev/*');
 App.accessRule('https://s3.amazonaws.com/berniebuddy/*');
 App.accessRule('https://*.stripe.com/*');
