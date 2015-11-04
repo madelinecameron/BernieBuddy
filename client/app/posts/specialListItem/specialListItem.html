@@ -1,5 +1,5 @@
 <template name="specialListItem">
-  <div class="post col-sm-12 col-xs-12 col-md-12">
+  <div class="post {{#if isMobile}}col-sm-12 col-xs-12 col-md-12{{else}}col-sm-9 col-lg-9 col-xs-9 col-md-9{{/if}}" style="{{#if isMobile}}{{else}}margin-left:67px{{/if}}">
     <li style="display: block;">
       <a href="{{ pathFor 'donate' }}" class="post">
         <div class="row" id="content">

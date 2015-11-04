@@ -15,7 +15,7 @@
     	   </div>
        </div>
        <h3>Check out {{#if isOwnProfile}}your{{else}}their{{/if}} posts!</h3>
-       <div style="margin-top:25px">
+       <div style="margin-top:25px;{{#if isMobile}}margin-left:-45px{{else}}margin-left:30px{{/if}}">
           {{> specialListItem text="Like Bernie Buddy? Support Us!"}}
        </div>
     </div>

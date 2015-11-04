@@ -4,16 +4,16 @@
     <div class="form-style">
       <div class="container">
         <ul class="list-group">
-          <center><h3 style="margin-top:-0.3rem">Bernie Buddies from {{state}}</h3></center>
-          <div style="margin-top:25px">
+          <center><h3 style="margin-top:-0.3rem;margin-bottom:37px">Bernie Buddies from {{state}}</h3></center>
+          <div style="{{#if isMobile}}margin-left:-45px{{/if}}">
             {{> specialListItem text="Like Bernie Buddy? Support Us!"}}
           </div>
-          <div style="margin-top:15px">
-          <center>
-            <div style="margin-top:0.50rem; margin-bottom:-3.55rem">
-              <center>{{> filters}}</center>
-            </div>
-          </center>
+          <div style="margin-top:29px">
+            <center>
+              <div style="margin-top:0.50rem; margin-bottom:-3.55rem">
+                <center>{{> filters}}</center>
+              </div>
+            </center>
           </div>
           <br/>
           {{#each posts}}
