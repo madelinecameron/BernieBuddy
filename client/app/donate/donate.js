@@ -102,6 +102,11 @@ Template.donate.onRendered(function() {
   $('#indieBtn').height(stripeHeight);
 });
 
+Template.donate.onBack(function(details, origin) {
+  $('#checkout').modal('hide');
+  $('#thankYou').modal('show');
+});
+
 Template.donate.onDestroyed(function() {
   Session.set('disableDonateBanner', false);
   $('#checkout').modal('hide');
