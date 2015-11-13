@@ -10,9 +10,9 @@ Avatar.setOptions({
 })
 
 if(Meteor.isServer) {
-  Meteor.users.deny({
-    update: function() {
-      return true
+  Meteor.users.allow({
+    update: function(id, doc, fields, modifer) {
+      return (_.difference(fields, [ "kudos" ]).length === 0 || _.difference(fields, [ "kudos" ]).length === 0)
     }
   })
 
