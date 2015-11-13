@@ -71,12 +71,53 @@ Meteor.methods({
     return Comments.find({ postId: id }).count();
   },
   kudosCount: function(id) {
-    var userResult = Meteor.users.findOne({ _id: id }, { kudos: 1 });
-    if (userResult) {  //To prevent null objects
-      return userResult.kudos;
+    var postKudos = Posts.aggregate([
+      {
+        $match: {
+          creatorId: id
+        }
+      },
+      {
+        $group: {
+          _id: null,
+          kudos: { $sum: "$score" }
+        }
+      }
+    ]);
+
+    var commentKudos = Comments.aggregate([
+      {
+        $match: {
+          creatorId: id
+        }
+      },
+      {
+        $group: {
+          _id: null,
+          kudos: { $sum: "$score" }
+        }
+      }
+    ]);
+
+    var totalKudos = 0;
+    if(postKudos.length > 0 && commentKudos.length > 0) {
+      totalKudos = postKudos[0].kudos + commentKudos[0].kudos;
     }
     else {
-      return 0;
+      if(postKudos.length > 0) {
+        totalKudos = postKudos[0].kudos;
+      }
+      if(commentKudos.length > 0) {  //If we are down here, we know one of them is null and we know comment && post can't not be null
+        totalKudos = commentKudos[0].kudos;
+      }
+    }
+
+    var userResult = Meteor.users.findOne({ _id: id }, { kudos: 1 });
+    if (userResult) {  //To prevent null objects
+      return totalKudos + userResult.kudos;
+    }
+    else {
+      return totalKudos;
     }
   },
   chargeCard: function(stripeToken, amount, user) {
