@@ -38,6 +38,7 @@ ejson@1.0.7
 elevatedevdesign:autoform-jquery-payments@0.0.6
 facebook@1.2.2
 fastclick@1.0.7
+force-ssl@1.0.6
 geojson-utils@1.0.4
 hitchcott:marked-with-emojis@0.3.0
 hot-code-push@1.0.0
