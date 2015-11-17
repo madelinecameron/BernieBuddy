@@ -64,9 +64,6 @@ Meteor.methods({
       adminPost: comment.adminPost
     });
   },
-  getUserName: function(id) {
-    return Meteor.users.findOne({ _id: id }).profile.name;
-  },
   getCommentCount: function(id) {
     return Comments.find({ postId: id }).count();
   },

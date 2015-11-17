@@ -44,6 +44,10 @@ if(Meteor.isServer) {
     return Emojis.find();
   });
 
+  Meteor.publish('userNames', function() {
+    return Meteor.users.find({}, { 'profile.name': 1});
+  })
+
   S3.config = {
     key: process.env.S3_KEY,
     secret: process.env.S3_SECRET,
@@ -59,7 +63,8 @@ if(Meteor.isClient) {
   Meteor.subscribe("profilePics")
   Emojis.setBasePath('/Emojis')
   Meteor.subscribe('emojis');
-  
+  Meteor.subscribe('userNames');
+
   Deps.autorun(function() {
     if(!Meteor.userId()) {
       if(Session.get("kudos")) {

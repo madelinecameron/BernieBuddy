@@ -24,6 +24,7 @@ Template.pageItem.events({
 Template.pageItem.onCreated(function() {
   var id = this.data.creatorId;
   if (!Session.get(id) && id !== null) {
+    console.log(Meteor.users.findOne({ _id: id }).profile.name);
     Meteor.call('getUserName', id, function(err, result) {
       Session.set(id, result);
     });

@@ -20,9 +20,7 @@ Template.listItem.events({
 Template.listItem.onCreated(function() {
   var id = this.data.creatorId;
   if (!Session.get(id) && id !== null) {
-    Meteor.call('getUserName', id, function(err, result) {
-      Session.set(id, result);
-    });
+    Session.set(id, Meteor.users.findOne({ _id: id }).profile.name);
   }
 
   Meteor.call('kudosCount', id, function(err, result) {

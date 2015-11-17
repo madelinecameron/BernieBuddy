@@ -14,9 +14,7 @@ Template.commentItem.events({
 Template.commentItem.onCreated(function() {
   var id = this.data.creatorId;
   if (!Session.get(id)) {  //If username isn"t stored in session
-    Meteor.call('getUserName', id, function(err, result) {
-      Session.set(id, result);
-    });
+    Session.set(id, Meteor.users.findOne({ _id: id }).profile.name);
   }
 
   Meteor.call('kudosCount', id, function(err, result) {  //Get kudo count for creator
