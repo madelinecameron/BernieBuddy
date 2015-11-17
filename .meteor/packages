@@ -20,10 +20,8 @@ jquery
 tracker
 logging
 reload
-random
 ejson
 spacebars
-check
 accounts-facebook
 utilities:avatar
 monbro:mongodb-mapreduce-aggregation
@@ -32,7 +30,6 @@ mdg:geolocation
 mrgalaxy:stripe
 aldeed:autoform
 elevatedevdesign:autoform-jquery-payments
-mrt:jquery-visible
 lepozepo:s3
 chriswessels:hammer
 chriswessels:back-behaviour
@@ -40,3 +37,5 @@ http
 hitchcott:marked-with-emojis
 madeline:actualemoji
 force-ssl
+meteorhacks:kadira
+check

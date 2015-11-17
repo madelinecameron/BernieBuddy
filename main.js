@@ -57,10 +57,10 @@ if(Meteor.isClient) {
   })
 
   Meteor.subscribe("profilePics")
-
+  Emojis.setBasePath('/Emojis')
+  Meteor.subscribe('emojis');
+  
   Deps.autorun(function() {
-    Emojis.setBasePath('/Emojis')
-    Meteor.subscribe('emojis');
     if(!Meteor.userId()) {
       if(Session.get("kudos")) {
         delete Session.keys["kudos"]
