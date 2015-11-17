@@ -21,6 +21,7 @@ boilerplate-generator@1.0.4
 caching-compiler@1.0.0
 caching-html-compiler@1.0.2
 callback-hook@1.0.4
+ccorcos:subs-cache@0.0.5
 check@1.1.0
 chriswessels:back-behaviour@0.2.1
 chriswessels:hammer@4.0.2

@@ -4,7 +4,6 @@ Meteor.methods({
     //Find town and state
     var area, location;
 
-    console.log(post.coords);
     //Only possible with no geolocation on... or extreme luck.
     if (post.coords.long == 0 && post.coords.lat == 0) { location = 'Anonymous Location'; }
     else {

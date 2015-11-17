@@ -46,7 +46,7 @@ if(Meteor.isServer) {
 
   Meteor.publish('userNames', function() {
     return Meteor.users.find({}, { 'profile.name': 1});
-  })
+  });
 
   S3.config = {
     key: process.env.S3_KEY,
@@ -60,12 +60,21 @@ if(Meteor.isClient) {
     Stripe.setPublishableKey("pk_live_mn0fBg4dTA6rlJUvpc20QGBi")
   })
 
+  var subsCache = new SubsCache({
+    expireAfter: 5,
+    cacheLimit: 10
+  });
+
   Meteor.subscribe("profilePics")
   Emojis.setBasePath('/Emojis')
   Meteor.subscribe('emojis');
-  Meteor.subscribe('userNames');
 
   Deps.autorun(function() {
+    subsCache.onReady(function() {
+      subsCache.subscribe('userNames');
+      subsCache.subscribe('profilePics');
+    })
+
     if(!Meteor.userId()) {
       if(Session.get("kudos")) {
         delete Session.keys["kudos"]
