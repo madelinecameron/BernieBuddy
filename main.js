@@ -76,14 +76,18 @@ if(Meteor.isClient) {
   Meteor.subscribe('emojis');
 
   ShareIt.init({
+    siteOrder: [ "facebook", "twitter" ],
     sites: {                // nested object for extra configurations
       'facebook': {
-          'appId': '1810252865867865'   // if it's null, it would use deprecated sharer.php.
+          'appId': '1810252865867865',
+          'buttonText': 'Share'
       },
-      'twitter': {},
-      'googleplus': {},
-      'pinterest': {}
-    }
+      'twitter': {
+        'buttonText': 'Share'
+      }
+    },
+    iconOnly: false,
+    classes: 'btn-sm'
   })
 
   Deps.autorun(function() {

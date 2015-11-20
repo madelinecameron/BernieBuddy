@@ -24,10 +24,7 @@ Template.pageItem.events({
 Template.pageItem.onCreated(function() {
   var id = this.data.creatorId;
   if (!Session.get(id) && id !== null) {
-    console.log(Meteor.users.findOne({ _id: id }).profile.name);
-    Meteor.call('getUserName', id, function(err, result) {
-      Session.set(id, result);
-    });
+    Session.set(id, Meteor.users.findOne({ _id: id }).profile.name);
   }
 
   Meteor.call('kudosCount', id, function(err, result) {
@@ -78,5 +75,12 @@ Template.pageItem.helpers({
   },
   anonLoc: function() {
     return this.location === 'Anonymous Location'
+  },
+  shareInfo: function() {
+    return {
+      title: '"' + this.post + '"',
+      author: Session.get(this.creatorId) ? Session.get(this.creatorId) : 'Anonymous',
+      excerpt: this.score + " kudos"
+    };
   }
 });
