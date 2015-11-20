@@ -1,6 +1,7 @@
 Posts = new Mongo.Collection("posts")
 Comments = new Mongo.Collection("comments")
 Towns = new Mongo.Collection("towns")
+Articles = new Mongo.Collection("articles")
 
 Avatar.setOptions({
   imageSizes: {
@@ -68,6 +69,17 @@ if(Meteor.isClient) {
   Meteor.subscribe("profilePics")
   Emojis.setBasePath('/Emojis')
   Meteor.subscribe('emojis');
+
+  ShareIt.init({
+    sites: {                // nested object for extra configurations
+      'facebook': {
+          'appId': '1810252865867865'   // if it's null, it would use deprecated sharer.php.
+      },
+      'twitter': {},
+      'googleplus': {},
+      'pinterest': {}
+    }
+  })
 
   Deps.autorun(function() {
     subsCache.onReady(function() {

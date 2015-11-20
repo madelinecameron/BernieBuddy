@@ -158,5 +158,12 @@ Meteor.methods({
     function() {
       console.log('ReportedForSure!');
     });
+  },
+  postArticle: function(url, pic, summary) {
+    return Articles.insert({
+      url: url,
+      pic: pic,
+      summary: summary
+    })
   }
 });

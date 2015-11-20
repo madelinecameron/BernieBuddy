@@ -1,0 +1,22 @@
+<template name="postArticle">
+  <form>
+    <div class="form-group">
+      <label for="articleUrl">Article URL</label>
+      <input type="url" class="form-control" id="articleUrl" placeholder="Article URL">
+    </div>
+    <div class="form-group">
+      <label for="articlePic">Article Pic URL</label>
+      <input type="url" class="form-control" id="articlePic" placeholder="Picture URL">
+      <select class="form-control" id="templateArticlePic">
+        {{#each templatePics}}
+          <option id="{{url}}">{{name}}</option>
+        {{/each}}
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="articleExcerpt">Article Excerpt</label>
+      <textarea class="form-control" id="articleExcerpt" rows="3" placeholder="Short description / excerpt"></textarea>
+    </div>
+    <button type="button" id="postArticleBtn" class="btn btn-default">Post</button>
+  </form>
+</template>

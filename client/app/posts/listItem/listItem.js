@@ -22,7 +22,6 @@ Template.listItem.onCreated(function() {
   if (!Session.get(id) && id !== null) {
     Session.set(id, Meteor.users.findOne({ _id: id }).profile.name);
   }
-
   Meteor.call('kudosCount', id, function(err, result) {
     Session.set(id + 'kudos', result);
   });
