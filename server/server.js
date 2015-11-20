@@ -67,6 +67,7 @@ Meteor.methods({
     return Comments.find({ postId: id }).count();
   },
   kudosCount: function(id) {
+    this.unblock();
     var postKudos = Posts.aggregate([
       {
         $match: {
