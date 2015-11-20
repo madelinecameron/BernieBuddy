@@ -36,5 +36,8 @@ Template.postList.helpers({
     else {
       return stickies.concat(Posts.find({ sticky: false }, { sort: { sticky: -1, score: -1 }}).fetch());
     }
+  },
+  moreResults: function() {
+    return Posts.find({ sticky: false }).count() > Session.get("numOfLoadedPosts")
   }
 });
