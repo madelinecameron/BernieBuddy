@@ -165,5 +165,11 @@ Meteor.methods({
       pic: pic,
       summary: summary
     })
+  },
+  insertTemplatePic: function(name, url) {
+    return TemplatePics.insert({
+      name: name,
+      url: url
+    })
   }
 });

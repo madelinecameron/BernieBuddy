@@ -2,6 +2,7 @@ Posts = new Mongo.Collection("posts")
 Comments = new Mongo.Collection("comments")
 Towns = new Mongo.Collection("towns")
 Articles = new Mongo.Collection("articles")
+TemplatePics = new Mongo.Collection("template_pics")
 
 Avatar.setOptions({
   imageSizes: {
@@ -48,6 +49,10 @@ if(Meteor.isServer) {
   Meteor.publish('userNames', function() {
     return Meteor.users.find({}, { 'profile.name': 1});
   });
+
+  Meteor.publish('templatePics', function() {
+    return TemplatePics.find({});
+  })
 
   S3.config = {
     key: process.env.S3_KEY,

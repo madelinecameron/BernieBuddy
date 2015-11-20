@@ -10,6 +10,9 @@ Template.userBox.helpers({
   },
   isMobile: function() {
     return Meteor.utilities.isMobile();
+  },
+  isAdmin: function() {
+    return Meteor.user().isAdmin;
   }
 });
 
