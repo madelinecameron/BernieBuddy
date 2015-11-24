@@ -39,7 +39,7 @@ Template.listItem.helpers({
     return _.contains(this.upVoted, Meteor.userId());
   },
   commentsCount: function() {
-    return Comments.find({ postId: this._id }).count();
+    return Comments.find({ postId: this._id, type: "Post" }).count();
   },
   creatorName: function() {
     return Session.get(this.creatorId) ? Session.get(this.creatorId) : 'Anonymous';
@@ -53,7 +53,7 @@ Template.listItem.helpers({
     }
   },
   time: function() {
-    return Meteor.utilities.createTimeString(this._id)
+    return Meteor.utilities.createTimeString(this.createdAt)
   },
   isMobile: function() {
     return Meteor.utilities.isMobile()

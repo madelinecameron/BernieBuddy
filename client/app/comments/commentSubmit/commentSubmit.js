@@ -16,6 +16,7 @@ Template.commentSubmit.events({
     var comment = {
       text: $body.val(),
       postId: template.data._id,
+      type: template.data.type,
       creatorId: Meteor.userId(),
       coords: {}
     };

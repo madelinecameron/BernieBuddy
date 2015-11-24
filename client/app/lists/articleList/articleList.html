@@ -1,29 +1,18 @@
-<template name="postList">
+<template name="articleList">
   <div class="posts">
     <div class="form-style">
       <div class="container">
         <div id="post" class="text-center" style="margin-bottom:-1.5rem">
-          <a class="btn btn-primary" data-toggle="collapse"
-            data-target="#postBox" type="button" aria-expanded="false"
-            aria-controls="postBox" id="openPostBox">
-              Tap Here To Create Post
-          </a>
-          <div class="collapse" id="postBox">
-            {{> postSubmit}}
-          </div>
         </div>
         <div style="margin-top:50px;{{#if isMobile}}margin-left:-45px{{/if}}">
           {{> specialListItem text="Like Bernie Buddy? Support Us!"}}
-        </div>
-        <div style="padding-top:65px; padding-bottom:0px;margin-left:0px;">
-          <center><a href="/articles" class="btn btn-primary">Articles</a></center>
         </div>
         <div style="margin-bottom:-1.5rem">
           <center>{{> filters}}</center>
         </div>
         <ul class="list-group" style="}">
-          {{#each posts}}
-            {{> listItem}}
+          {{#each articles}}
+            {{> listArticle}}
           {{/each}}
         </ul>
         {{#if moreResults}}

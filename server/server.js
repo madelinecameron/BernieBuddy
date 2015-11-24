@@ -60,7 +60,8 @@ Meteor.methods({
       createdAt: new Date(),
       score: 0,
       anon: comment.anonymous,
-      adminPost: comment.adminPost
+      adminPost: comment.adminPost,
+      type: comment.type
     });
   },
   getCommentCount: function(id) {
@@ -164,7 +165,9 @@ Meteor.methods({
     return Articles.insert({
       url: url,
       pic: pic,
-      summary: summary
+      summary: summary,
+      createdAt: new Date(),
+      score: 0
     })
   },
   insertTemplatePic: function(name, url) {

@@ -1,26 +1,26 @@
-Template.postPage.events({
+Template.articlePage.events({
   'click #openCommentBox': function(event, err) {
     $('#openCommentBox').hide();
 		$('#body').focus();
   }
 });
 
-Template.postPage.onRendered(function() {
+Template.articlePage.onRendered(function() {
   Meteor.call('kudosCount', Meteor.userId(), function(err, result) {
     Session.set('kudos', result);
   });
 });
 
-Template.postPage.helpers({
+Template.articlePage.helpers({
 	comments: function() {
-		return Comments.find({ postId: this.id, type: "Post" });
+		return Comments.find({ postId: this.id, type: "Article" });
 	},
   isMobile: function() {
     return Meteor.utilities.isMobile();
   },
 	pageData: function() {
-		var data = Posts.findOne({ _id: this.id });
-    data["type"] = "Post"
+		var data = Articles.findOne({ _id: this.id })
+    data["type"] = "Article"
     return data
 	},
 	gestures: {

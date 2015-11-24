@@ -1,0 +1,37 @@
+<template name="articlePage">
+	{{#HammerTouchArea gestureMap=gestures}}
+		<div class="form-style" draggable="{{isMobile}}">
+			<div class="container">
+				{{#with pageData}}
+					{{> articleItem }}
+				{{/with}}
+				<div class="comment">
+					<h4>Comments</h4>
+						{{#each comments}}
+							{{> commentItem}}
+						{{/each}}
+				</div>
+				<br/>
+				{{#if isMobile}}
+					<a class="btn btn-primary" data-toggle="collapse"
+						data-target="#commentBox" type="button" aria-expanded="false"
+						aria-controls="commentBox" id="openCommentBox">
+							Tap Here To Create Comment
+					</a>
+					<div class="collapse" id="commentBox">
+						{{#with pageData}}
+							{{> commentSubmit}}
+						{{/with}}
+					</div>
+				{{else}}
+					<div id="commentBox">
+						{{#with pageData}}
+							{{> commentSubmit}}
+						{{/with}}
+					</div>
+				{{/if}}
+
+			</div>
+		</div>
+	{{/HammerTouchArea}}
+</template>

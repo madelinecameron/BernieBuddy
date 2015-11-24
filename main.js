@@ -27,6 +27,12 @@ if(Meteor.isServer) {
     }
   })
 
+  Articles.allow({
+    update: function(id, doc, fields, modifier) {
+      return (_.difference(fields, [ "score", "upVoted" ]).length === 0 || _.difference(fields, [ "score", "downVoted" ]).length === 0) || Meteor.user().isAdmin
+    }
+  })
+
   Comments.allow({
     update: function(id, doc, fields, modifier) {
       return (_.difference(fields, [ "score", "upVoted" ]).length === 0 || _.difference(fields, [ "score", "downVoted" ]).length === 0) || Meteor.user().isAdmin
