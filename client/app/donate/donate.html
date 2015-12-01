@@ -49,16 +49,26 @@
 					Donate to Bernie Buddy through IndieGoGo and receive <b>double kudos</b> and
 					access to special tags that will appear next to your username. Available only for a limited time.<br/><br/>
 
-					<div style="padding-bottom:25px">
-						<div class="alert col-md-6 col-sm-6" style="width:45%; float:left">
-							<center>
-								<a class="btn btn-primary btn-lg wordwrap_anchor" id="indieBtn" href="http://igg.me/at/BernieBuddy" role="button">Visit Our IndieGoGo</a><br/><br/>
-							</center>
-						</div>
-						<div class="alert" style="width:45%; float: right;">
-							<center><a class="btn btn-primary btn-lg wordwrap_anchor" id="stripeBtn" href="#" role="button" data-toggle="modal" data-target="#checkout">Donate Securely via Stripe</a></center>
-						</div>
-					</div><br/>
+					{{#if isApple}}
+						<div style="padding-bottom:25px">
+							<div class="alert col-md-12 col-sm-12" style="width:100%;">
+								<center>
+									<a class="btn btn-primary btn-lg wordwrap_anchor" id="indieBtn" href="http://igg.me/at/BernieBuddy" role="button">Visit Our IndieGoGo</a><br/><br/>
+								</center>
+							</div>
+						</div><br/>
+					{{else}}
+						<div style="padding-bottom:25px">
+							<div class="alert col-md-6 col-sm-6" style="width:45%; float:left">
+								<center>
+									<a class="btn btn-primary btn-lg wordwrap_anchor" id="indieBtn" href="http://igg.me/at/BernieBuddy" role="button">Visit Our IndieGoGo</a><br/><br/>
+								</center>
+							</div>
+							<div class="alert" style="width:45%; float: right;">
+								<center><a class="btn btn-primary btn-lg wordwrap_anchor" id="stripeBtn" href="#" role="button" data-toggle="modal" data-target="#checkout">Donate Securely via Stripe</a></center>
+							</div>
+						</div><br/>
+					{{/if}}
 					</p>
 	    </div>
 	  </div>

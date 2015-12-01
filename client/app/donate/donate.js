@@ -116,6 +116,9 @@ Template.donate.helpers({
   isMobile: function() {
     return Meteor.utilities.isMobile()
   },
+  isApple: function() {
+    return Darwin.device.match('ios');
+  },
   amount: function() {
     return Session.get('amount') ? Session.get('amount') : 1;
   },

@@ -2,7 +2,7 @@
   <div class="post">
     <li class="list-group-item">
         <div class="row" id="content">
-          <a href="{{pathFor 'articlePage' _id=_id}}" class="post">
+          <a href="{{url}}" target="_blank" class="post">
             {{#if hasPhoto}}
               <div style="padding:5px; margin-top:-10px">
                 <img src="{{pic}}" class="img-responsive">
@@ -10,7 +10,7 @@
             {{/if}}
           </a>
             <div id="textContainer" class="col-xs-10 col-md-11">
-              <p class="break-el" style="white-space:post-line"><a href="{{pathFor 'articlePage' _id=_id}}">{{#markdown}}{{#emoji}}{{summary}}{{/emoji}}{{/markdown}}</a></p>
+              <p class="break-el" style="white-space:post-line"><a href="{{pathFor 'articlePage' _id=_id}}">{{#markdown}}{{summary}}{{/markdown}}</a></p>
               <a href="{{pathFor 'articlePage' _id=_id}}" class="post">
                 <div>
                   {{#if isMobile}}
