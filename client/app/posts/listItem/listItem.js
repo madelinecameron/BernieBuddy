@@ -6,7 +6,7 @@ Template.listItem.events({
     Meteor.voting.voteUp(event, this._id, "Post")
   },
   'click a.no': function(event) {
-    Meteor.voting.votePostDown(event, this._id, "Post")
+    Meteor.voting.voteDown(event, this._id, "Post")
   },
   'click #reportPost': function(e) {
     e.preventDefault()
