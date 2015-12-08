@@ -1,16 +1,21 @@
 Template.postArticle.events({
   'click #postArticleBtn': function(e) {
-    e.preventDefault();
+    e.preventDefault()
 
     var articleUrl = $('#articleUrl').val(),
         articlePic = "",
-        articleSummary = $('#articleExcerpt').val();
+        articleSummary = $('#articleExcerpt').val()
 
     if($('#articlePic').val() !== "") {
       articlePic = $('#articlePic').val()
     }
     else {
       articlePic = $('#templateArticlePic :selected').attr('id')
+    }
+
+    console.log(articleUrl)
+    if(articleUrl.substring(0, 3) != 'http') {
+      articleUrl = 'http://' + articleUrl
     }
 
     if(articleUrl !== "" && articlePic !== "" && articleSummary !== "") {
@@ -21,7 +26,7 @@ Template.postArticle.events({
         else {
           $('#errors').html("<p>" + err + "</p>")
         }
-      });
+      })
     }
     else {
       $('#errors').html("<p>Please fill in all boxes</p>")
@@ -37,13 +42,12 @@ Template.postArticle.onCreated(function() {
 })
 Template.postArticle.onRendered(function() {
   if(!Meteor.user().isAdmin) {
-    window.location.replace('/');  //Redirect
+    window.location.replace('/')  // Redirect
   }
 })
 
 Template.postArticle.helpers({
   'templatePics': function() {
-    console.log(TemplatePics.find({}).fetch())
-    return TemplatePics.find({}).fetch();
+    return TemplatePics.find({}).fetch()
   }
 })

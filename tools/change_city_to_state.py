@@ -16,14 +16,14 @@ def city_to_state(loc_string, state_abbr):
         return loc_string
 
 def load_into_comments(comment):
-    client = MongoClient("mongodb://root:bernie@ds041561.mongolab.com:41561/berniebuddy")
+    client = MongoClient("mongodb://USERNAME:PASSWORD@ds041561.mongolab.com:41561/berniebuddy")
     db = client["berniebuddy"]
     comment_collection = db.comments
 
     print("Re-inserted: {}".format(comment_collection.update_one({ "_id": comment["_id"] }, {"$set": { "location": comment["location"] }})))
 
 if __name__ == "__main__":
-    client = MongoClient("mongodb://root:bernie@ds041561.mongolab.com:41561/berniebuddy")
+    client = MongoClient("mongodb://USERNAME:PASSWORD@ds041561.mongolab.com:41561/berniebuddy")
     db = client["berniebuddy"]
     comment_collection = db.comments
     state_abbr = load_state_list()

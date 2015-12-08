@@ -30,7 +30,7 @@
   "description": "winking face",
   "aliases": ["wink"],
   "tags": ["flirt"],
-  "ascii": ";)"
+  "ascii": ")"
 }, {
   "emoji": "😍",
   "description": "smiling face with heart-shaped eyes",
@@ -62,7 +62,7 @@
   "description": "face with stuck-out tongue and winking eye",
   "aliases": ["stuck_out_tongue_winking_eye"],
   "tags": ["prank", "silly"],
-  "ascii": ";P"
+  "ascii": "P"
 }, {
   "emoji": "😝",
   "description": "face with stuck-out tongue and tightly-closed eyes",
@@ -121,7 +121,7 @@
   "description": "crying face",
   "aliases": ["cry"],
   "tags": ["sad", "tear"],
-  "ascii": [":'(", ";("]
+  "ascii": [":'(", "("]
 }, {
   "emoji": "😂",
   "description": "face with tears of joy",
@@ -206,7 +206,7 @@
   "description": "smiling face with open mouth and tightly-closed eyes",
   "aliases": ["laughing", "satisfied"],
   "tags": ["happy", "haha"],
-  "ascii": [">:)", ">;)"]
+  "ascii": [">:)", ">)"]
 }, {
   "emoji": "😋",
   "description": "face savouring delicious food",

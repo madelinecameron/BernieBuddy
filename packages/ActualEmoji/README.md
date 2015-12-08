@@ -46,16 +46,16 @@ The emojis in the collection is not published by default. To do so, you need to 
 Meteor.publish('emojis', function() {
   // Here you can choose to publish a subset of all emojis
   // if you'd like to.
-  return Emojis.find();
-});
+  return Emojis.find()
+})
 ```
 
 And subscribe on the client:
 
 ```js
 Meteor.startup(function() {
-  Meteor.subscribe('emojis');
-});
+  Meteor.subscribe('emojis')
+})
 ```
 
 Now you can run arbitrary queries for any emoji on both the server and the client.
@@ -63,7 +63,7 @@ Now you can run arbitrary queries for any emoji on both the server and the clien
 ```js
 Emojis.findOne({
   alias: 'smile'
-});
+})
 ```
 
 That call returns an emoji object with this structure:
@@ -130,8 +130,8 @@ Called on an emoji object fetched from the database.
 The full path for this emoji:
 
 ```js
-var emoji = Emojis.findOne({alias: 'smile'});
-console.log(emoji.path);
+var emoji = Emojis.findOne({alias: 'smile'})
+console.log(emoji.path)
 
 // => "/images/emojis/1f604.png"
 ```
@@ -141,8 +141,8 @@ console.log(emoji.path);
 Shortcut function that calls `Emojis.template()` for this specific emoji object.
 
 ```js
-var emoji = Emojis.findOne({alias: 'smile'});
-console.log(emoji.toHTML());
+var emoji = Emojis.findOne({alias: 'smile'})
+console.log(emoji.toHTML())
 
 // => <img src="/images/emojis/1f604.png" title="smile" alt="😄" class="emoji">
 ```
@@ -152,8 +152,8 @@ console.log(emoji.toHTML());
 Returns the hexadecimal representation of the unicode emoji:
 
 ```js
-var emoji = Emojis.findOne({alias: 'smile'});
-console.log(emoji.toHex());
+var emoji = Emojis.findOne({alias: 'smile'})
+console.log(emoji.toHex())
 
 // => "1f604"
 ```
@@ -181,8 +181,8 @@ The emoji images will be on this format:
 Takes an *emoji object* and returns its HTML representation.
 
 ```js
-var emoji = Emojis.findOne({alias: 'smile'});
-console.log(Emojis.template(emoji));
+var emoji = Emojis.findOne({alias: 'smile'})
+console.log(Emojis.template(emoji))
 // => <img src="/images/emojis/1f604.png" title="smile" alt="😄" class="emoji">
 ```
 
@@ -193,8 +193,8 @@ You can override this function with your own template function if you want to. T
   The `emoji` parameter is an emoji object from the collection.
 */
 Emojis.template = function(emoji) {
-  return "<img src='" + emoji.path + "' title='" + emoji.alias + "' alt='" + emoji.emoji || emoji.alias + "' class='emoji'>";
-};
+  return "<img src='" + emoji.path + "' title='" + emoji.alias + "' alt='" + emoji.emoji || emoji.alias + "' class='emoji'>"
+}
 ```
 
 #### `Emojis.setBasePath(path:String)`
@@ -209,12 +209,12 @@ Sample usage:
 
 ```js
 // Assume:
-Meteor.settings.public.cdnUrl = 'https://foobar.cloudfront.net';
+Meteor.settings.public.cdnUrl = 'https://foobar.cloudfront.net'
 
 // ...
 
 if(Meteor.settings.public.cdnUrl) {
-  Emojis.setBasePath(Meteor.settings.public.cdnUrl + '/images/emojis');
+  Emojis.setBasePath(Meteor.settings.public.cdnUrl + '/images/emojis')
 }
 ```
 
@@ -240,13 +240,13 @@ Sample usage (on the server):
 Meteor.methods({
   'emojis/reset': function() {
     if(!Meteor.userId() || !Meteor.user().admin) {
-      throw new Meteor.Error(403, 'Access denied.');
+      throw new Meteor.Error(403, 'Access denied.')
     }
 
-    var count = Emojis.seed();
-    return 'Inserted ' + count + ' emojis.';
+    var count = Emojis.seed()
+    return 'Inserted ' + count + ' emojis.'
   }
-});
+})
 ```
 
 ## Suggested styling
@@ -255,18 +255,18 @@ Style the `.emoji` class like this with CSS to achieve a nice vertical aligned p
 
 ```css
 .emoji {
-  font-size: inherit;
-  height: 2.7ex;
+  font-size: inherit
+  height: 2.7ex
   /* prevent img stretch */
-  width: auto;
-  min-width: 15px;
-  min-height: 15px;
+  width: auto
+  min-width: 15px
+  min-height: 15px
 
   /* Inline alignment adjust the margins  */
-  display: inline-block;
-  margin: -0.4ex .15em 0;
-  line-height: normal;
-  vertical-align: middle;
+  display: inline-block
+  margin: -0.4ex .15em 0
+  line-height: normal
+  vertical-align: middle
 }
 ```
 

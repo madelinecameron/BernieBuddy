@@ -3,7 +3,7 @@ from pymongo import MongoClient
 import random
 
 if __name__ == "__main__":
-    client = MongoClient("mongodb://root_dev:bernie_dev@ds035674.mongolab.com:35674/berniebuddydev")
+    client = MongoClient("mongodb://USERNAME:PASSWORD@ds035674.mongolab.com:35674/berniebuddydev")
     db = client["berniebuddydev"]
 
     item_collection = db.posts

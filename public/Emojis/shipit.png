@@ -19,8 +19,8 @@
     <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144.png">
     <meta property="fb:app_id" content="1401488693436528">
 
-      <meta content="@github" name="twitter:site" /><meta content="summary" name="twitter:card" /><meta content="github/gemoji" name="twitter:title" /><meta content="gemoji - Emoji images and names." name="twitter:description" /><meta content="https://avatars1.githubusercontent.com/u/9919?v=3&amp;s=400" name="twitter:image:src" />
-      <meta content="GitHub" property="og:site_name" /><meta content="object" property="og:type" /><meta content="https://avatars1.githubusercontent.com/u/9919?v=3&amp;s=400" property="og:image" /><meta content="github/gemoji" property="og:title" /><meta content="https://github.com/github/gemoji" property="og:url" /><meta content="gemoji - Emoji images and names." property="og:description" />
+      <meta content="@github" name="twitter:site" /><meta content="summary" name="twitter:card" /><meta content="github/gemoji" name="twitter:title" /><meta content="gemoji - Emoji images and names." name="twitter:description" /><meta content="https://avatars1.githubusercontent.com/u/9919?v=3&amps=400" name="twitter:image:src" />
+      <meta content="GitHub" property="og:site_name" /><meta content="object" property="og:type" /><meta content="https://avatars1.githubusercontent.com/u/9919?v=3&amps=400" property="og:image" /><meta content="github/gemoji" property="og:title" /><meta content="https://github.com/github/gemoji" property="og:url" /><meta content="gemoji - Emoji images and names." property="og:description" />
       <meta name="browser-stats-url" content="https://api.github.com/_private/browser/stats">
     <meta name="browser-errors-url" content="https://api.github.com/_private/browser/errors">
     <link rel="assets" href="https://assets-cdn.github.com/">
@@ -92,7 +92,7 @@
 
 
       <div class="site-search repo-scope js-site-search" role="search">
-          <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="/github/gemoji/search" class="js-site-search-form" data-global-search-url="/search" data-repo-search-url="/github/gemoji/search" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /></div>
+          <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="/github/gemoji/search" class="js-site-search-form" data-global-search-url="/search" data-repo-search-url="/github/gemoji/search" method="get"><div style="margin:0padding:0display:inline"><input name="utf8" type="hidden" value="&#x2713" /></div>
   <label class="js-chromeless-input-container form-control">
     <div class="scope-badge">This repository</div>
     <input type="text"
@@ -167,7 +167,7 @@
     <a class="header-nav-link name tooltipped tooltipped-s js-menu-target" href="/madelinecameron"
        aria-label="View profile and more"
        data-ga-click="Header, show menu, icon:avatar">
-      <img alt="@madelinecameron" class="avatar" height="20" src="https://avatars3.githubusercontent.com/u/3712472?v=3&amp;s=40" width="20" />
+      <img alt="@madelinecameron" class="avatar" height="20" src="https://avatars3.githubusercontent.com/u/3712472?v=3&amps=40" width="20" />
       <span class="dropdown-caret"></span>
     </a>
 
@@ -203,7 +203,7 @@
             Settings
           </a>
 
-          <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="/logout" class="logout-form" data-form-nonce="fa40d48a763e38a60472a2f0ab3d826e001752ce" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="7bEDOChVCKGv9TZD1hc7OOMufj2muSXMpNAEIt9ir3Ub/3wXmUwLVgCDLsAEDzSQux5xdOeWZzGV1f9yMOFeNg==" /></div>
+          <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="/logout" class="logout-form" data-form-nonce="fa40d48a763e38a60472a2f0ab3d826e001752ce" method="post"><div style="margin:0padding:0display:inline"><input name="utf8" type="hidden" value="&#x2713" /><input name="authenticity_token" type="hidden" value="7bEDOChVCKGv9TZD1hc7OOMufj2muSXMpNAEIt9ir3Ub/3wXmUwLVgCDLsAEDzSQux5xdOeWZzGV1f9yMOFeNg==" /></div>
             <button class="dropdown-item dropdown-signout" data-ga-click="Header, sign out, icon:logout">
               Sign out
             </button>
@@ -241,7 +241,7 @@
 <ul class="pagehead-actions">
 
   <li>
-      <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="/notifications/subscribe" class="js-social-container" data-autosubmit="true" data-form-nonce="fa40d48a763e38a60472a2f0ab3d826e001752ce" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="IfsVSQkDYKb3PEJOslbQqCj25xa5iKxL1HNn95jdAjwliQDnT5JMEZT9nCK3OULrJdMqjPCKp89KgLWMYeV0fQ==" /></div>    <input id="repository_id" name="repository_id" type="hidden" value="2981455" />
+      <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="/notifications/subscribe" class="js-social-container" data-autosubmit="true" data-form-nonce="fa40d48a763e38a60472a2f0ab3d826e001752ce" data-remote="true" method="post"><div style="margin:0padding:0display:inline"><input name="utf8" type="hidden" value="&#x2713" /><input name="authenticity_token" type="hidden" value="IfsVSQkDYKb3PEJOslbQqCj25xa5iKxL1HNn95jdAjwliQDnT5JMEZT9nCK3OULrJdMqjPCKp89KgLWMYeV0fQ==" /></div>    <input id="repository_id" name="repository_id" type="hidden" value="2981455" />
 
       <div class="select-menu js-menu-container js-select-menu">
         <a href="/github/gemoji/subscription"
@@ -316,11 +316,11 @@
     
   <div class="js-toggler-container js-social-container starring-container ">
 
-    <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="/github/gemoji/unstar" class="js-toggler-form starred js-unstar-button" data-form-nonce="fa40d48a763e38a60472a2f0ab3d826e001752ce" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="8ZhQNSY2qEuNTSiTg3391U/MMW3rNuKjn3ByPRfGBh4Ez2CmI1GEswv+yEY0yfBiE9aqqSF1aOXz6yN0B5vnUw==" /></div>
+    <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="/github/gemoji/unstar" class="js-toggler-form starred js-unstar-button" data-form-nonce="fa40d48a763e38a60472a2f0ab3d826e001752ce" data-remote="true" method="post"><div style="margin:0padding:0display:inline"><input name="utf8" type="hidden" value="&#x2713" /><input name="authenticity_token" type="hidden" value="8ZhQNSY2qEuNTSiTg3391U/MMW3rNuKjn3ByPRfGBh4Ez2CmI1GEswv+yEY0yfBiE9aqqSF1aOXz6yN0B5vnUw==" /></div>
       <button
         class="btn btn-sm btn-with-count js-toggler-target"
         aria-label="Unstar this repository" title="Unstar github/gemoji"
-        data-ga-click="Repository, click unstar button, action:blob#show; text:Unstar">
+        data-ga-click="Repository, click unstar button, action:blob#show text:Unstar">
         <span class="octicon octicon-star"></span>
         Unstar
       </button>
@@ -328,11 +328,11 @@
           1,724
         </a>
 </form>
-    <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="/github/gemoji/star" class="js-toggler-form unstarred js-star-button" data-form-nonce="fa40d48a763e38a60472a2f0ab3d826e001752ce" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="HneppRtbihS6B+xEAW/JRv6O86d53QwfRYh6KukH4S+pONcOMEjz4z1MkpnVwrwNX2L3Qx+kFCdg7KaBoCVJzg==" /></div>
+    <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="/github/gemoji/star" class="js-toggler-form unstarred js-star-button" data-form-nonce="fa40d48a763e38a60472a2f0ab3d826e001752ce" data-remote="true" method="post"><div style="margin:0padding:0display:inline"><input name="utf8" type="hidden" value="&#x2713" /><input name="authenticity_token" type="hidden" value="HneppRtbihS6B+xEAW/JRv6O86d53QwfRYh6KukH4S+pONcOMEjz4z1MkpnVwrwNX2L3Qx+kFCdg7KaBoCVJzg==" /></div>
       <button
         class="btn btn-sm btn-with-count js-toggler-target"
         aria-label="Star this repository" title="Star github/gemoji"
-        data-ga-click="Repository, click star button, action:blob#show; text:Star">
+        data-ga-click="Repository, click star button, action:blob#show text:Star">
         <span class="octicon octicon-star"></span>
         Star
       </button>
@@ -344,11 +344,11 @@
   </li>
 
   <li>
-          <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="/github/gemoji/fork" class="btn-with-count" data-form-nonce="fa40d48a763e38a60472a2f0ab3d826e001752ce" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="xH2HM+53/HMdDQBNrxcpTK9tFtA+i/Ff0KHLmeKQsMrQwDbOxBNe7A/4D11tNtI0e3AyyDVctGq2CVw7GfbO6g==" /></div>
+          <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="/github/gemoji/fork" class="btn-with-count" data-form-nonce="fa40d48a763e38a60472a2f0ab3d826e001752ce" method="post"><div style="margin:0padding:0display:inline"><input name="utf8" type="hidden" value="&#x2713" /><input name="authenticity_token" type="hidden" value="xH2HM+53/HMdDQBNrxcpTK9tFtA+i/Ff0KHLmeKQsMrQwDbOxBNe7A/4D11tNtI0e3AyyDVctGq2CVw7GfbO6g==" /></div>
             <button
                 type="submit"
                 class="btn btn-sm btn-with-count"
-                data-ga-click="Repository, show fork modal, action:blob#show; text:Fork"
+                data-ga-click="Repository, show fork modal, action:blob#show text:Fork"
                 title="Fork your own copy of github/gemoji to your account"
                 aria-label="Fork your own copy of github/gemoji to your account">
               <span class="octicon octicon-repo-forked"></span>
@@ -463,7 +463,7 @@
 
 
 <div class="clone-options text-small text-muted">You can clone with
-  <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="/users/set_protocol?protocol_selector=http&amp;protocol_type=clone" class="inline-form js-clone-selector-form is-enabled" data-form-nonce="fa40d48a763e38a60472a2f0ab3d826e001752ce" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="cIR8KDMFnDAQMksAqwRPetzgWhUkEshC6hjTVvfa+s93hw+yVAQovf2f7J9QYu1mt7qJO06IOimEVnmev6FsJA==" /></div><button class="btn-link js-clone-selector" data-protocol="http" type="submit">HTTPS</button></form>, <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="/users/set_protocol?protocol_selector=ssh&amp;protocol_type=clone" class="inline-form js-clone-selector-form is-enabled" data-form-nonce="fa40d48a763e38a60472a2f0ab3d826e001752ce" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="/WEC83nPorV+6vrnFSXEmfrGPsYH3rvBtmJGWJdrEV+mKk34Rbwh2qa+i8uxo5X1+MVfndYlLaGNZqcfnGi0/A==" /></div><button class="btn-link js-clone-selector" data-protocol="ssh" type="submit">SSH</button></form>, or <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="/users/set_protocol?protocol_selector=subversion&amp;protocol_type=clone" class="inline-form js-clone-selector-form is-enabled" data-form-nonce="fa40d48a763e38a60472a2f0ab3d826e001752ce" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="pVBcm9ZrO146IobgiDv6BqoDef1HReXKyoHNaAmqbIsV6JTk5oHjuFw4pHlTfcZaJ+OorOuahR1FaI3/bM5nSw==" /></div><button class="btn-link js-clone-selector" data-protocol="subversion" type="submit">Subversion</button></form>.
+  <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="/users/set_protocol?protocol_selector=http&ampprotocol_type=clone" class="inline-form js-clone-selector-form is-enabled" data-form-nonce="fa40d48a763e38a60472a2f0ab3d826e001752ce" data-remote="true" method="post"><div style="margin:0padding:0display:inline"><input name="utf8" type="hidden" value="&#x2713" /><input name="authenticity_token" type="hidden" value="cIR8KDMFnDAQMksAqwRPetzgWhUkEshC6hjTVvfa+s93hw+yVAQovf2f7J9QYu1mt7qJO06IOimEVnmev6FsJA==" /></div><button class="btn-link js-clone-selector" data-protocol="http" type="submit">HTTPS</button></form>, <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="/users/set_protocol?protocol_selector=ssh&ampprotocol_type=clone" class="inline-form js-clone-selector-form is-enabled" data-form-nonce="fa40d48a763e38a60472a2f0ab3d826e001752ce" data-remote="true" method="post"><div style="margin:0padding:0display:inline"><input name="utf8" type="hidden" value="&#x2713" /><input name="authenticity_token" type="hidden" value="/WEC83nPorV+6vrnFSXEmfrGPsYH3rvBtmJGWJdrEV+mKk34Rbwh2qa+i8uxo5X1+MVfndYlLaGNZqcfnGi0/A==" /></div><button class="btn-link js-clone-selector" data-protocol="ssh" type="submit">SSH</button></form>, or <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="/users/set_protocol?protocol_selector=subversion&ampprotocol_type=clone" class="inline-form js-clone-selector-form is-enabled" data-form-nonce="fa40d48a763e38a60472a2f0ab3d826e001752ce" data-remote="true" method="post"><div style="margin:0padding:0display:inline"><input name="utf8" type="hidden" value="&#x2713" /><input name="authenticity_token" type="hidden" value="pVBcm9ZrO146IobgiDv6BqoDef1HReXKyoHNaAmqbIsV6JTk5oHjuFw4pHlTfcZaJ+OorOuahR1FaI3/bM5nSw==" /></div><button class="btn-link js-clone-selector" data-protocol="subversion" type="submit">Subversion</button></form>.
   <a href="https://help.github.com/articles/which-remote-url-should-i-use" class="help tooltipped tooltipped-n" aria-label="Get help on which URL is right for you.">
     <span class="octicon octicon-question"></span>
   </a>
@@ -799,7 +799,7 @@
         <time datetime="2014-09-25T17:19:41Z" is="relative-time">Sep 25, 2014</time>
       </span>
       <div>
-        <img alt="@mislav" class="avatar" height="20" src="https://avatars1.githubusercontent.com/u/887?v=3&amp;s=40" width="20" />
+        <img alt="@mislav" class="avatar" height="20" src="https://avatars1.githubusercontent.com/u/887?v=3&amps=40" width="20" />
         <a href="/mislav" class="user-mention" rel="contributor">mislav</a>
           <a href="/github/gemoji/commit/8a9a8572aa35681a9765f4c5cf4c9b6851b1bfcf" class="message" data-pjax="true" title="Run the rest of the PNGs through ImageOptim
 
@@ -813,8 +813,8 @@ Command used:
         <strong>2</strong>
          contributors
       </a>
-          <a class="avatar-link tooltipped tooltipped-s" aria-label="mislav" href="/github/gemoji/commits/master/images/emoji/shipit.png?author=mislav"><img alt="@mislav" class="avatar" height="20" src="https://avatars1.githubusercontent.com/u/887?v=3&amp;s=40" width="20" /> </a>
-    <a class="avatar-link tooltipped tooltipped-s" aria-label="josh" href="/github/gemoji/commits/master/images/emoji/shipit.png?author=josh"><img alt="@josh" class="avatar" height="20" src="https://avatars0.githubusercontent.com/u/137?v=3&amp;s=40" width="20" /> </a>
+          <a class="avatar-link tooltipped tooltipped-s" aria-label="mislav" href="/github/gemoji/commits/master/images/emoji/shipit.png?author=mislav"><img alt="@mislav" class="avatar" height="20" src="https://avatars1.githubusercontent.com/u/887?v=3&amps=40" width="20" /> </a>
+    <a class="avatar-link tooltipped tooltipped-s" aria-label="josh" href="/github/gemoji/commits/master/images/emoji/shipit.png?author=josh"><img alt="@josh" class="avatar" height="20" src="https://avatars0.githubusercontent.com/u/137?v=3&amps=40" width="20" /> </a>
 
 
     </div>
@@ -823,11 +823,11 @@ Command used:
       <h2 class="facebox-header" data-facebox-id="facebox-header">Users who have contributed to this file</h2>
       <ul class="facebox-user-list" data-facebox-id="facebox-description">
           <li class="facebox-user-list-item">
-            <img alt="@mislav" height="24" src="https://avatars3.githubusercontent.com/u/887?v=3&amp;s=48" width="24" />
+            <img alt="@mislav" height="24" src="https://avatars3.githubusercontent.com/u/887?v=3&amps=48" width="24" />
             <a href="/mislav">mislav</a>
           </li>
           <li class="facebox-user-list-item">
-            <img alt="@josh" height="24" src="https://avatars2.githubusercontent.com/u/137?v=3&amp;s=48" width="24" />
+            <img alt="@josh" height="24" src="https://avatars2.githubusercontent.com/u/137?v=3&amps=48" width="24" />
             <a href="/josh">josh</a>
           </li>
       </ul>
@@ -844,7 +844,7 @@ Command used:
     </div>
 
 
-        <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="/github/gemoji/delete/master/images/emoji/shipit.png" class="inline-form" data-form-nonce="fa40d48a763e38a60472a2f0ab3d826e001752ce" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="ckU96HmKJhOWgDcRIZTquDXNi+YtFf2mmIWh0jWMMpG3JKmfFYHsZsILEIdK5Dzfdz0aCE6rdYf5xbCeXG08yA==" /></div>
+        <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="/github/gemoji/delete/master/images/emoji/shipit.png" class="inline-form" data-form-nonce="fa40d48a763e38a60472a2f0ab3d826e001752ce" method="post"><div style="margin:0padding:0display:inline"><input name="utf8" type="hidden" value="&#x2713" /><input name="authenticity_token" type="hidden" value="ckU96HmKJhOWgDcRIZTquDXNi+YtFf2mmIWh0jWMMpG3JKmfFYHsZsILEIdK5Dzfdz0aCE6rdYf5xbCeXG08yA==" /></div>
           <button class="octicon-btn octicon-btn-danger tooltipped tooltipped-nw" type="submit"
             aria-label="Fork this project and delete the file" data-disable-with>
             <span class="octicon octicon-trashcan"></span>
@@ -868,8 +868,8 @@ Command used:
 
 <a href="#jump-to-line" rel="facebox[.linejump]" data-hotkey="l" style="display:none">Jump to Line</a>
 <div id="jump-to-line" style="display:none">
-  <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="" class="js-jump-to-line-form" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /></div>
-    <input class="linejump-input js-jump-to-line-field" type="text" placeholder="Jump to line&hellip;" aria-label="Jump to line" autofocus>
+  <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="" class="js-jump-to-line-form" method="get"><div style="margin:0padding:0display:inline"><input name="utf8" type="hidden" value="&#x2713" /></div>
+    <input class="linejump-input js-jump-to-line-field" type="text" placeholder="Jump to line&hellip" aria-label="Jump to line" autofocus>
     <button type="submit" class="btn">Go</button>
 </form></div>
 
@@ -899,7 +899,7 @@ Command used:
       <span class="mega-octicon octicon-mark-github" title="GitHub"></span>
 </a>
     <ul class="site-footer-links">
-      <li>&copy; 2015 <span title="0.07800s from github-fe143-cp1-prd.iad.github.net">GitHub</span>, Inc.</li>
+      <li>&copy 2015 <span title="0.07800s from github-fe143-cp1-prd.iad.github.net">GitHub</span>, Inc.</li>
         <li><a href="https://github.com/site/terms" data-ga-click="Footer, go to terms, text:terms">Terms</a></li>
         <li><a href="https://github.com/site/privacy" data-ga-click="Footer, go to privacy, text:privacy">Privacy</a></li>
         <li><a href="https://github.com/security" data-ga-click="Footer, go to security, text:security">Security</a></li>

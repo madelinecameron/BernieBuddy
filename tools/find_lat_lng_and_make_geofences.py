@@ -47,7 +47,7 @@ def request_towns(abbr):
     return town_response_json
 
 def add_towns_to_db(town_list):
-    client = MongoClient("mongodb://root:bernie@ds041561.mongolab.com:41561/berniebuddy")
+    client = MongoClient("mongodb://USERNAME:PASSWORD@ds041561.mongolab.com:41561/berniebuddy")
     db = client["berniebuddy"]
 
     item_collection = db.towns

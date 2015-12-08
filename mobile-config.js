@@ -8,7 +8,7 @@ App.info({
   email: 'admin@berniebuddy.com',
   website: 'http://berniebuddy.com',
   version: '0.0.4'
-});
+})
 
 App.icons({
   'iphone': 'public/iOS/icons/Icon.png',
@@ -18,7 +18,7 @@ App.icons({
   'android_mdpi': 'public/Android/drawable-mdpi/icon.png',
   'android_hdpi': 'public/Android//drawable-hdpi/icon.png',
   'android_xhdpi': 'public/Android//drawable-xhdpi/icon.png'
-});
+})
 
 App.launchScreens({
   'iphone': 'public/iOS/splash/Default~iphone.png',
@@ -37,17 +37,17 @@ App.launchScreens({
   'android_hdpi_landscape': 'public/Android/drawable-land-hdpi/screen.png',
   'android_xhdpi_portrait': 'public/Android/drawable-xhdpi/screen.png',
   'android_xhdpi_landscape': 'public/Android/drawable-land-xhdpi/screen.png'
-});
+})
 
-App.setPreference('android-versionCode', '4');
+App.setPreference('android-versionCode', '4')
 
-App.accessRule('https://graph.facebook.com/*');
-App.accessRule('https://pbs.twimg.com/*');
-App.accessRule('*.bootstrapcdn.com/*');
-App.accessRule('https://s3.amazonaws.com/berniebuddydev');
-App.accessRule('https://s3.amazonaws.com/berniebuddydev*');
-App.accessRule('https://s3.amazonaws.com/berniebuddydev/*');
-App.accessRule('https://s3.amazonaws.com/berniebuddy');
-App.accessRule('https://s3.amazonaws.com/berniebuddy*');
-App.accessRule('https://s3.amazonaws.com/berniebuddy/*');
-App.accessRule('https://*.stripe.com/*');
+App.accessRule('https://graph.facebook.com/*')
+App.accessRule('https://pbs.twimg.com/*')
+App.accessRule('*.bootstrapcdn.com/*')
+App.accessRule('https://s3.amazonaws.com/berniebuddydev')
+App.accessRule('https://s3.amazonaws.com/berniebuddydev*')
+App.accessRule('https://s3.amazonaws.com/berniebuddydev/*')
+App.accessRule('https://s3.amazonaws.com/berniebuddy')
+App.accessRule('https://s3.amazonaws.com/berniebuddy*')
+App.accessRule('https://s3.amazonaws.com/berniebuddy/*')
+App.accessRule('https://*.stripe.com/*')

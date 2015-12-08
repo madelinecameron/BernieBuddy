@@ -1,7 +1,7 @@
 from pymongo import MongoClient
 import sys
 
-client = MongoClient("mongodb://root:bernie@ds041561.mongolab.com:41561/berniebuddy")
+client = MongoClient("mongodb://USERNAME:PASSWORD@ds041561.mongolab.com:41561/berniebuddy")
 db = client["berniebuddy"]
 
 def find_all_users():
