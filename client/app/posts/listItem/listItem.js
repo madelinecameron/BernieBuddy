@@ -19,7 +19,10 @@ Template.listItem.events({
 Template.listItem.onCreated(function() {
   var id = this.data.creatorId
   if (!Session.get(id) && id !== null) {
-    Session.set(id, Meteor.users.findOne({ _id: id }).profile.name)
+    var postCreator = Meteor.users.findOne({ _id: id });
+    if(postCreator) {
+      Session.set(id, postCreator.profile.name)
+    }
   }
   Meteor.call('kudosCount', id, function(err, result) {
     Session.set(id + 'kudos', result)
