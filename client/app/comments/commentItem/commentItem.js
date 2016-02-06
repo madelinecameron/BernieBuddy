@@ -2,7 +2,6 @@ Template.commentItem.events({
   'click': function() {
     Session.set('selected_comment', this._id)
   },
-
   'click a.yes': function(event) {  //Upvote
     Meteor.voting.voteUp(event, this._id, "Comment")
   },
@@ -14,7 +13,10 @@ Template.commentItem.events({
 Template.commentItem.onCreated(function() {
   var id = this.data.creatorId
   if (!Session.get(id)) {  // If username isn"t stored in session
-    Session.set(id, Meteor.users.findOne({ _id: id }).profile.name)
+    var creatorName = Meteor.users.findOne({ _id: id }).profile.name
+    if(creatorName) {
+      Session.set(id, Meteor.users.findOne({ _id: id }).profile.name)
+    }
   }
 
   Meteor.call('kudosCount', id, function(err, result) {  // Get kudo count for creator
